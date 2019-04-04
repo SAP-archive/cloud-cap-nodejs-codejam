@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "6531f05c-510e-4233-ba3e-18c85eb99be9",
+		"name": "codejam-cap-nodejs-ex07",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Order 2 copies of Wuthering Heights",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"book_ID\": 201,\n  \"quantity\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4004/catalog/Orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4004",
+					"path": [
+						"catalog",
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order 7 copies of Eleonora",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"book_ID\": 252,\n  \"quantity\": 7\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4004/catalog/Orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4004",
+					"path": [
+						"catalog",
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order 42 copies of The Hitch Hiker's Guide To The Galaxy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"book_ID\": 421,\n  \"quantity\": 42\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4004/catalog/Orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4004",
+					"path": [
+						"catalog",
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

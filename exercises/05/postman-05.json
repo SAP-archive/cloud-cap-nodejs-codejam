@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "f9905494-1978-471e-977e-f428d197014e",
+		"name": "codejam-cap-nodejs-ex05",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Order 5 copies of Wuthering Heights (no order ID specified)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"book_ID\": 201,\n  \"quantity\": 5\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4004/catalog/Orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4004",
+					"path": [
+						"catalog",
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order 9 copies of Life, The Universe And Everything (specifying an order ID)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ID\": \"527ef85a-aef2-464b-89f6-6a3ce64f2e14\",\n  \"book_ID\": 427,\n  \"quantity\": 9\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4004/catalog/Orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4004",
+					"path": [
+						"catalog",
+						"Orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

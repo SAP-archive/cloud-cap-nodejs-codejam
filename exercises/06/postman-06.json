@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "a7fe5ef7-5bd1-480b-8fa3-9f7fff10d6f9",
+		"name": "codejam-cap-nodejs-ex06",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "(A) Before @readonly annotations",
+			"item": [
+				{
+					"name": "1) Add author \"Iain M Banks\"",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": 162,\n  \"name\": \"Iain M Banks\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4004/catalog/Authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"catalog",
+								"Authors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2) Add book \"Consider Phlebas\"",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": 44138,\n  \"title\": \"Consider Phlebas\",\n  \"stock\": 541,\n  \"author_ID\": 162\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4004/catalog/Books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"catalog",
+								"Books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "(B) After @readonly annotations",
+			"item": [
+				{
+					"name": "1) Add book \"The Player of Games\"",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ID\": 47110,\n  \"title\": \"The Player of Games\",\n  \"stock\": 405,\n  \"author_ID\": 162\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4004/catalog/Books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"catalog",
+								"Books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2) Remove book \"The Raven\"",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:4004/catalog/Books(251)",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4004",
+							"path": [
+								"catalog",
+								"Books(251)"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
