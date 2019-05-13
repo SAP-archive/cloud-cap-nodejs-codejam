@@ -44,7 +44,7 @@ Note: If you want to do this using `curl`, jump to the [using curl](#curl) secti
 
 **Using Postman**
 
-:point_right: Import another collection into Postman from the URL to this resource: [postman-07.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/07/postman-07.json).
+:point_right: Import another collection into Postman from the URL to this resource: [postman-07.json](https://raw.githubusercontent.com/SAP/codejam-cap-nodejs/master/exercises/07/postman-07.json).
 
 This screenshot shows what the collection looks like (it contains multiple POST requests to create orders for various books) and also shows the extra options which allows all the requests in the collection to be executed in one go:
 
