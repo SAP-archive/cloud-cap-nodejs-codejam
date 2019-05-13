@@ -10,7 +10,7 @@ At the end of these steps, your OData service will have different levels of acce
 
 ### 1. Import a collection of HTTP requests into Postman
 
-:point_right: In the same way that you did in [exercise 05](../05/), import a collection of HTTP requests into your Postman client via the URL to [postman-06.json](https://raw.githubusercontent.com/qmacro/codejam-cap-nodejs/master/exercises/06/postman-06.json) resource.
+:point_right: In the same way that you did in [exercise 05](../05/), import a collection of HTTP requests into your Postman client via the URL to [postman-06.json](https://raw.githubusercontent.com/SAP/cloud-cap-nodejs-codejam/master/exercises/06/postman-06.json) resource.
 
 This contains a number of different requests ready for you to try.
 
