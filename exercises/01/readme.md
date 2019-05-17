@@ -87,9 +87,9 @@ You've now installed the two key tools for developing with CAP locally, and are 
 
 ## Questions
 
-1. What are the `@sap` namespaced packages upon which `@sap/cds` depends?
-
 1. What are the benefits of using NPM here?
+
+1. What are the `@sap` namespaced packages upon which `@sap/cds` depends?
 
 1. What is the significance of using the `--global` option when installing the `@sap/cds` package?
 
