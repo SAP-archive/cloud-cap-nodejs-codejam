@@ -191,8 +191,6 @@ In this exercise you used shortcut annotations to restrict access to the entitie
 
 ## Questions
 
-1. What are the advantages to separating the data model and service layers? Are there any disadvantages?
-
 1. How might the annotations relating to the read-only restrictions be useful in a UI context?
 
 1. What was the format of the OData Delete operation - did we need to supply a payload?
