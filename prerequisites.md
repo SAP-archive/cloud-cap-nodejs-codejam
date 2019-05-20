@@ -1,6 +1,6 @@
 # Prerequisites
 
-There are hardware and software prerequisites for participating in this CodeJam. There are also some items that you might like to install too - not mandatory, but certainly recommended.
+There are hardware and software prerequisites for participating in this CodeJam. There are also some optional, recommended items that you might like to have too.
 
 ## Hardware
 
@@ -8,19 +8,31 @@ Each participant should have their own laptop with enough admin privileges to be
 
 ## Software
 
+There are some mandatory and optional requirements with respect to software.
+
+### Mandatory
+
 Before the CodeJam day, participants should ensure they have the following installed on their laptops:
 
 - Chrome (latest version) : [https://www.google.com/chrome/](https://www.google.com/chrome/)
-- Visual Studio Code : [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
+- Visual Studio Code (also known as VS Code): [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 - Node.js : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
-- SQLite : [https://sqlite.org/index.html](https://sqlite.org/index.html)
-- git : [https://www.atlassian.com/git/tutorials/install-git](https://www.atlassian.com/git/tutorials/install-git)
 - Postman : [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
-- Make
+- SQLite : [https://sqlite.org/index.html](https://sqlite.org/index.html)
+
+With regards to SQLite: if you are running macOS or Linux it's likely that you'll already have SQLite installed. For Windows users, please follow the installation instructions that are available (you may find this four-minute video useful: [Codible SQLite video 1: How to install sqlite (SQLite3) on windows 10 - YouTube](https://www.youtube.com/watch?v=zOJWL3oXDO8)). After installation, please check you can start the SQLite executable (`sqlite3`) from the command line.
+
+With regards to Node: we recommend the latest LTS (long term support) version. After installation, please check that you can start node from the command line, and also successfully install packages with the included `npm` command.
+
+### Optional
+
+While the software listed in the previous section is essential for exercises 1-9, you may also wish to install the following if you want to replicate the activities in exercise 10.
+
+- git : [https://www.atlassian.com/git/tutorials/install-git](https://www.atlassian.com/git/tutorials/install-git)
+- Make (for Windows, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm))
 - The Cloud Foundry command line tool cf : [https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 - The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : [https://tools.hana.ondemand.com/#cloud](https://tools.hana.ondemand.com/#cloud)
 
-With regards to Node, we recommend the latest LTS (long term support) version. After installation, please check that you can start node from the command line, and also successfully install packages with the included `npm` command.
 
 ## Attendees
 
