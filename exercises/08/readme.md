@@ -25,7 +25,7 @@ This custom logic file is normally placed in the same directory as the service d
 
 ### 2. Add some basic custom logic code
 
-In the new file `cat-service.js`, add the following code:
+:point_right: In the new file `cat-service.js`, add the following code:
 
 ```javascript
 module.exports = srv => {
@@ -35,7 +35,7 @@ module.exports = srv => {
 }
 ```
 
-You can see that this custom logic handler file is in the form of a module, which exports a single function. That function (defined using [ES6 arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)) has a single parameter `srv` to receive the server object on invocation. We will be making use of the general CDS API so we load that module (`require('@sap/cds')`) too.
+You can see that this custom logic handler file is in the form of a module, which exports a single function. That function (defined using [ES6 arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)) has a single parameter `srv` to receive the server object on invocation.
 
 
 ### 3. Run the service
