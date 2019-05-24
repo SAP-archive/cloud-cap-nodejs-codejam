@@ -33,6 +33,7 @@ While the software listed in the previous section is essential for exercises 1-9
 - The Cloud Foundry command line tool cf : [https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 - The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : [https://tools.hana.ondemand.com/#cloud](https://tools.hana.ondemand.com/#cloud)
 
+Some of the exercises require you to make HTTP requests, and for this you can use Postman (a mandatory software requirement above). Alternatively you can also use cURL, a command line HTTP client. Instructions for the HTTP requests in each exercise are given for both Postman and cURL. So you may want to install cURL; you can do so by visiting [https://curl.haxx.se/](https://curl.haxx.se/).
 
 ## Attendees
 
