@@ -112,6 +112,8 @@ user@host:~/bookshop
 => npm install sqlite3 --save-dev
 ```
 
+_Note: This step is required in releases of cds before 3.10. Now when a project is initialized, the `sqlite3` package is installed locally as a development dependency, automatically. This step has been left in, however, to give you the experience of installing a development dependency locally anyway and will not cause any issues if you "reinstall" the package now._
+
 You should see output similar to this:
 
 ```
