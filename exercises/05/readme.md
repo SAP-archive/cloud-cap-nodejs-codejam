@@ -92,10 +92,6 @@ using { cuid, managed, Country } from '@sap/cds/common';
 
 These features are now available to use in our entity definitions.
 
-Note: You may notice that the CDS Language Support extension for VS Code highlights the `managed` aspect as erroneous but this can be ignored.
-
-![managed marked as erroneous](managed-erroneous.png)
-
 :point_right: Now remove the explicit key property definition (`ID`), and instead, add the `cuid` aspect as shown:
 
 ```
