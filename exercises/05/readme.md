@@ -131,7 +131,7 @@ Note the difference in capitalization here. The property name is `country` which
 
 In the same way as you've done previously, it's now time to redeploy and then restart the service.
 
-:point_right: This time, try it all in a single line, like this:
+:point_right: This time, unless you're running Windows, try it all in a single line, like this:
 
 ```sh
 user@host:~/bookshop
