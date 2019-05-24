@@ -105,32 +105,7 @@ Don't forget to save the file.
 
 As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
 
-:point_right: The `@sap/cds` package makes use of the NPM [sqlite3](https://www.npmjs.com/package/sqlite3) package, and this needs to be installed in the project first. Do this by using `npm` to install it locally to the project (rather than globally):
-
-```sh
-user@host:~/bookshop
-=> npm install sqlite3 --save-dev
-```
-
-_Note: This step is required in releases of cds before 3.10. Now when a project is initialized, the `sqlite3` package is installed locally as a development dependency, automatically. This step has been left in, however, to give you the experience of installing a development dependency locally anyway and will not cause any issues if you "reinstall" the package now._
-
-You should see output similar to this:
-
-```
-> sqlite3@4.0.6 install /Users/user/bookshop/node_modules/sqlite3
-> node-pre-gyp install --fallback-to-build
-
-node-pre-gyp WARN Using request for node-pre-gyp https download
-[sqlite3] Success: "/Users/user/bookshop/node_modules/sqlite3/lib/binding/node-v57-darwin-x64/node_sqlite3.node" is installed via remote
-npm notice created a lockfile as package-lock.json. You should commit this file.
-npm WARN bookshop@1.0.0 license should be a valid SPDX license expression
-
-+ sqlite3@4.0.6
-added 101 packages from 88 contributors and audited 326 packages in 5.601s
-found 0 vulnerabilities
-```
-
-Note: The `--save-dev` option here (short form: `-D`) causes the information about the dependency to the `sqlite3` package to be written to a separate section of the `package.json` file, which describes dependencies relating to the development process rather than the runtime operation. Here we're assuming that SQLite is being employed for development and testing purposes only.
+_Note: From cds 3.10 onwards, the `sqlite3` package is automatically installed in the project for you as a development dependency so it's all ready for you to start using._
 
 :point_right: Explore the `cds deploy` command like this:
 
@@ -152,7 +127,7 @@ Use this command to deploy the data model and service definition to a new SQLite
 :point_right: Deploy to a new SQLite database like this:
 
 ```
-user@host:~
+user@host:~/bookshop
 => cds deploy --to sqlite:bookshop.db
 ```
 
