@@ -162,7 +162,7 @@ This should complete fairly quietly, and give a message like this:
 - updated package.json
 ```
 
-Note: If you're wondering what has been updated in `package.json`, have a look. You'll see that a new section has been created that describes the persistence layer configuration:
+Note: If you're wondering what is been updated in `package.json` relating to the use of SQLite, have a look. You'll see a section that describes the persistence layer configuration:
 
 ```json
   "cds": {
@@ -286,8 +286,6 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 
 
 ## Questions
-
-1. What happens to the content of `package.json` after a deploy?
 
 1. What are other possible targets in the compilation context?
 
