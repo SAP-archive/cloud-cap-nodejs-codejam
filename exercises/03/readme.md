@@ -124,7 +124,7 @@ SYNOPSIS
 
 Use this command to deploy the data model and service definition to a new SQLite-based database (databases with SQLite are simply files on the local filesystem).
 
-:point_right: Deploy to a new SQLite database like this:
+:point_right: Deploy to a new SQLite database like this (remember, you need to be inside the `bookshop` project directory when you invoke this):
 
 ```
 user@host:~/bookshop
