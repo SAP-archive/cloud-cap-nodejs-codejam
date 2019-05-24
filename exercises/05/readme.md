@@ -131,7 +131,7 @@ Note the difference in capitalization here. The property name is `country` which
 
 In the same way as you've done previously, it's now time to redeploy and then restart the service.
 
-:point_right: This time, unless you're running Windows, try it all in a single line, like this:
+:point_right: This time, try it all in a single line, like this:
 
 ```sh
 user@host:~/bookshop
@@ -148,6 +148,9 @@ user@host:~/bookshop
 
 [cds] - launched in: 629.661ms
 ```
+
+_Note: If you're running Windows, you can use a semicolon in place of the `&&`. It's not quite the same but will work just fine in most cases._
+
 
 ### 5. Examine what the Orders entity looks like now
 
