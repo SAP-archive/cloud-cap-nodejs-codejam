@@ -81,6 +81,10 @@ When successfully installed, you should see the extension thus:
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
+### 3. Install the Cloud Foundry Command Line Interface (CLI)
+### 4. Install the MultiApp Build Tool (mbt)
+### 5. [Windows Only ] Install the SQLite and Make
+
 ## Summary
 
 You've now installed the two key tools for developing with CAP locally, and are all set to create your first project.
@@ -94,4 +98,3 @@ You've now installed the two key tools for developing with CAP locally, and are 
 1. What is the significance of using the `--global` option when installing the `@sap/cds` package?
 
 1. What is the meaning of the `.vsix` file type for the VS Code extension? Can we dig into that to see what's inside?
-

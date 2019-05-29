@@ -65,31 +65,30 @@ user@host:~
 => cds init --help
 ```
 
-Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option.
+Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `----db-technology` and `--insecure` are related to deployment to Cloud Foundry and it's access management.
 
-:point_right: Use both of these options to initialize a new project directory thus:
+:point_right: Use all of these options to initialize a new project directory thus:
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --verbose bookshop
+=> cds init --modules db,srv --insecure --mta --db-technology hana  --verbose bookshop
 ```
 
 You should see output that looks similar to this:
 
-```sh
-Creating new project in directory bookshop.
-
-Copying templates for type db to bookshop/db ...
-Copying templates for type srv to bookshop/srv ...
-Updating npm dependencies in bookshop/package.json ...
+```
+[Warn] Srv type nodejs only supports odata version v4 and not v2. Will use v4.
+Initializing project in folder bookshop.
+Copying templates for type db to db ...
+Creating mta file /Users/d056949/SoftwareDev/sandbox/bookshop/mta.yaml ...
+Copying templates for type srv to {{moduleFolder}} ...
+Creating mta file /Users/d056949/SoftwareDev/sandbox/bookshop/mta.yaml ...
+Updating npm dependencies in /Users/d056949/SoftwareDev/sandbox/bookshop/package.json ...
 Running npm install...
-npm WARN bookshop@1.0.0 license should be a valid SPDX license expression
-
-added 76 packages from 109 contributors and audited 166 packages in 3.261s
+added 81 packages from 111 contributors and audited 176 packages in 2.976s
 found 0 vulnerabilities
 
-
-Project creation was successful.
+Finished successfully.
 ```
 
 
@@ -158,14 +157,15 @@ Note: You can also specify simply `cds serve all` to have `cds` look for appropr
 You should see output similar to this:
 
 ```
-[cds] - server listening at http://localhost:4004
+[cds] - connect to datasource - hana:db,srv
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
   srv/cat-service.cds
   db/data-model.cds
 
-[cds] - launched in: 448.633ms
+[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
+[cds] - launched in: 566.451ms
 ```
 
 The OData service is now running, and available on [http://localhost:4004](http://localhost:4004).

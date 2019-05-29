@@ -16,7 +16,10 @@ Following the "convention over configuation" theme, the Node.js flavored CAP mod
 
 If there is an `app/` directory with content, it will serve that instead.
 
-:point_right: Create an `app/` directory, at the same level as the `db/` and `srv/` directories, and create an `index.html` file within it, containing the following:
+:point_right: Create an `app/` directory, at the same level as the `db/` and `srv/` directories. This directory that will contain the app files.
+
+
+:point_right: Create the `webapp/` directory as a child of the `app/` and create an `index.html` file within it, containing the following.
 
 ```html
 <!DOCTYPE html>
@@ -33,7 +36,7 @@ If there is an `app/` directory with content, it will serve that instead.
 </html>
 ```
 
-:point_right: Restart the service (with `cds serve all`) and go to the root URL, i.e. [http://localhost:4004](http://localhost:4004). This time, you are not shown the "Welcome to cds.services" landing page - instead, the page is empty, except for the page title in the browser tab, that shows us that the HTML we entered has been loaded:
+:point_right: Restart the service (with `cds serve all`) and go to the URL, i.e. [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, you are not shown the "Welcome to cds.services" landing page - instead, the page is empty, except for the page title in the browser tab, that shows us that the HTML we entered has been loaded:
 
 ![title in browser tab](title-in-browser-tab.png)
 
@@ -43,7 +46,7 @@ If there is an `app/` directory with content, it will serve that instead.
 To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
 :point_right: Add these `script` elements between the `title` element and the end of the `head` element:
-
+@DJ do you know why we need to specify version 63? The newer versions aren't working...
 ```html
     <script>
         window['sap-ushell-config'] = {
@@ -56,16 +59,16 @@ To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefa
     <script
         src="https://sapui5.hana.ondemand.com/1.63.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
-    <script id="sap-ui-bootstrap"
-        src="https://sapui5.hana.ondemand.com/1.63.1/resources/sap-ui-core.js"
-        data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
-        data-sap-ui-compatVersion="edge"
-        data-sap-ui-theme="sap_belize"
-        data-sap-ui-frameOptions="allow"></script>
+    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/1.63.1/resources/sap-ui-core.js"
+    		data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
+    		data-sap-ui-compatVersion="edge"
+    		data-sap-ui-theme="sap_fiori_3"
+    		data-sap-ui-resourceroots='{"bookshop": "../"}'
+        data-sap-ui-frameOptions='allow'  ></script>
 
     <script>
         sap.ui.getCore().attachInit(
-            () => sap.ushell.Container.createRenderer('fiori2').placeAt('content')
+            () => sap.ushell.Container.createRenderer().placeAt('content')
         )
     </script>
 ```
@@ -73,7 +76,7 @@ To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefa
 Here's a brief summary of what each of these `script` elements are for, in order of appearance in the file:
 
 1. Basic configuration for the Fiori launchpad sandbox (otherwise known as the "universal shell" or "ushell")
-1. Loading of the actual Fiori launchpad sandbox itself
+1. Loading of the actual Fiori launchpad sandbox itself (Note the new Fiori 3 theme, do you like it?)
 1. Loading and bootstrapping of SAPUI5
 1. Some JavaScript to declare a function to run when the initialization of SAPUI5 is complete; the function creates a launchpad and places it into the Document Object Model
 
@@ -82,7 +85,29 @@ Reloading the browser tab should now show the beginnings of something recognizab
 ![an empty Fiori launchpad](empty-fiori-launchpad.png)
 
 
-### 3. Introduce a basic UI app to the Fiori launchpad
+### 3. Add a new module to the project descriptor
+
+mta.yaml:
+```
+- name: bookshop-ui
+  type: nodejs
+  path: app
+  parameters:
+    memory: 256M
+    disk-quota: 256M
+  requires:
+    - name: srv_api
+      group: destinations
+      properties:
+        forwardAuthToken: true
+        strictSSL: false
+        name: srv_api
+        url: ~{url}
+```
+
+
+
+### 4. Introduce a basic UI app to the Fiori launchpad
 
 Now we have the launchpad as a container for our app, let's introduce it gradually.
 
@@ -93,14 +118,14 @@ The first thing to do is to add an entry to the sandbox launchpad configuration 
 ```javascript
 <script>
     window['sap-ushell-config'] = {
-        defaultRenderer: 'fiori2',
+        defaultRenderer: 'fiori2', @DJ, do you know how make change this to fiori3?
         applications: {
             'browse-books': {                                        // <--
                 title: 'Browse Books',                               // <--
                 description: 'Bookshop',                             // <--
                 additionalInformation: 'SAPUI5.Component=bookshop',  // <--
                 applicationType : 'URL',                             // <--
-                url: '/browse/webapp'                                // <--
+                url: '/webapp'                                       // <--
             }                                                        // <--
         }
     };
@@ -112,17 +137,11 @@ Reloading the index page in the browser should show this:
 ![Fiori launchpad with tile](launchpad-with-tile.png)
 
 
-### 4. Create the app artefacts
+### 5. Create the app artefacts
 
 As we can see from the configuration we've just added, we're suggesting the app is a Component-based app (where the component name is "bookshop") and is to be found at (relative) URL `/browse/webapp`. Let's flesh that out in terms of directories and files now.
 
-:point_right: Create the `browse/` directory as a child of the `app/` directory.
 
-:point_right: In this new `browse/` directory, create the `webapp/` directory that will contain the app files.
-
-At this point the content of the `app/` directory should look like this:
-
-![webapp directory](webapp-dir.png)
 
 :point_right: In the new `webapp/` directory, create a simple `Component.js` file (note the capitalization of the filename) with the following content:
 
@@ -225,11 +244,11 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 }
 ```
 
-### 5. Create a CDS index file
+### 6. Create a CDS index file
 
-This is the point where you can introduce an `index.cds` file, at the same level as the `index.html` file. This CDS index controls which services are exposed. 
+This is the point where you can introduce an `index.cds` file, at the same level as the `index.html` file. This CDS index controls which services are exposed.
 
-:point_right: Create a file `index.cds` in the `app/` directory, and add the following single line as the initial content:
+:point_right: Create a file `index.cds` in the `srv/`(! @DJ, please note this change) directory, and add the following single line as the initial content:
 
 ```cds
 using from '../srv/cat-service';
@@ -238,7 +257,7 @@ using from '../srv/cat-service';
 Note: At this point you can actually reload the UI; while you will see some semblance of an app, it will be mostly empty.
 
 
-### 6. Add annotations for the service
+### 7. Add annotations for the service
 
 Now let's look at important content that will help us join together in our minds the two complementary worlds of CAP and Fiori. This content is to be added to `index.cds` and controls what gets served to Fiori frontends, via annotations that form a rich layer of metadata over the top of the service.
 
@@ -285,7 +304,7 @@ The final thing to do in this step is to redeploy because we have added CDS arte
 :point_right: Do this now, with `cds deploy`, before restarting the service with `cds serve all`.
 
 
-### 6. Test the app
+### 8. Test the app
 
 The app should be ready to invoke. Reload the Fiori launchpad and select the tile. It should open up into a nice List Report style Fiori Elements app - all driven from the service's annotations:
 
@@ -294,12 +313,12 @@ The app should be ready to invoke. Reload the Fiori launchpad and select the til
 Well done!
 
 
-### 8. Add base internationalization texts
+### 9. Add base internationalization texts
 
 Just to round things off, add some i18n texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
 
-:point_right: Create a directory called `i18n/` as a direct child of the `app/` directory, and create a file `i18n.properties` inside it, with the following content:
-
+:point_right: Create a directory called `i18n/` as a direct child of the `webapp/` directory, and create a file `i18n.properties` inside it, with the following content:
+@DJ this somehow isn't working (but it is loading the file. Do you have an idea)
 ```
 ID=ID
 Title=Title
@@ -313,6 +332,43 @@ Books=Books
 :point_right: Redeploy and restart the service (`cds deploy && cds serve all`) and reload the app. You should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
 
 
+### 10. Add the app router configuration
+`package.json`
+```
+{
+  "name": "bookshop-ui",
+  "dependencies": {
+    "@sap/approuter": "^6.0.0"
+  },
+  "engines": {
+      "node": "^10"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/approuter/approuter.js"
+  }
+}
+```
+
+`xs-app.json`
+```
+{
+    "welcomeFile": "webapp/",
+    "authenticationMethod": "none",
+    "logout": {
+        "logoutEndpoint": "/do/logout"
+    },
+    "routes": [{
+        "source": "^/webapp/(.*)$",
+        "target": "$1",
+        "localDir": "webapp/"
+    }, {
+        "source": "^(.*)$",
+        "destination": "srv_api"
+    }]
+}
+
+```
+
 ## Summary
 
 While this was a little intense as far as creation of artefacts was concerned, we hope you agree that for little effort, and based on a great foundation, a lot can be achieved!
@@ -322,6 +378,3 @@ While this was a little intense as far as creation of artefacts was concerned, w
 1. Where might further apps be defined live in this logical structure?
 
 1. What other features can you imagine being useful to users and supported by Fiori Elements and annotations?
-
-
-

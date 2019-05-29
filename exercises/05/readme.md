@@ -52,14 +52,16 @@ user@host:~/bookshop
 user@host:~/bookshop
 => cds serve all
 
-[cds] - server listening at http://localhost:4004
+[cds] - connect to datasource - sqlite:bookshop.db
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
   srv/cat-service.cds
   db/data-model.cds
+  node_modules/@sap/cds/common.cds
 
-[cds] - launched in: 834.496ms
+[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
+[cds] - launched in: 821.718ms
 ```
 
 The `Orders` entity is now available in the service (but there is [no data](http://localhost:4004/catalog/Orders) as yet).
@@ -123,6 +125,7 @@ entity Orders : cuid, managed {
   country  : Country;
 }
 ```
+@DJ do you think we should compress these steps into one? I'd feel fooled to you were telling me to change the same 4 lines in 3 consequitive steps.
 
 Note the difference in capitalization here. The property name is `country` which is described by the type `Country`.
 
@@ -138,7 +141,7 @@ user@host:~/bookshop
 => cds deploy && cds serve all
 > initializing from csv files at ./db/csv...
 
-[cds] - server listening at http://localhost:4004
+[cds] - connect to datasource - sqlite:bookshop.db
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
@@ -146,7 +149,8 @@ user@host:~/bookshop
   db/data-model.cds
   node_modules/@sap/cds/common.cds
 
-[cds] - launched in: 629.661ms
+[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
+[cds] - launched in: 824.746ms
 ```
 
 _Note: If you're running Windows, you can use a semicolon in place of the `&&`. It's not quite the same but will work just fine in most cases._
