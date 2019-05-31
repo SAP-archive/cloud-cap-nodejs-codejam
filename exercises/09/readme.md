@@ -46,7 +46,6 @@ If there is an `app/` directory with content, it will serve that instead.
 To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
 :point_right: Add these `script` elements between the `title` element and the end of the `head` element:
-@DJ do you know why we need to specify version 63? The newer versions aren't working...
 ```html
     <script>
         window['sap-ushell-config'] = {
@@ -57,9 +56,9 @@ To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefa
     </script>
 
     <script
-        src="https://sapui5.hana.ondemand.com/1.63.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+        src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
-    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/1.63.1/resources/sap-ui-core.js"
+    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
     		data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
     		data-sap-ui-compatVersion="edge"
     		data-sap-ui-theme="sap_fiori_3"
@@ -195,7 +194,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
                 "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
-                    "autoExpandSelect" : true,
+                    "autoExpandSelect": true,
                     "earlyRequests": true,
                     "groupProperties": {
                         "default": {
@@ -206,8 +205,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
             }
         },
         "routing": {
-            "routes": [
-                {
+            "routes": [{
                     "pattern": "",
                     "name": "BooksList",
                     "target": "BooksList"
@@ -220,28 +218,37 @@ This is a modern UI5 component definition that points to a JSON configuration fi
             ],
             "targets": {
                 "BooksList": {
-                    "entitySet": "Books",
-                    "viewId": "bookshop::ListReport::Books",
-                    "viewName": "sap.fe.templates.ListReport",
-                    "viewData": {
-                        "navigation": {
-                            "Books": {
-                                "detail": {
-                                    "route": "BooksDetails"
-                                }
+                    "type": "Component",
+                    "id": "BooksList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Books",
+                            "navigation": {
+                              "Books": {
+                                  "detail": {
+                                      "route": "BooksDetails"
+                                  }
+                              }
                             }
                         }
                     }
                 },
                 "BooksDetails": {
-                    "entitySet": "Books",
-                    "viewId": "bookshop::ObjectPage::Books",
-                    "viewName": "sap.fe.templates.ObjectPage"
+                    "type": "Component",
+                    "id": "BooksDetails",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings" : {
+                            "entitySet": "Books"
+                        }
+                    }
                 }
             }
         }
     }
 }
+
 ```
 
 ### 6. Create a CDS index file
