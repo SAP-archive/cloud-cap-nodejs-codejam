@@ -12,7 +12,7 @@ There are some mandatory and optional requirements with respect to software.
 
 ### Mandatory
 
-Before the CodeJam day, participants should ensure they have the following installed on their laptops:
+Before the CodeJam day, participants must ensure they have the following installed on their laptops:
 
 - Chrome (latest version) : [https://www.google.com/chrome/](https://www.google.com/chrome/)
 - Visual Studio Code (also known as VS Code): [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
