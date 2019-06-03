@@ -54,10 +54,10 @@ To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefa
     </script>
 
     <script
-        src="https://sapui5.hana.ondemand.com/1.63.1/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+        src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
     <script id="sap-ui-bootstrap"
-        src="https://sapui5.hana.ondemand.com/1.63.1/resources/sap-ui-core.js"
+        src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
         data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-theme="sap_belize"
@@ -176,7 +176,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
                 "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
-                    "autoExpandSelect" : true,
+                    "autoExpandSelect": true,
                     "earlyRequests": true,
                     "groupProperties": {
                         "default": {
@@ -201,23 +201,31 @@ This is a modern UI5 component definition that points to a JSON configuration fi
             ],
             "targets": {
                 "BooksList": {
-                    "entitySet": "Books",
-                    "viewId": "bookshop::ListReport::Books",
-                    "viewName": "sap.fe.templates.ListReport",
-                    "viewData": {
-                        "navigation": {
-                            "Books": {
-                                "detail": {
-                                    "route": "BooksDetails"
+                    "type": "Component",
+                    "id": "BooksList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Books",
+                            "navigation": {
+                                "Books": {
+                                    "detail": {
+                                        "route": "BooksDetails"
+                                    }
                                 }
                             }
                         }
                     }
                 },
                 "BooksDetails": {
-                    "entitySet": "Books",
-                    "viewId": "bookshop::ObjectPage::Books",
-                    "viewName": "sap.fe.templates.ObjectPage"
+                    "type": "Component",
+                    "id": "BooksDetails",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Books"
+                        }
+                    }
                 }
             }
         }
@@ -227,7 +235,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 ### 5. Create a CDS index file
 
-This is the point where you can introduce an `index.cds` file, at the same level as the `index.html` file. This CDS index controls which services are exposed. 
+This is the point where you can introduce an `index.cds` file, at the same level as the `index.html` file. This CDS index controls which services are exposed.
 
 :point_right: Create a file `index.cds` in the `app/` directory, and add the following single line as the initial content:
 
