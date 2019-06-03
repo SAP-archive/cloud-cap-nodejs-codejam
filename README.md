@@ -4,6 +4,10 @@
 
 This repository contains the material for the CodeJam on SAP Cloud Application Programming Model with Node.js. Prequisites and recommendations for this CodeJam are documented in the [prerequisites](prerequisites.md) file.
 
+### CodeJam overview
+
+The focus of this CodeJam is the SAP Cloud Application Programming Model ("CAP" for short) with Node.js. Through a series of hands-on exercises you'll get to know the CAP related tools, create a CAP project and learn about various aspects such as compilation, persistence, OData operations, data models & service definitions and how they relate, and dig into annotations, custom logic and debugging. You'll also add a user interface (UI) layer, and see how the entire set of artifacts can be deployed to the SAP Cloud Platform.
+
 ### Material organization
 
 The material consists of a series of exercises that are to be done in order (each one building on the previous one). Each exercise is contained in a directory, with a main 'readme' file containing the core exercise instructions, with optional supporting files, such as screenshots and sample files.
