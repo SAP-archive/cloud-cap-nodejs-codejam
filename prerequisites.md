@@ -14,24 +14,24 @@ There are some mandatory and optional requirements with respect to software.
 
 Before the CodeJam day, participants must ensure they have the following installed on their laptops:
 
-- Chrome (latest version) : [https://www.google.com/chrome/](https://www.google.com/chrome/)
-- Visual Studio Code (also known as VS Code): [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
-- Node.js : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
-- Postman : [https://www.getpostman.com/downloads/](https://www.getpostman.com/downloads/)
-- SQLite : [https://sqlite.org/index.html](https://sqlite.org/index.html)
+- Chrome (latest version) : <https://www.google.com/chrome/>
+- Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
+- Node.js : <https://nodejs.org/en/download/>
+- Postman : <https://www.getpostman.com/downloads/>
+- SQLite : <https://sqlite.org/index.html>
+- Make : <https://www.gnu.org/software/make/>
+- The Cloud Foundry command line tool cf : <https://docs.cloudfoundry.org/cf-cli/install-go-cli.html>
+- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>
+    ```
+    cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+    cf install-plugin multiapps
+    ```
 
-With regards to SQLite: if you are running macOS or Linux it's likely that you'll already have SQLite installed. For Windows users, please follow the installation instructions that are available (you may find this four-minute video useful: [Codible SQLite video 1: How to install sqlite (SQLite3) on windows 10 - YouTube](https://www.youtube.com/watch?v=zOJWL3oXDO8)). After installation, please check you can start the SQLite executable (`sqlite3`) from the command line.
+With regards to `SQLite` and `Make`: if you are running macOS or Linux it's likely that you'll already have SQLite installed. For Windows users, please follow the installation instructions that are available (you may find this four-minute video useful: [Codible SQLite video 1: How to install sqlite (SQLite3) on windows 10 - YouTube](https://www.youtube.com/watch?v=zOJWL3oXDO8)). Alternatively, you can use the [Chocolatey](https://chocolatey.org/) package manager to install both, [SQLite](https://chocolatey.org/packages/sqlite). and [make](https://chocolatey.org/packages/make). After installation, please check you can start the executables (`sqlite3` and `make`) from the command line.
 
-With regards to Node: we recommend the latest LTS (long term support) version. After installation, please check that you can start node from the command line, and also successfully install packages with the included `npm` command.
+With regards to Node: Please install the latest LTS (long term support) version v10. After installation, please check that you can start node from the command line, and also successfully install packages with the included `npm` command.
 
 ### Optional
-
-While the software listed in the previous section is essential for exercises 1-9, you may also wish to install the following if you want to replicate the activities in exercise 10.
-
-- git : [https://www.atlassian.com/git/tutorials/install-git](https://www.atlassian.com/git/tutorials/install-git)
-- Make (for Windows, see [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm))
-- The Cloud Foundry command line tool cf : [https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
-- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : [https://tools.hana.ondemand.com/#cloud](https://tools.hana.ondemand.com/#cloud)
 
 Some of the exercises require you to make HTTP requests, and for this you can use Postman (a mandatory software requirement above). Alternatively you can also use cURL, a command line HTTP client. Instructions for the HTTP requests in each exercise are given for both Postman and cURL. So you may want to install cURL; you can do so by visiting [https://curl.haxx.se/](https://curl.haxx.se/).
 
