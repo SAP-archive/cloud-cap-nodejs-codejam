@@ -58,12 +58,13 @@ To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefa
     <script
         src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
-    <script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+    <script id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
     		data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
     		data-sap-ui-compatVersion="edge"
     		data-sap-ui-theme="sap_fiori_3"
     		data-sap-ui-resourceroots='{"bookshop": "../"}'
-        data-sap-ui-frameOptions='allow'  ></script>
+        data-sap-ui-frameOptions="allow"></script>
 
     <script>
         sap.ui.getCore().attachInit(
@@ -225,11 +226,11 @@ This is a modern UI5 component definition that points to a JSON configuration fi
                         "settings": {
                             "entitySet": "Books",
                             "navigation": {
-                              "Books": {
-                                  "detail": {
-                                      "route": "BooksDetails"
-                                  }
-                              }
+                                "Books": {
+                                    "detail": {
+                                        "route": "BooksDetails"
+                                    }
+                                }
                             }
                         }
                     }
@@ -239,7 +240,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
                     "id": "BooksDetails",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
-                        "settings" : {
+                        "settings": {
                             "entitySet": "Books"
                         }
                     }
