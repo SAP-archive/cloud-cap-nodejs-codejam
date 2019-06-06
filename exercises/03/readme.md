@@ -144,7 +144,7 @@ To prepare the app for a multiple databases, change the content to:
 }
 ```
 
-:point_right: As we want to use a local SQLite database, we need to install a client to communicate with this DH. Install the `sqlite3` package for this job.
+:point_right: As we want to use a local SQLite database, we need to install a client to communicate with this DB. Install the `sqlite3` package for this job.
 ```
 npm install -D sqlite3
 ```

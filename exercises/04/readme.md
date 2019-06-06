@@ -40,13 +40,16 @@ During deployment this time you should see an extra message:
 
 
 ### 3. Add config files for HANA
-Update HANA version db/src/.hdiconfig
+The `.hdiconfig` file specifies the configuration of the used HDI container. .
 
+:point_right: Change the following property of the `db/src/.hdiconfig` file to adapt the version to the HANA version used in the SAP Cloud Platform Cloud Foundry trial.
 ```
 "plugin_version": "12.1.0",
 ```
 
-`db/csv/Data.hdbtabledata`
+While SQLite automatically imports the CSV files, we need to provide more information for HANA to import those files. These import instructions are encoded in a `.hdbtabledata` file and will be read during the deployment process to the Cloud Foundry environment.
+
+ :point_right: Create a new `db/csv/Data.hdbtabledata` file with the following content to specify which data should be imported into the HANA tables.
 ```
 {
    "format_version": 1,

@@ -86,8 +86,7 @@ Reloading the browser tab should now show the beginnings of something recognizab
 
 
 ### 3. Add a new module to the project descriptor
-
-mta.yaml:
+:point_right: Add this new module to the project descriptor file `mta.yaml` next to the other modules as follows:
 ```
 - name: bookshop-ui
   type: nodejs
@@ -105,6 +104,7 @@ mta.yaml:
         url: ~{url}
 ```
 
+This snippet does not only describe the runtime environment of the new module, it also injects the URL of the deployed `svr` module during deploy time.
 
 
 ### 4. Introduce a basic UI app to the Fiori launchpad
@@ -256,7 +256,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 This is the point where you can introduce an `index.cds` file, at the same level as the `index.html` file. This CDS index controls which services are exposed.
 
-:point_right: Create a file `index.cds` in the `srv/`(! @DJ, please note this change) directory, and add the following single line as the initial content:
+:point_right: Create a file `index.cds` in the `srv/` directory, and add the following single line as the initial content:
 
 ```cds
 using from '../srv/cat-service';
@@ -341,7 +341,10 @@ Books=Books
 
 
 ### 10. Add the app router configuration
-`package.json`
+Similar to the `svr` module, Cloud Foundry needs us to add a module descriptor for here as well.
+
+
+:point_right: Add a `package.json` file in the `app` module to start this module as a independent  app router application within Cloud Foundry.
 ```
 {
   "name": "bookshop-ui",
@@ -356,6 +359,8 @@ Books=Books
   }
 }
 ```
+
+:point_right: Add the following file to configure the app router. This file does not only define the welcome page, but also defines which request are forwarded to which Cloud Foundry application.
 
 `xs-app.json`
 ```
@@ -386,3 +391,7 @@ While this was a little intense as far as creation of artefacts was concerned, w
 1. Where might further apps be defined live in this logical structure?
 
 1. What other features can you imagine being useful to users and supported by Fiori Elements and annotations?
+
+1. Which variable have you accessed in the `mta.yaml` descriptor and were has it been defined?
+
+1. Where has this variable been used?

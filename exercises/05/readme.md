@@ -125,7 +125,6 @@ entity Orders : cuid, managed {
   country  : Country;
 }
 ```
-@DJ do you think we should compress these steps into one? I'd feel fooled to you were telling me to change the same 4 lines in 3 consequitive steps.
 
 Note the difference in capitalization here. The property name is `country` which is described by the type `Country`.
 

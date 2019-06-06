@@ -137,7 +137,9 @@ At this point we're confident enough to start adding custom logic, by [registeri
 
 
 ### 6. Add a independent project descriptor
-`svr/package.json:`
+You might have noticed that there is no module descriptor for the server module defined. For the local development, such a descriptor is not needed as CDS knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, such a file is required to define the module dependencies and start commands.
+
+:point_right: Add a new `package.json` file with the following content to the `svr` module to make it cloud-ready.
 ```json
 {
     "name": "project-srv",
