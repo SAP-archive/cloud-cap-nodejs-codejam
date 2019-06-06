@@ -81,9 +81,11 @@ When successfully installed, you should see the extension thus:
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
-### 3. Install the Cloud Foundry Command Line Interface (CLI)
-### 4. Install the MultiApp Build Tool (mbt)
-### 5. [Windows Only ] Install the SQLite and Make
+### 3. Install the MultiApp Build Tool (mbt)
+This tool allows you in package your project into a deployable archieve.
+```
+npm install -g mbt
+```
 
 ## Summary
 

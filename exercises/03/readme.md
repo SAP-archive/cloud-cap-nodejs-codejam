@@ -105,9 +105,7 @@ Don't forget to save the file.
 
 As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
 
-_Note: From cds 3.10 onwards, the `sqlite3` package is automatically installed in the project for you as a development dependency so it's all ready for you to start using._ @DJ I use 3.10 and it isn't installed automatically. Can you confirm?
-
-:point_right: Update the database definition in `package.json` to include a SQLite DB for local testing. Currently, you'll see a section that describes the persistence layer configuration:
+:point_right: Update the database definition in `package.json` to include a SQLite DB for local testing. This will fix the issue you encountered before when the node process crashed. Currently, you'll see a section that describes the persistence layer configuration:
 
 ```json
 "cds": {
@@ -145,6 +143,12 @@ To prepare the app for a multiple databases, change the content to:
     }
 }
 ```
+
+:point_right: As we want to use a local SQLite database, we need to install a client to communicate with this DH. Install the `sqlite3` package for this job.
+```
+npm install -D sqlite3
+```
+
 
 :point_right: Explore the `cds deploy` command like this:
 

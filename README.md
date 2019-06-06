@@ -33,7 +33,7 @@ Here's an overview of the exercises in this CodeJam.
 - [Exercise 07 - Defining a second service](exercises/07/)
 - [Exercise 08 - Adding custom logic, and debugging](exercises/08/)
 - [Exercise 09 - Introducing an app at the UI layer](exercises/09/)
-- [Exercise 10 - (Bonus) Deploy a simple project to the Cloud](exercises/10/)
+- [Exercise 10 - Deploy a simple project to the Cloud](exercises/10/)
 
 ### Feedback
 
@@ -60,5 +60,3 @@ Support for the content in this repository is available during CodeJam events, f
 Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 
 This file is licensed under the SAP Sample Code License except as noted otherwise in the [LICENSE](LICENSE) file.
-
-
