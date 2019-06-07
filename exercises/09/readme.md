@@ -36,7 +36,7 @@ If there is an `app/` directory with content, it will serve that instead.
 </html>
 ```
 
-:point_right: Restart the service (with `cds serve all`) and go to the URL, i.e. [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, you are not shown the "Welcome to cds.services" landing page - instead, the page is empty, except for the page title in the browser tab, that shows us that the HTML we entered has been loaded:
+:point_right: Restart the service (with `cds serve all`) and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, you are not shown the "Welcome to cds.services" landing page - instead, the page is empty, except for the page title in the browser tab, that shows us that the HTML we entered has been loaded:
 
 ![title in browser tab](title-in-browser-tab.png)
 
@@ -76,7 +76,7 @@ To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefa
 Here's a brief summary of what each of these `script` elements are for, in order of appearance in the file:
 
 1. Basic configuration for the Fiori launchpad sandbox (otherwise known as the "universal shell" or "ushell")
-1. Loading of the actual Fiori launchpad sandbox itself (Note the new Fiori 3 theme, do you like it?)
+1. Loading of the actual Fiori launchpad sandbox itself
 1. Loading and bootstrapping of SAPUI5
 1. Some JavaScript to declare a function to run when the initialization of SAPUI5 is complete; the function creates a launchpad and places it into the Document Object Model
 
@@ -86,6 +86,9 @@ Reloading the browser tab should now show the beginnings of something recognizab
 
 
 ### 3. Add a new module to the project descriptor
+
+We need to add information to the project descriptor, defining the UI that we're building as a new module.
+
 :point_right: Add this new module to the project descriptor file `mta.yaml` next to the other modules as follows:
 ```
 - name: bookshop-ui
