@@ -19,7 +19,7 @@ cf services
 So far, the `package.json` file in your project root only defines scripts to test the project locally.
 
 
-:point_right: Add the following script to control to build and deploy steps as well.
+:point_right: Add the following script definitions to the `"scripts"` section of `package.json` for build and deploy step processes:
 ```
 "deploy:cds": "cds deploy",
 "build:mta": "cds build/all && shx cp db/csv/Data.hdbtabledata db/src/gen/csv/ && mbt build -p=cf",
