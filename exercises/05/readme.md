@@ -58,7 +58,6 @@ user@host:~/bookshop
 
   srv/cat-service.cds
   db/data-model.cds
-  node_modules/@sap/cds/common.cds
 
 [cds] - server listens at http://localhost:4004 ... (terminate with ^C)
 [cds] - launched in: 821.718ms
@@ -163,7 +162,7 @@ Open the [metadata document](http://localhost:4004/catalog/$metadata) and look a
 
 ![Orders entity definition](orders-entity.png)
 
-Note the type of the `ID` property, the properties resulting from the use of the `managed` aspect, and the navigation property between the `Orders` entity and a new `sap_common_Countries` entity.
+Note the type of the `ID` property, the properties resulting from the use of the `managed` aspect, and the navigation property between the `Orders` entity and a new `Countries` entity.
 
 
 ### 6. Create some entries in the Orders entity
@@ -248,6 +247,6 @@ At this point you have a meaningful OData service with data and against which yo
 
 1. We added a field `country` described by the type `Country`. What exactly is this type, and what does it bring about in the resulting service's metadata?
 
-1. What else is in `common.cds` and in what circumstances might it be useful?
+1. Did you notice an extra line in the output of `cds serve all` after the addition of the reference to `@sap/cds/common`?
 
 1. Are there any issues with the way we have set up the service definition right now?
