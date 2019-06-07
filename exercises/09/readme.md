@@ -257,7 +257,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 ### 6. Create a CDS index file
 
-This is the point where you can introduce an `index.cds` file, at the same level as the `index.html` file. This CDS index controls which services are exposed.
+This is the point where you can introduce an `index.cds` file which controls which services are exposed.
 
 :point_right: Create a file `index.cds` in the `srv/` directory, and add the following single line as the initial content:
 
