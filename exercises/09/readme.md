@@ -142,7 +142,7 @@ Reloading the index page in the browser should show this:
 
 ### 5. Create the app artefacts
 
-As we can see from the configuration we've just added, we're suggesting the app is a Component-based app (where the component name is "bookshop") and is to be found at (relative) URL `/browse/webapp`. Let's flesh that out in terms of directories and files now.
+As we can see from the configuration we've just added, we're suggesting the app is a Component-based app (where the component name is "bookshop") and is to be found at (relative) URL `/webapp`. Let's flesh that out in terms of directories and files now.
 
 
 
