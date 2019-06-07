@@ -265,7 +265,7 @@ This is the point where you can introduce an `index.cds` file which controls whi
 using from './cat-service';
 ```
 
-Note: At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
+_Note: At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty._
 
 
 ### 7. Add annotations for the service
@@ -308,7 +308,7 @@ annotate CatalogService.Authors with {
 }
 ```
 
-Note: You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now.
+_Note: You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now._
 
 The final thing to do in this step is to redeploy because we have added CDS artefacts.
 
