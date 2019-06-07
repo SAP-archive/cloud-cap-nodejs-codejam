@@ -30,7 +30,7 @@ You might have noticed, that the `shx` command isn't a typical shell command. Th
 
 :point_right: Install this module in your project via the command line to allow its usage in the npm scripts.
 ```
-npx install shx
+npm install shx
 ```
 
 ## 4. Build the app
