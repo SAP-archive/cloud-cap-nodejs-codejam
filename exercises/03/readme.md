@@ -105,7 +105,50 @@ Don't forget to save the file.
 
 As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
 
-_Note: From cds 3.10 onwards, the `sqlite3` package is automatically installed in the project for you as a development dependency so it's all ready for you to start using._
+:point_right: Update the database definition in `package.json` to include a SQLite DB for local testing. This will fix the issue you encountered before when the node process crashed. Currently, you'll see a section that describes the persistence layer configuration:
+
+```json
+"cds": {
+    "requires": {
+        "db": {
+            "kind": "hana",
+            "model": [
+                "db",
+                "srv"
+            ]
+        }
+    },
+    "odata": {
+        "version": "v4"
+    }
+}
+```
+To prepare the app for a multiple databases, change the content to:
+```json
+"cds": {
+    "requires": {
+      "db": {
+         "kind": "sqlite",
+         "model": ["db", "srv"],
+         "credentials": {
+             "database": "bookshop.db"
+         },
+         "[production]": {
+             "kind": "hana"
+         }
+      }
+    },
+    "odata": {
+        "version": "v4"
+    }
+}
+```
+
+:point_right: As we want to use a local SQLite database, we need to install a client to communicate with this DB. Install the `sqlite3` package for this job.
+```
+npm install -D sqlite3
+```
+
 
 :point_right: Explore the `cds deploy` command like this:
 
@@ -128,34 +171,10 @@ Use this command to deploy the data model and service definition to a new SQLite
 
 ```
 user@host:~/bookshop
-=> cds deploy --to sqlite:bookshop.db
+=> cds deploy
 ```
 
-This should complete fairly quietly, and give a message like this:
-
-```
-- updated package.json
-```
-
-Note: If you're wondering what is been updated in `package.json` relating to the use of SQLite, have a look. You'll see a section that describes the persistence layer configuration:
-
-```json
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "sqlite",
-        "model": [
-          "db",
-          "srv"
-        ],
-        "credentials": {
-          "database": "bookshop.db"
-        }
-      }
-    }
-  }
-```
-
+This should complete fairly quietly.
 
 ### 5. Explore the new database
 

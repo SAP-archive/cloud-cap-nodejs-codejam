@@ -39,7 +39,56 @@ During deployment this time you should see an extra message:
 ```
 
 
-### 3. Restart the service
+### 3. Add config files for HANA
+The `.hdiconfig` file specifies the configuration of the used HDI container. .
+
+:point_right: Change the following property of the `db/src/.hdiconfig` file to adapt the version to the HANA version used in the SAP Cloud Platform Cloud Foundry trial.
+```
+"plugin_version": "12.1.0",
+```
+
+While SQLite automatically imports the CSV files, we need to provide more information for HANA to import those files. These import instructions are encoded in a `.hdbtabledata` file and will be read during the deployment process to the Cloud Foundry environment.
+
+ :point_right: Create a new `db/csv/Data.hdbtabledata` file with the following content to specify which data should be imported into the HANA tables.
+```
+{
+   "format_version": 1,
+   "imports": [
+       {
+           "target_table": "MY_BOOKSHOP_AUTHORS",
+           "source_data": {
+           "data_type": "CSV",
+               "file_name": "my.bookshop-Authors.csv",
+               "has_header": true
+           },
+           "import_settings": {
+           "import_columns": [
+                   "ID",
+                   "NAME"
+               ]
+           }
+       },
+       {
+           "target_table": "MY_BOOKSHOP_BOOKS",
+           "source_data": {
+           "data_type": "CSV",
+               "file_name": "my.bookshop-Books.csv",
+               "has_header": true
+           },
+           "import_settings": {
+           "import_columns": [
+                   "ID",
+                   "TITLE",
+                   "AUTHOR_ID",
+                   "STOCK"
+               ]
+           }
+       }
+   ]
+}
+```
+
+### 4. Restart the service
 
 :point_right: Terminate and then restart the service thus:
 
@@ -53,7 +102,7 @@ Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localh
 ![Books and Authors in the OData service](books-and-authors.png)
 
 
-### 4. Try out some OData query operations
+### 5. Try out some OData query operations
 
 The [OData standard](https://www.odata.org/) describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly.
 

@@ -65,31 +65,30 @@ user@host:~
 => cds init --help
 ```
 
-Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option.
+Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and its access management.
 
-:point_right: Use both of these options to initialize a new project directory thus:
+:point_right: Use all of these options to initialize a new project directory thus:
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --verbose bookshop
+=> cds init --modules db,srv --mta --insecure --db-technology hana  --verbose bookshop
 ```
 
 You should see output that looks similar to this:
 
-```sh
-Creating new project in directory bookshop.
-
-Copying templates for type db to bookshop/db ...
-Copying templates for type srv to bookshop/srv ...
-Updating npm dependencies in bookshop/package.json ...
+```
+[Warn] Srv type nodejs only supports odata version v4 and not v2. Will use v4.
+Initializing project in folder bookshop.
+Copying templates for type db to db ...
+Creating mta file /Users/d056949/SoftwareDev/sandbox/bookshop/mta.yaml ...
+Copying templates for type srv to {{moduleFolder}} ...
+Creating mta file /Users/d056949/SoftwareDev/sandbox/bookshop/mta.yaml ...
+Updating npm dependencies in /Users/d056949/SoftwareDev/sandbox/bookshop/package.json ...
 Running npm install...
-npm WARN bookshop@1.0.0 license should be a valid SPDX license expression
-
-added 76 packages from 109 contributors and audited 166 packages in 3.261s
+added 81 packages from 111 contributors and audited 176 packages in 2.976s
 found 0 vulnerabilities
 
-
-Project creation was successful.
+Finished successfully.
 ```
 
 
@@ -123,6 +122,7 @@ Briefly, the directories and contents can be described thus:
 | `db`           | Where the data models (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules db` option will have a basic data model file in the form of `data-model.cds` with a small sample definition, like here |
 | `node_modules` | This is the normal place where NPM packages (modules) are to be found in a Node.js based project |
 | `srv`          | Where the service definitions (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules srv` option will have a basic service definition file in the form of `cat-service.cds` with a small service definition, like here |
+| `mta.yaml`          | This is the central descriptor file for the project. It defines all modules (microservices) and backing services (like databases). This information will be used (a) to build the .mtar archive during design time and to deploy and provision the apps and services during deploy time.  |
 
 Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project) and a readme file.
 
@@ -158,14 +158,15 @@ Note: You can also specify simply `cds serve all` to have `cds` look for appropr
 You should see output similar to this:
 
 ```
-[cds] - server listening at http://localhost:4004
+[cds] - connect to datasource - hana:db,srv
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
   srv/cat-service.cds
   db/data-model.cds
 
-[cds] - launched in: 448.633ms
+[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
+[cds] - launched in: 566.451ms
 ```
 
 The OData service is now running, and available on [http://localhost:4004](http://localhost:4004).
@@ -183,7 +184,7 @@ The [catalog](http://localhost:4004/catalog) link will take you to the service d
 
 :point_right: Explore the metadata document and familiarize yourself with the content. Note the entityset definition and the entity type describing the `Books` entity. Note also the annotations describing particular service capabilities.
 
-:point_right: There is also a link to the [Books](http://localhost:4004/catalog/Books) entityset. Follow this link to see what the service returns.
+:point_right: There is also a link to the [Books](http://localhost:4004/catalog/Books) entityset. Follow this link to see what the service returns. Check what happens to the node process when you try to access the entityset.
 
 
 ## Summary
@@ -200,3 +201,5 @@ With a single command, you've initialized a basic OData service project and with
 1. What are the annotations in the metadata document describing, and where do they come from?
 
 1. What does the Books entityset resource contain right now?
+
+1. What happened to the node process when you accessed the entityset? Can you think of reasons why this happened?

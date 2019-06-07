@@ -106,7 +106,7 @@ The request is an OData Create request for a new book. You should see that this 
 You should also see a line in the terminal (where you invoked `cds serve all`) like this:
 
 ```
-[2019-03-26T06:39:23.025Z | WARNING | 1369756]: An error occurred: Method Not Allowed
+[2019-05-29T15:16:39.694Z | WARNING | 1939700]: Method Not Allowed
 ```
 
 :point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove a book.

@@ -1,151 +1,60 @@
 # Exercise 10
 
-Core changes:
-*  SAP HANA deployment option
-*  `npx` over global module
-*  leverage npm scripts
-*  capitalize table columns in csv
 
-#Local vs global modules
+## 1. Sign in to Cloud Foundry
+
+:point_right: Run the following command from your command line to log in to the referenced Cloud Foundry endpoint. When prompted use your SAP Cloud Platform credentials
 ```
-npm view @sap/cds
-npm view @sap/cds versions
+cf login -a https://api.cf.eu10.hana.ondemand.com
 ```
 
-#Check if your signed in to a Cloud Foundry organization
+## 2. Explore the artefacts in Cloud Foundry
+:point_right: Run the following commands to see all deployed apps and provisioned backing services.
 ```
 cf apps
+cf services
 ```
 
-## 1. Create the project
-```
-npx @sap/cds init --modules db,srv --insecure --mta --db-technology hana sitFra
-code sitFra/
-```
+## 3. Add npm scripts
+So far, the `package.json` file in your project root only defines scripts to test the project locally.
 
-## 2. Add npm scripts to
-In `package.json`
+
+:point_right: Add the following script to control to build and deploy steps as well.
 ```
-"setup": "npm install && mbt init",
-"start": "cds run",
-"build": "cds build/all",
 "deploy:cds": "cds deploy",
-"build:cf": "cds build/all && npm run build:cf:workarounds",
-"build:cf:workarounds": "shx cp db/csv/Data.hdbtabledata db/src/gen/csv/",
-"build:mta": "npm run build:cf && make -f Makefile.mta p=cf",
+"build:mta": "cds build/all && shx cp db/csv/Data.hdbtabledata db/src/gen/csv/ && mbt build -p=cf",
 "deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
 ```
-## 3. Add SQLite as a local DB
-In `package.json`, note: not really required: would be replaced by `npx cds deploy --to sqlite:bookshop.db` anyway
+
+You might have noticed, that the `shx` command isn't a typical shell command. This is actually a command from another node module.
+
+:point_right: Install this module in your project via the command line to allow its usage in the npm scripts.
 ```
-"db": {
-    "kind": "sqlite",
-    "model": ["db", "srv"],
-    "credentials": {
-        "database": "bookshop.db"
-    },
-    "[production]": {
-        "kind": "hana"
-    }
-}
-```
-## 4. Add required node modules
-```
-npm install shx
-npm install sqlite3  --save-dev
+npx install shx
 ```
 
-## 5. Add content to the CSV folder
-`db/csv/my.bookshop-Books.csv`
+## 4. Build the app
+:point_right: Trigger the build process with the following command.
 ```
-ID,TITLE,STOCK
-421,The Hitch Hiker's Guide To The Galaxy,1000
-427,"Life, The Universe And Everything",95
-201,Wuthering Heights,12
-207,Jane Eyre,11
-251,The Raven,333
-252,Eleonora,555
-271,Catweazle,22
+npm run build:mta
 ```
-`db/csv/Data.hdbtabledata`
-```
-{
-	"format_version": 1,
-	"imports": [
-		{
-			"target_table": "MY_BOOKSHOP_BOOKS",
-			"source_data": {
-			"data_type": "CSV",
-				"file_name": "my.bookshop-Books.csv",
-				"has_header": true
-			},
-			"import_settings": {
-			"import_columns": [
-					"ID",
-					"TITLE",
-					"STOCK"
-				]
-			}
-		}
-	]
-}
+## 5. Deploy the archive
 
+:point_right: One command is all it takes to deploy your project to the cloud. Execute the following command to trigger the deployment process.
+```
+cf deploy mta_archives/bookshop_1.0.0.mtar
 ```
 
+> Note: You can also use `npm run deploy:cf` to trigger both, the build and deploy steps
 
-## 6. Install the MTA build tool
-Unfortunately not yet available as local module
-```
-npm i -g mbt
-```
+## Summary
 
-## 7. Run the project locally (as before)
-```
-npm run setup
-npm run deploy:cds
-npm start
-```
+You have learned the basic commands to interact with the Cloud Foundry Command Line Interface to check the state of the deployed applications. You also added the necessary scripts to your project to automate the build and deploy steps via the command line.
 
-## 8. Add package.json to srv
-`srv/package.json`
-```
-{
-    "name": "project-srv",
-    "description": "",
-    "version": "1.0.0",
-    "dependencies": {
-        "@sap/cds": "^3.7.1",
-        "express": "^4.16.4",
-        "hdb": "^0.17.0"
-    },
-    "engines": {
-        "node": "^8.9",
-        "npm": "^6"
-    },
-    "scripts": {
-        "postinstall": "npm dedupe",
-        "start": "cds serve gen/csn.json",
-        "watch": "nodemon -w . -i node_modules/**,.git/** -e cds -x npm run build"
-    },
-    "cds": {
-        "requires": {
-            "db": {
-                "kind": "hana",
-                "model": "gen/csn.json"
-            }
-        }
-    }
-}
-```
+## Questions
 
-## 9. Update the plugin version
-`db/src/.hdiconfig`
-```
-"plugin_version": "12.1.0",
-```
+1. Can you guess what the script `deploy:cf` does? Is there anything special to this script (compared to the other scripts)?
 
+1. When you run the commands from step 2 again, what do you see now?
 
-## 10. Deploy the project to SAP Cloud Platform
-```
-npm run deploy:cf
-```
+1. Check the SAP Cloud Platform Cockpit to see the same information. Are all apps in the `running` state now?

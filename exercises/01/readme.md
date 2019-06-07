@@ -81,6 +81,12 @@ When successfully installed, you should see the extension thus:
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
+### 3. Install the MultiApp Build Tool (mbt)
+This tool allows you in package your project into a deployable archieve.
+```
+npm install -g mbt
+```
+
 ## Summary
 
 You've now installed the two key tools for developing with CAP locally, and are all set to create your first project.
@@ -94,4 +100,3 @@ You've now installed the two key tools for developing with CAP locally, and are 
 1. What is the significance of using the `--global` option when installing the `@sap/cds` package?
 
 1. What is the meaning of the `.vsix` file type for the VS Code extension? Can we dig into that to see what's inside?
-
