@@ -262,7 +262,7 @@ This is the point where you can introduce an `index.cds` file which controls whi
 :point_right: Create a file `index.cds` in the `srv/` directory, and add the following single line as the initial content:
 
 ```cds
-using from '../srv/cat-service';
+using from './cat-service';
 ```
 
 Note: At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
