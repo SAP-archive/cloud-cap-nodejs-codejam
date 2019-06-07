@@ -72,7 +72,7 @@ The first two ("serving \<service\> at \<endpoint\> ...") that we've seen before
 
 Note that as the relationship between the service definition and the handler is at file level, the new `cat-service.js` file is deemed a handler for both services (`CatalogService` and `Stats`) in that service definition file.
 
-In fact, we can see that two lines from the call to `console.log` confirm that - the function defined in the module is called twice - once for each service (the first time `srv.name` is 'CatalogService', and the second time it's 'Stats').
+In fact, we can see that two lines from the call to `console.log` confirm that - the function defined in the module is called twice - once for each service (the first time `srv.name` is "CatalogService", and the second time it's "Stats").
 
 
 ### 4. Set a breakpoint and launch in debug mode
@@ -139,7 +139,8 @@ At this point we're confident enough to start adding custom logic, by [registeri
 ### 6. Add a independent project descriptor
 You might have noticed that there is no module descriptor for the server module defined. For the local development, such a descriptor is not needed as CDS knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, such a file is required to define the module dependencies and start commands.
 
-:point_right: Add a new `package.json` file with the following content to the `svr` module to make it cloud-ready.
+:point_right: Add a new `package.json` file with the following content to the `srv/` directory, representing the server module, to make it cloud-ready.
+
 ```json
 {
     "name": "project-srv",
