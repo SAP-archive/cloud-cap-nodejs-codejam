@@ -30,8 +30,6 @@ user@host:~/bookshop
 => cds deploy
 ```
 
-Note: You only have to specify the details of the deployment (`--to sqlite:bookshop.db`) once, and you did this in the previous exercise; the details are conveniently saved in `package.json` for subsequent deployments such as this one.
-
 During deployment this time you should see an extra message:
 
 ```
@@ -40,16 +38,19 @@ During deployment this time you should see an extra message:
 
 
 ### 3. Add config files for HANA
-The `.hdiconfig` file specifies the configuration of the used HDI container. .
 
-:point_right: Change the following property of the `db/src/.hdiconfig` file to adapt the version to the HANA version used in the SAP Cloud Platform Cloud Foundry trial.
+The `.hdiconfig` file specifies the configuration of the HANA Deployment Infrastructure (HDI) container that will be used when deploying to SAP Cloud Platform.
+
+:point_right: Change the value of the following property in the `db/src/.hdiconfig` file to adapt the version to the HANA version used in the SAP Cloud Platform Cloud Foundry trial:
+
 ```
 "plugin_version": "12.1.0",
 ```
 
 While SQLite automatically imports the CSV files, we need to provide more information for HANA to import those files. These import instructions are encoded in a `.hdbtabledata` file and will be read during the deployment process to the Cloud Foundry environment.
 
- :point_right: Create a new `db/csv/Data.hdbtabledata` file with the following content to specify which data should be imported into the HANA tables.
+ :point_right: Create a new `db/csv/Data.hdbtabledata` file with the following content to specify which data should be imported into the HANA tables:
+
 ```
 {
    "format_version": 1,
@@ -90,14 +91,14 @@ While SQLite automatically imports the CSV files, we need to provide more inform
 
 ### 4. Restart the service
 
-:point_right: Terminate and then restart the service thus:
+:point_right: Restart the service thus:
 
 ```sh
 user@host:~/bookshop
 => cds serve all
 ```
 
-Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Authors) entitysets in the OData service will show data in response to query operations.
+Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Authors) entitysets in the OData service will show data in response to OData query and read operations.
 
 ![Books and Authors in the OData service](books-and-authors.png)
 
