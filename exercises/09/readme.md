@@ -346,8 +346,9 @@ Books=Books
 Similar to the `srv` module, Cloud Foundry needs us to add a module descriptor for here as well.
 
 
-:point_right: Add a `package.json` file in the `app` module to start this module as a independent  app router application within Cloud Foundry.
-```
+:point_right: Add a `package.json` file in the `app/` directory to start this module as a independent app router application within Cloud Foundry:
+
+```json
 {
   "name": "bookshop-ui",
   "dependencies": {
@@ -362,10 +363,9 @@ Similar to the `srv` module, Cloud Foundry needs us to add a module descriptor f
 }
 ```
 
-:point_right: Add the following file to configure the app router. This file does not only define the welcome page, but also defines which request are forwarded to which Cloud Foundry application.
+:point_right: Add a new file `xs-app.json` to the same directory (`app/`) to configure the app router. This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
 
-`xs-app.json`
-```
+```json
 {
     "welcomeFile": "webapp/",
     "authenticationMethod": "none",
