@@ -82,14 +82,14 @@ When successfully installed, you should see the extension thus:
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
 ### 3. Install the MultiApp Build Tool (mbt)
-This tool allows you in package your project into a deployable archieve.
+This tool allows you in package your project into a deployable archive, which you'll need in a later exercise to bring the app to the SAP Cloud Platform.
 ```
 npm install -g mbt
 ```
 
 ## Summary
 
-You've now installed the two key tools for developing with CAP locally, and are all set to create your first project.
+You've now installed the key tools for developing with CAP locally, and are all set to create your first project.
 
 ## Questions
 
