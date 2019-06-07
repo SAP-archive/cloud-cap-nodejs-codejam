@@ -105,7 +105,7 @@ Don't forget to save the file.
 
 As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
 
-:point_right: Update the database definition in `package.json` to include a SQLite DB for local testing. This will fix the issue you encountered before when the node process crashed. Currently, you'll see a section that describes the persistence layer configuration:
+:point_right: Update the database definition in `package.json` to include a SQLite DB for local testing. This will fix the issue you encountered before when the Node.js `cds` process crashed. Currently, you'll see a section that describes the persistence layer configuration:
 
 ```json
 "cds": {
@@ -122,8 +122,13 @@ As it stands, the OData service has no storage. We can actually simulate storage
         "version": "v4"
     }
 }
+
 ```
+
+_Note: Ensure you select the top level `package.json` file - there's also one in the `db/` directory but that's not the one you want._
+
 To prepare the app for a multiple databases, change the content to:
+
 ```json
 "cds": {
     "requires": {
@@ -144,11 +149,12 @@ To prepare the app for a multiple databases, change the content to:
 }
 ```
 
-:point_right: As we want to use a local SQLite database, we need to install a client to communicate with this DB. Install the `sqlite3` package for this job.
+:point_right: As we want to use a local SQLite database, we need to install a client library to allow the CAP engine to communicate with this DB. Install the `sqlite3` package for this purpose:
 ```
 npm install -D sqlite3
 ```
 
+_Note: the use of the `-D` parameter signifies that the `sqlite3` package is a dependency for development purposes only. Have a look at what gets added to `package.json` at this point to see the two different types of package dependencies._
 
 :point_right: Explore the `cds deploy` command like this:
 
@@ -180,8 +186,6 @@ This should complete fairly quietly.
 
 At this point you should have a new file `bookshop.db` in the project folder.
 
-Note: There is no hard requirement to name the SQLite database file `bookshop.db` here - it is just done for neatness and consistency.
-
 :point_right: Have a look inside it with the `sqlite3` command line utility; use the `.tables` command to see what has been created:
 
 ```sh
@@ -196,7 +200,7 @@ sqlite> .quit
 user@host:~/bookshop
 ```
 
-Note: The `sqlite3` command line utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../../prerequisites.md).
+_Note: The `sqlite3` command line utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../../prerequisites.md)._
 
 
 ### 6. Dig into the link between the CDS definitions and the artefacts in the database
@@ -286,3 +290,5 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 1. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
 
 1. Even though the `Authors` entity definition finally appeared in the metadata file at the end of step 2, you might have noticed that the content of the metadata document looked shorter overall than it did. What disappeared?
+
+1. How did the `cds deploy` invocation know to call the SQLite database `bookshop.db`?
