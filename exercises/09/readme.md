@@ -344,7 +344,7 @@ Books=Books
 
 
 ### 10. Add the app router configuration
-Similar to the `svr` module, Cloud Foundry needs us to add a module descriptor for here as well.
+Similar to the `srv` module, Cloud Foundry needs us to add a module descriptor for here as well.
 
 
 :point_right: Add a `package.json` file in the `app` module to start this module as a independent  app router application within Cloud Foundry.
