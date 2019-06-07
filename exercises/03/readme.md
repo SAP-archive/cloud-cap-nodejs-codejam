@@ -134,7 +134,10 @@ To prepare the app for a multiple databases, change the content to:
     "requires": {
       "db": {
          "kind": "sqlite",
-         "model": ["db", "srv"],
+         "model": [
+             "db", 
+             "srv"
+         ],
          "credentials": {
              "database": "bookshop.db"
          },
