@@ -10,7 +10,7 @@ Following these steps, you'll build a simple Fiori app that sits in a local Fior
 
 ### 1. Introduce a basic HTML page to be served for the UI
 
-Following the "convention over configuation" theme, the Node.js flavored CAP model will also automatically serve static resources (such as UI artefacts) from a directory called `app/`. If there isn't an `app/` directory it will serve the "Welcome to cds.services" landing page we've seen already:
+Following the "convention over configuation" theme, the Node.js flavored CAP model will also automatically serve static resources (such as UI artefacts) from a directory called `app/`. If there isn't anything that can be sensibly served in the `app/` directory it will serve the "Welcome to cds.services" landing page we've seen already:
 
 ![the "Welcome to cds.services" landing page](../07/two-services.png)
 
