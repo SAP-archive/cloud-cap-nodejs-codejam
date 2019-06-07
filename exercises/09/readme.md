@@ -121,7 +121,7 @@ The first thing to do is to add an entry to the sandbox launchpad configuration 
 ```javascript
 <script>
     window['sap-ushell-config'] = {
-        defaultRenderer: 'fiori2', @DJ, do you know how make change this to fiori3?
+        defaultRenderer: 'fiori2',
         applications: {
             'browse-books': {                                        // <--
                 title: 'Browse Books',                               // <--
@@ -328,8 +328,7 @@ Well done!
 
 Just to round things off, add some i18n texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
 
-:point_right: Create a directory called `i18n/` as a direct child of the `webapp/` directory, and create a file `i18n.properties` inside it, with the following content:
-@DJ this somehow isn't working (but it is loading the file. Do you have an idea)
+:point_right: Create a directory called `i18n/` as a direct child of the `srv/` directory, and create a file `i18n.properties` inside it, with the following content:
 ```
 ID=ID
 Title=Title
@@ -391,7 +390,7 @@ While this was a little intense as far as creation of artefacts was concerned, w
 
 ## Questions
 
-1. Where might further apps be defined live in this logical structure?
+1. Why do we put the internationalization file in the `srv/` directory (rather than the `app/` directory)?
 
 1. What other features can you imagine being useful to users and supported by Fiori Elements and annotations?
 
