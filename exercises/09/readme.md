@@ -265,7 +265,7 @@ This is the point where you can introduce an `index.cds` file which controls whi
 using from '../srv/cat-service';
 ```
 
-Note: At this point you can actually reload the UI; while you will see some semblance of an app, it will be mostly empty.
+Note: At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
 
 
 ### 7. Add annotations for the service
