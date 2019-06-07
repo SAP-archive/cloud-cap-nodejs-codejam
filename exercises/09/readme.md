@@ -89,7 +89,7 @@ Reloading the browser tab should now show the beginnings of something recognizab
 
 We need to add information to the project descriptor, defining the UI that we're building as a new module.
 
-:point_right: Add this new module to the project descriptor file `mta.yaml` next to the other modules as follows:
+:point_right: Add this new module to the project descriptor file `mta.yaml` next to, and in vertical alignment with, the other modules as follows:
 ```
 - name: bookshop-ui
   type: nodejs
@@ -106,6 +106,8 @@ We need to add information to the project descriptor, defining the UI that we're
         name: srv_api
         url: ~{url}
 ```
+
+_Note: Be really careful about the whitespace indentation here - YAML as a format is very sensitive!_
 
 This snippet does not only describe the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
 
