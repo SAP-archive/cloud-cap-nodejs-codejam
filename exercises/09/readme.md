@@ -107,7 +107,7 @@ We need to add information to the project descriptor, defining the UI that we're
         url: ~{url}
 ```
 
-This snippet does not only describe the runtime environment of the new module, it also injects the URL of the deployed `svr` module during deploy time.
+This snippet does not only describe the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
 
 
 ### 4. Introduce a basic UI app to the Fiori launchpad
