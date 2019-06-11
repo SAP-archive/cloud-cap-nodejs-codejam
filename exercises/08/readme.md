@@ -136,39 +136,6 @@ At this point we're confident enough to start adding custom logic, by [registeri
 ![discount showing](discount.png)
 
 
-### 6. Add a independent project descriptor
-You might have noticed that there is no module descriptor for the server module defined. For the local development, such a descriptor is not needed as CDS knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, such a file is required to define the module dependencies and start commands.
-
-:point_right: Add a new `package.json` file with the following content to the `srv/` directory, representing the server module, to make it cloud-ready.
-
-```json
-{
-    "name": "project-srv",
-    "version": "1.0.0",
-    "dependencies": {
-        "@sap/cds": "^3.10.0",
-        "express": "^4.16.4",
-        "hdb": "^0.17.0"
-    },
-    "engines": {
-        "node": "^10"
-    },
-    "scripts": {
-        "postinstall": "npm dedupe",
-        "start": "cds serve gen/csn.json"
-    },
-    "cds": {
-        "requires": {
-            "db": {
-                "kind": "hana",
-                "model": "gen/csn.json"
-            }
-        }
-    }
-}
-
-```
-
 ## Summary
 
 You have added custom logic and learned how to debug a service in VS Code. The options available for adding custom logic are rich and plentiful - we recommend you look further into the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html) for more information.

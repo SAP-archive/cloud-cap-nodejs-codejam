@@ -41,7 +41,31 @@ If there is an `app/` directory with content, it will serve that instead.
 ![title in browser tab](title-in-browser-tab.png)
 
 
-### 2. Add a Fiori sandbox environment to the UI index page
+### 2. Add a new module to the project descriptor
+
+This new directory contains all UI files and represents a new module. It's necessary to add information to the project descriptor, defining the new UI module.
+
+:point_right: Add this new module to the project descriptor file `mta.yaml` next to, and in vertical alignment with, the other `modules` as follows:
+```
+- name: bookshop-ui
+  type: nodejs
+  path: app
+  parameters:
+    memory: 256M
+    disk-quota: 256M
+  requires:
+    - name: srv_api
+      group: destinations
+      properties:
+        forwardAuthToken: true
+        strictSSL: false
+        name: srv_api
+        url: ~{url}
+```
+
+
+
+### 3. Add a Fiori sandbox environment to the UI index page
 
 To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
@@ -84,28 +108,6 @@ Reloading the browser tab should now show the beginnings of something recognizab
 
 ![an empty Fiori launchpad](empty-fiori-launchpad.png)
 
-
-### 3. Add a new module to the project descriptor
-
-We need to add information to the project descriptor, defining the UI that we're building as a new module.
-
-:point_right: Add this new module to the project descriptor file `mta.yaml` next to, and in vertical alignment with, the other modules as follows:
-```
-- name: bookshop-ui
-  type: nodejs
-  path: app
-  parameters:
-    memory: 256M
-    disk-quota: 256M
-  requires:
-    - name: srv_api
-      group: destinations
-      properties:
-        forwardAuthToken: true
-        strictSSL: false
-        name: srv_api
-        url: ~{url}
-```
 
 _Note: Be really careful about the whitespace indentation here - YAML as a format is very sensitive!_
 
@@ -343,48 +345,6 @@ Books=Books
 
 :point_right: Redeploy and restart the service (`cds deploy && cds serve all`) and reload the app. You should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
 
-
-### 10. Add the app router configuration
-Similar to the `srv` module, Cloud Foundry needs us to add a module descriptor for here as well.
-
-
-:point_right: Add a `package.json` file in the `app/` directory to start this module as a independent app router application within Cloud Foundry:
-
-```json
-{
-  "name": "bookshop-ui",
-  "dependencies": {
-    "@sap/approuter": "^6.0.0"
-  },
-  "engines": {
-      "node": "^10"
-  },
-  "scripts": {
-    "start": "node node_modules/@sap/approuter/approuter.js"
-  }
-}
-```
-
-:point_right: Add a new file `xs-app.json` to the same directory (`app/`) to configure the app router. This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
-
-```json
-{
-    "welcomeFile": "webapp/",
-    "authenticationMethod": "none",
-    "logout": {
-        "logoutEndpoint": "/do/logout"
-    },
-    "routes": [{
-        "source": "^/webapp/(.*)$",
-        "target": "$1",
-        "localDir": "webapp/"
-    }, {
-        "source": "^(.*)$",
-        "destination": "srv_api"
-    }]
-}
-
-```
 
 ## Summary
 

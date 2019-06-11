@@ -44,6 +44,10 @@ At the end of this CodeJam, we would be really grateful if you could spend a min
 
 The requirements to follow the exercises in this repository, including hardware and software, are detailed in the [prerequisites](prerequisites.md) file.
 
+## FAQ
+
+In case you will run into issue, please refer to the [FAQ](faq.md) file or reach out to the instructors.
+
 
 ## Download and installation
 

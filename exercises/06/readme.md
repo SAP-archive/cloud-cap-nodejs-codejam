@@ -14,7 +14,7 @@ At the end of these steps, your OData service will have different levels of acce
 
 This contains a number of different requests ready for you to try.
 
-Note: If you still want to use `curl`, you'll find the command line invocations in the appropriate steps below.
+Note: If you still want to use the command lin, you'll find the invocations in the appropriate steps below.
 
 ![Postman collection](postman-collection-06.png)
 
@@ -25,9 +25,11 @@ Right now the `Books` and `Authors` entities are exposed in the `CatalogService`
 
 :point_right: In the Postman collection you imported, try out the requests in the folder "**(A) Before @readonly annotations**", running them in the order they're presented (the creation of the new book is for the new author, which needs to exist first).
 
-If you want to use `curl` instead of Postman, use the following invocations on the command line:
+If you want to use the command line instead of Postman, use the following invocations:
 
 1) Add author "Iain M Banks":
+
+**Bash**
 ```
 curl \
   -d '{"ID": 162, "name": "Iain M Banks"}' \
@@ -35,12 +37,30 @@ curl \
   http://localhost:4004/catalog/Authors
 ```
 
+**Powershell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Authors `
+  -ContentType "application/json" `
+  -Method POST `
+  -Body '{"ID": 162, "name": "Iain M Banks"}'
+```
+
 2) Add book "Consider Phlebas":
+
+**Bash**
 ```
 curl \
   -d '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
+```
+
+**Powershell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books `
+  -ContentType "application/json" `
+  -Method POST `
+  -Body '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }'
 ```
 
 Check that the creation requests are successful, and that you can see the new author and book in an OData Query operation: [http://localhost:4004/catalog/Authors?$expand=books](http://localhost:4004/catalog/Authors?$expand=books).
@@ -82,14 +102,24 @@ We can think of the annotations that we saw in the metadata document as guidelin
 
 :point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**".
 
-If you want to use `curl` instead of Postman, use the following invocation on the command line:
+If you want to use command line instead of Postman, use the following invocation:
 
 1) Add book "The Player of Games":
+
+**Bash**
 ```
 curl \
   -d '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
+```
+
+**Powershell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books `
+  -ContentType "application/json" `
+  -Method POST `
+  -Body '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }'
 ```
 
 The request is an OData Create request for a new book. You should see that this request is rejected with HTTP status code 405 "Method Not Allowed", with an error like this supplied in the response body:
@@ -111,13 +141,21 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 
 :point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove a book.
 
-If you want to use `curl` instead of Postman, use the following invocation on the command line:
+If you want to use command line instead of Postman, use the following invocation:
 
 2) Remove book "The Raven":
+
+**Bash**
 ```
 curl \
   -X DELETE \
   'http://localhost:4004/catalog/Books(251)'
+```
+
+**Powershell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books%28251%29 `
+  -Method DELETE
 ```
 
 It should also fail in a similar way.
@@ -143,7 +181,7 @@ service CatalogService {
 
 :point_right: Redeploy and restart the service (run `cds deploy && cds serve all` in the terminal).
 
-:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset (refer to the step in exercise 05 for the `curl` invocations if you wish).
+:point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset (refer to the step in exercise 05 for the command line invocations if you wish).
 
 ![Postman request collection](../05/postman-collection.png)
 
