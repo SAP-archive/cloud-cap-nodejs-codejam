@@ -14,7 +14,7 @@ At the end of these steps, your OData service will have different levels of acce
 
 This contains a number of different requests ready for you to try.
 
-Note: If you still want to use the command lin, you'll find the invocations in the appropriate steps below.
+Note: If you still want to use the command line, you'll find the invocations in the appropriate steps below.
 
 ![Postman collection](postman-collection-06.png)
 
