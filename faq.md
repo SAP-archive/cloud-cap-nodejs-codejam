@@ -72,3 +72,40 @@ Error: execution of the "Makefile_tmp.mta" file failed
 
 Solution:
 Install the [windows build tools](https://github.com/felixrieseberg/windows-build-tools) via `npm install -g windows-build-tools`.
+
+
+## error on Windows_NT
+Is you build command `mbt build -p=cf` (or `npm run build:mta`) failing?
+
+Error log:
+```
+> @sap/hana-client@2.3.123 install C:\Users\user\bookshop\db\node_modules\@sap\hdi-deploy\node_modules\@sap\hana-client
+> node build.js
+
+C:\Users\user\bookshop\db\node_modules\@sap\hdi-deploy\node_modules\@sap\hana-client\lib\index.js:135
+        throw ex;
+        ^
+
+Error: The module '\\?\C:\Users\user\bookshop\db\node_modules\@sap\hdi-deploy\node_modules\@sap\hana-client\prebuilt\ntamd64-msvc2010\hana-client.node'
+was compiled against a different Node.js version using
+NODE_MODULE_VERSION 48. This version of Node.js requires
+NODE_MODULE_VERSION 64. Please try re-compiling or re-installing
+the module (for instance, using `npm rebuild` or `npm install`).
+    at Object.Module._extensions..node (internal/modules/cjs/loader.js:805:18)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:690:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (C:\Users\user\bookshop\db\node_modules\@sap\hdi-deploy\node_modules\@sap\hana-client\lib\index.js:127:14)
+    at Module._compile (internal/modules/cjs/loader.js:776:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:787:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+```
+
+Solution:
+Install the dependencies of the `db` module manually and suppress the npm scripts.
+```bash
+cd db
+npm install --ignore-scripts
+```
