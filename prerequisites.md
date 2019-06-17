@@ -29,7 +29,7 @@ Before the CodeJam day, participants must ensure they have the following install
 
 
 
-With regards to `SQLite` and `make`: if you are running macOS or Linux it's likely that you'll already have SQLite installed. For Windows users, please use the [Chocolatey](https://chocolatey.org/) package manager to install both, [SQLite](https://chocolatey.org/packages/sqlite) and [make](https://chocolatey.org/packages/make) (see below). After installation, please make sure you can successfully start the executables (`sqlite3` and `make`) from the command line.
+With regards to `SQLite` and `make`: if you are running macOS or Linux it's likely that you'll already have SQLite and the "make" tool installed. For Windows users, please use the [Chocolatey](https://chocolatey.org/) package manager to install both, [SQLite](https://chocolatey.org/packages/sqlite) and [make](https://chocolatey.org/packages/make) (see below). After installation, please make sure you can successfully start the executables (`sqlite3` and `make`) from the command line.
 
 With regards to Node: After installation, please check that you can start `node` from the command line, and also successfully install packages with the included `npm` command.
 
