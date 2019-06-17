@@ -1,28 +1,22 @@
 # Frequently Reported Issues
 
-In this section we would like to highlight a couple of issues which have been reported by several event Attendees
+This document describes issues that have been encountered during previous instances of this CodeJam, with their solutions.
 
-## Node.js issues
+## Node.js related
 
 ### EACCES permissions errors
 
 Did you encounter a error during the installation of global node module (with the `npm install -g` command)?
 
-Error log:
-```
-NA
-```
+**Solution**
 
-Solution:
 Change npm’s default directory to solve this issue. You can find more information [here](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally).
 
+## Build related
 
+### Python error on Windows
 
-## Build issues
-
-### Python error on windows
-
-Is you build command `mbt build -p=cf` (or `npm run build:mta`) failing?
+Is your build command `mbt build -p=cf` (or `npm run build:mta`) failing, as shown below?
 
 Error log:
 ```
@@ -70,12 +64,14 @@ make: *** [Makefile_tmp.mta:39: bookshop-db] Error 1
 Error: execution of the "Makefile_tmp.mta" file failed
 ```
 
-Solution:
-Install the [windows build tools](https://github.com/felixrieseberg/windows-build-tools) via `npm install -g windows-build-tools`.
+**Solution**
+
+Install the [Windows build tools](https://github.com/felixrieseberg/windows-build-tools) via `npm install -g windows-build-tools`.
 
 
-## error on Windows_NT
-Is you build command `mbt build -p=cf` (or `npm run build:mta`) failing?
+## Error on Windows_NT
+
+Is you build command `mbt build -p=cf` (or `npm run build:mta`) failing, as shown below?
 
 Error log:
 ```
@@ -103,8 +99,10 @@ the module (for instance, using `npm rebuild` or `npm install`).
     at Module.load (internal/modules/cjs/loader.js:653:32)
 ```
 
-Solution:
-Install the dependencies of the `db` module manually and suppress the npm scripts.
+**Solution**
+
+Install the dependencies of the `db` module manually and suppress the npm scripts:
+
 ```bash
 cd db
 npm install --ignore-scripts
