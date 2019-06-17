@@ -46,7 +46,7 @@ The requirements to follow the exercises in this repository, including hardware 
 
 ## FAQ
 
-In case you will run into issue, please refer to the [FAQ](faq.md) file or reach out to the instructors.
+In case you encounter problems, you may find answers in the Frequently Reported Issues document ([FRI](FRI.md)).
 
 
 ## Download and installation
