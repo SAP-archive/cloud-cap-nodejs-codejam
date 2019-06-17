@@ -102,7 +102,7 @@ We can think of the annotations that we saw in the metadata document as guidelin
 
 :point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**".
 
-If you want to use command line instead of Postman, use the following invocation:
+If you want to use the command line instead of Postman, use the following invocation:
 
 1) Add book "The Player of Games":
 
