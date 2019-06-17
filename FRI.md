@@ -71,7 +71,7 @@ Install the [Windows build tools](https://github.com/felixrieseberg/windows-buil
 
 ## Error on Windows_NT
 
-Is you build command `mbt build -p=cf` (or `npm run build:mta`) failing, as shown below?
+Is your build command `mbt build -p=cf` (or `npm run build:mta`) failing, as shown below (this has only been seen to occur on Azure based Windows VMs)?
 
 Error log:
 ```
