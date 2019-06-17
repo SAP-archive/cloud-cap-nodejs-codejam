@@ -37,15 +37,13 @@ With regards to Node: After installation, please check that you can start `node`
 
 Use the [Chocolatey](https://chocolatey.org/) package manager:
 
-Install Chocolatey <https://chocolatey.org/install>:
+1. Install Chocolatey by executing this as admin:
 
-  Run as admin:
-  
   ```bash
   @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
   ```
   
-Now use Chocolatey to install SQLite and then make:
+2. Now use Chocolatey to install SQLite and then make:
   ```bash
   choco install sqlite
   choco install make
