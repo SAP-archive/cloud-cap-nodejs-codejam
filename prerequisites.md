@@ -27,7 +27,7 @@ Before the CodeJam day, participants must ensure they have the following install
 - Make : <https://www.gnu.org/software/make/>
 - SQLite : <https://sqlite.org/index.html>
 
-If you're running Windows, it's likely that you won't have `SQLite` or `make` installed. In this case, we recommend that you use the [Chocolatey](https://chocolatey.org/) package manager to install both ([SQLite](https://chocolatey.org/packages/sqlite) and [make](https://chocolatey.org/packages/make)) - see below. 
+_Note: If you're running Windows, it's likely that you won't have `SQLite` or `make` installed. In this case, we recommend that you use the [Chocolatey](https://chocolatey.org/) package manager to install both ([SQLite](https://chocolatey.org/packages/sqlite) and [make](https://chocolatey.org/packages/make)) - see below._
 
 Once you're done installing, please ensure you can successfully start the executables `sqlite3`, `make`, `cf` and `node` from the command line, and check that you can successfully install packages with the `npm` command that also gets installed with Node.js.
 
