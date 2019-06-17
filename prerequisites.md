@@ -14,12 +14,12 @@ There are some mandatory and optional requirements with respect to software.
 
 Before the CodeJam day, participants must ensure they have the following installed on their laptops:
 
-- Chrome (latest version) : <https://www.google.com/chrome/>
+- Chrome (latest version): <https://www.google.com/chrome/>
 - Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
 - Node.js (latest LTS version 10): <https://nodejs.org/en/download/> 
 - Postman : <https://www.getpostman.com/downloads/>
-- The Cloud Foundry command line tool cf : <https://docs.cloudfoundry.org/cf-cli/install-go-cli.html>
-- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>
+- The Cloud Foundry command line tool: <https://docs.cloudfoundry.org/cf-cli/install-go-cli.html>
+- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin): <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>
     ```bash
     cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
     cf install-plugin multiapps
