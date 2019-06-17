@@ -167,7 +167,7 @@ Note the type of the `ID` property, the properties resulting from the use of the
 
 ### 6. Create some entries in the Orders entity
 
-Put the new entity through its paces by performing some OData Create operations to insert orders. An OData Create operation is carried out with an HTTP POST request. If you're confident on the command line and have `curl` installed, you can do this with `curl`. Otherwise, you can use Postman (which you will have installed as part of the software [prerequisites](../../prerequisites.md)).
+Put the new entity through its paces by performing some OData Create operations to insert orders. An OData Create operation is carried out with an HTTP POST request. If you're confident on the command line and have `curl` installed, or `Invoke-WebRequest` in Windows PowerShell, you can do this with those tools. Otherwise, you can use Postman (which you will have installed as part of the software [prerequisites](../../prerequisites.md)).
 
 An OData Create operation (request and response) to insert a new order looks in raw form like this:
 
@@ -195,24 +195,42 @@ Content-Length: 306
 {"@odata.context":"$metadata#Orders/$entity","@odata.metadataEtag":"W/\"s2St6s/UTUxSfYEFAcOmOIuoSKQn7qxgEm65c/QqjAs=\"","ID":"d9a2ffd5-ecc4-47aa-a91f-e88f70b7adf9","modifiedAt":null,"createdAt":"2019-03-25T13:47:38Z","createdBy":"anonymous","modifiedBy":null,"quantity":5,"book_ID":421,"country_code":null}
 ```
 
-If you want to create the Orders entities with `curl`, here's what you can do. Otherwise, skip to the [Using Postman](#postman) section.
+If you want to create the Orders entities with `curl` or `Invoke-WebRequest`, here's what you can do. Otherwise, skip to the [Using Postman](#postman) section.
 
-<a name="curl"></a>**Using curl**
+<a name="curl"></a>**Using the command line**
 
 Order 5 copies of Wuthering Heights (no order ID specified):
-```
+
+**Bash**
+```shell
 curl \
   -d '{"book_ID":201,"quantity":5}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
 ```
+**PowerShell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
+  -ContentType "application/json" `
+  -Method POST -Body '{"book_ID":201,"quantity":5}'
+```
 
 Order 9 copies of Life, The Universe And Everything (specifying an order ID):
+
+**Bash**
 ```
 curl \
   -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+```
+
+**PowerShell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
+  -ContentType "application/json" `
+  -Method POST `
+  -Body '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14","book_ID":427,"quantity":9}'
 ```
 
 <a name="postman"></a>**Using Postman**

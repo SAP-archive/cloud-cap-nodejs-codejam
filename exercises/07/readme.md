@@ -40,7 +40,7 @@ Here the `Stats` service exposes the Orders entity in a read-only fashion as in 
 
 Now let's create a number of orders, and see what the `OrderInfo` entityset shows us. We can do this quickly using another Postman collection, and using Postman's "Collection Runner" feature.
 
-Note: If you want to do this using `curl`, jump to the [using curl](#curl) section.
+Note: If you want to do this using `curl` or `powershell`, jump to the [using the command line](#curl) section.
 
 **Using Postman**
 
@@ -56,30 +56,57 @@ This screenshot shows what the collection looks like (it contains multiple POST 
 
 :point_right: Use the large blue "Run ..." button to execute all the requests - a results window should appear.
 
-<a name="curl"></a>**Using curl**
+<a name="curl"></a>**Using the command line**
 
 Order 2 copies of Wuthering Heights:
+
+**Bash**
 ```
 curl \
   -d '{"book_ID":201,"quantity":2}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
 ```
+**Powershell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
+  -ContentType "application/json" `
+  -Method POST `
+  -Body '{"book_ID":201,"quantity":2}'
+```
 
 Order 7 copies of Eleonora:
+
+**Bash**
 ```
 curl \
   -d '{"book_ID":252,"quantity":7}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
 ```
+**Powershell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
+  -ContentType "application/json" `
+  -Method POST `
+  -Body '{"book_ID":252,"quantity":7}'
+```
 
 Order 42 copies of The Hitch Hiker's Guide To The Galaxy (obviously!):
+
+**Bash**
 ```
 curl \
   -d '{"book_ID":421,"quantity":42}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+```
+**Powershell**
+```powershell
+Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
+  -ContentType "application/json" `
+  -Method POST `
+  -Body '{"book_ID":421,"quantity":42}'
 ```
 
 

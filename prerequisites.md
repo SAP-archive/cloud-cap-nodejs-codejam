@@ -18,16 +18,28 @@ Before the CodeJam day, participants must ensure they have the following install
 - Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
 - Node.js : <https://nodejs.org/en/download/>
 - Postman : <https://www.getpostman.com/downloads/>
-- SQLite : <https://sqlite.org/index.html>
-- Make : <https://www.gnu.org/software/make/>
 - The Cloud Foundry command line tool cf : <https://docs.cloudfoundry.org/cf-cli/install-go-cli.html>
 - The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) : <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>
-    ```
+    ```bash
     cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
     cf install-plugin multiapps
     ```
+- *[Windows Only]* Chocolatey <https://chocolatey.org/install>
 
-With regards to `SQLite` and `Make`: if you are running macOS or Linux it's likely that you'll already have SQLite installed. For Windows users, please follow the installation instructions that are available (you may find this four-minute video useful: [Codible SQLite video 1: How to install sqlite (SQLite3) on windows 10 - YouTube](https://www.youtube.com/watch?v=zOJWL3oXDO8)). Alternatively, you can use the [Chocolatey](https://chocolatey.org/) package manager to install both, [SQLite](https://chocolatey.org/packages/sqlite). and [make](https://chocolatey.org/packages/make). After installation, please check you can start the executables (`sqlite3` and `make`) from the command line.
+  Run as admin
+  ```bash
+  @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+  ```
+- *[Windows Only]* SQLite : <https://sqlite.org/index.html>
+    ```bash
+    choco install sqlite
+    ```
+- *[Windows Only]* Make : <https://www.gnu.org/software/make/>
+    ```bash
+    choco install make
+    ```
+
+With regards to `SQLite` and `Make`: if you are running macOS or Linux it's likely that you'll already have SQLite installed. For Windows users, please use the [Chocolatey](https://chocolatey.org/) package manager to install both, [SQLite](https://chocolatey.org/packages/sqlite). and [make](https://chocolatey.org/packages/make). After installation, please check you can start the executables (`sqlite3` and `make`) from the command line.
 
 With regards to Node: Please install the latest LTS (long term support) version v10. After installation, please check that you can start node from the command line, and also successfully install packages with the included `npm` command.
 

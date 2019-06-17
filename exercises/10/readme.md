@@ -1,21 +1,107 @@
 # Exercise 10
 
 
-## 1. Sign in to Cloud Foundry
+In this exercise you'll make your project cloud-ready. In a cloud deployment, all modules will run as independent (but linked) applications. Therefore you need make add a couple of files to define the individual applications.
+
+
+## Steps
+
+At the end of these steps, your project will be deployed to SAP Cloud Platform Cloud Foundry Environment.
+
+### 1. Sign in to Cloud Foundry
 
 :point_right: Run the following command from your command line to log in to the referenced Cloud Foundry endpoint. When prompted use your SAP Cloud Platform credentials
 ```
 cf login -a https://api.cf.eu10.hana.ondemand.com
 ```
 
-## 2. Explore the artefacts in Cloud Foundry
+### 2. Explore the artefacts in Cloud Foundry
 :point_right: Run the following commands to see all deployed apps and provisioned backing services.
 ```
 cf apps
 cf services
 ```
 
-## 3. Add npm scripts
+
+### 3. Add a independent project descriptor
+You might have noticed that there is no module descriptor for the `srv module` defined. For the local development, such a descriptor is not needed as CDS knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, such a file is required to define the module dependencies and start commands.
+
+:point_right: Add a new `package.json` file with the following content to the `srv/` directory, representing the server module, to make it cloud-ready.
+
+```json
+{
+    "name": "project-srv",
+    "version": "1.0.0",
+    "dependencies": {
+        "@sap/cds": "^3.10.0",
+        "express": "^4.16.4",
+        "hdb": "^0.17.0"
+    },
+    "engines": {
+        "node": "^10"
+    },
+    "scripts": {
+        "postinstall": "npm dedupe",
+        "start": "cds serve gen/csn.json"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "hana",
+                "model": "gen/csn.json"
+            }
+        }
+    }
+}
+
+```
+
+
+
+### 4. Add the app router configuration
+Similar to the `srv` module, we need to add a module descriptor in the `app/` directory as well. We will embed the UI source files into an app router, to be able to connect the srv module and to forward requests to it.
+
+
+:point_right: Add a `package.json` file in the `app/` directory to start this module as a independent app router application within Cloud Foundry:
+
+```json
+{
+  "name": "bookshop-ui",
+  "dependencies": {
+    "@sap/approuter": "^6.0.0"
+  },
+  "engines": {
+      "node": "^10"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/approuter/approuter.js"
+  }
+}
+```
+
+:point_right: Add a new file `xs-app.json` to the same directory (`app/`) to configure the app router. This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
+
+```json
+{
+    "welcomeFile": "webapp/",
+    "authenticationMethod": "none",
+    "logout": {
+        "logoutEndpoint": "/do/logout"
+    },
+    "routes": [{
+        "source": "^/webapp/(.*)$",
+        "target": "$1",
+        "localDir": "webapp/"
+    }, {
+        "source": "^(.*)$",
+        "destination": "srv_api"
+    }]
+}
+
+```
+
+
+### 5. Add npm scripts to trigger the deployment
 So far, the `package.json` file in your project root only defines scripts to test the project locally.
 
 
@@ -33,14 +119,17 @@ You might have noticed, that the `shx` command isn't a typical shell command. Th
 npm install shx
 ```
 
-## 4. Build the app
+### 4. Build the project
+We're almost there. To make our project ready for deployment, we need to package it into a single archive which can be used a delivery unit.
+
 :point_right: Trigger the build process with the following command.
 ```
 npm run build:mta
 ```
-## 5. Deploy the archive
+### 5. Deploy the archive
+Now you should see a new directory `mta_archives/` which contains the `ID` and `version` we defined in to `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
 
-:point_right: One command is all it takes to deploy your project to the cloud. Execute the following command to trigger the deployment process.
+:point_right: Execute the following command to trigger the deployment process.
 ```
 cf deploy mta_archives/bookshop_1.0.0.mtar
 ```
