@@ -28,7 +28,7 @@ Here's an overview of the exercises in this CodeJam.
 - [Exercise 02 - Creating a new CAP project](exercises/02/)
 - [Exercise 03 - Enhancing the project & adding persistence](exercises/03/)
 - [Exercise 04 - Adding data & testing OData operations](exercises/04)
-- [Exercise 05 - Adding a second entity, using common definition features](exercises/05)
+- [Exercise 05 - Adding a further entity, using common definition features](exercises/05)
 - [Exercise 06 - Enhancing the service with annotations](exercises/06/)
 - [Exercise 07 - Defining a second service](exercises/07/)
 - [Exercise 08 - Adding custom logic, and debugging](exercises/08/)
