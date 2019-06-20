@@ -63,7 +63,10 @@ This new directory contains all UI files and represents a new module in the cont
         url: ~{url}
 ```
 
-> Take care to use correct whitespace in this file when adding this section - the YAML file format is very strict!
+
+This snippet not only describes the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
+
+> Take care to use correct whitespace in this file when adding this section - the YAML file format is very sensitive!
 
 
 ### 3. Add a Fiori sandbox environment to the UI index page
@@ -109,11 +112,6 @@ Here's a brief summary of what each of these `script` elements are for, in order
 Reloading the browser tab should now show the beginnings of something recognizable as a Fiori launchpad:
 
 ![an empty Fiori launchpad](empty-fiori-launchpad.png)
-
-
-_Note: Be really careful about the whitespace indentation here - YAML as a format is very sensitive!_
-
-This snippet does not only describe the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
 
 
 ### 4. Introduce a basic UI app to the Fiori launchpad
