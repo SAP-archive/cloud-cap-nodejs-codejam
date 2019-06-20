@@ -25,11 +25,11 @@ Right now the `Books` and `Authors` entities are exposed in the `CatalogService`
 
 :point_right: In the Postman collection you imported, try out the requests in the folder "**(A) Before @readonly annotations**", running them in the order they're presented (the creation of the new book is for the new author, which needs to exist first).
 
-If you want to use the command line instead of Postman, use the following invocations:
+If you want to use the command line instead of Postman, use the following invocations.
 
-1) Add author "Iain M Banks":
+First, add the author "Iain M Banks":
 
-**Bash**
+**curl**
 ```
 curl \
   -d '{"ID": 162, "name": "Iain M Banks"}' \
@@ -37,7 +37,7 @@ curl \
   http://localhost:4004/catalog/Authors
 ```
 
-**Powershell**
+**Invoke-WebRequest**
 ```powershell
 Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Authors `
   -ContentType "application/json" `
@@ -45,9 +45,9 @@ Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Authors `
   -Body '{"ID": 162, "name": "Iain M Banks"}'
 ```
 
-2) Add book "Consider Phlebas":
+Now add the book "Consider Phlebas":
 
-**Bash**
+**curl**
 ```
 curl \
   -d '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }' \
@@ -55,7 +55,7 @@ curl \
   http://localhost:4004/catalog/Books
 ```
 
-**Powershell**
+**Invoke-WebRequest**
 ```powershell
 Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books `
   -ContentType "application/json" `
@@ -100,21 +100,17 @@ Is this just a recommendation that can be overridden? Let's find out.
 
 We can think of the annotations that we saw in the metadata document as guidelines for a UI, but we want to ensure that the restrictions are really in effect in the service itself. Let's try to create another entry in the `Books` entityset.
 
-:point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**".
+:point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**". If you want to use the command line instead of Postman, use one of the following invocations to add the book "The Player of Games":
 
-If you want to use the command line instead of Postman, use the following invocation:
-
-1) Add book "The Player of Games":
-
-**Bash**
-```
+**curl**
+```sh
 curl \
   -d '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
 ```
 
-**Powershell**
+**Invoke-WebRequest**
 ```powershell
 Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books `
   -ContentType "application/json" `
@@ -139,20 +135,16 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 [2019-05-29T15:16:39.694Z | WARNING | 1939700]: Method Not Allowed
 ```
 
-:point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove a book.
+:point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove the book "The Raven". If you want to use command line instead of Postman, use one of the following invocations:
 
-If you want to use command line instead of Postman, use the following invocation:
-
-2) Remove book "The Raven":
-
-**Bash**
-```
+**curl**
+```sh
 curl \
   -X DELETE \
   'http://localhost:4004/catalog/Books(251)'
 ```
 
-**Powershell**
+**Invoke-WebRequest**
 ```powershell
 Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books%28251%29 `
   -Method DELETE
