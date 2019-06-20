@@ -201,14 +201,14 @@ If you want to create the Orders entities with `curl` or `Invoke-WebRequest`, he
 
 Order 5 copies of Wuthering Heights (no order ID specified):
 
-**Bash**
+**curl**
 ```shell
 curl \
   -d '{"book_ID":201,"quantity":5}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
 ```
-**PowerShell**
+**Invoke-WebRequest**
 ```powershell
 Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
   -ContentType "application/json" `
@@ -217,7 +217,7 @@ Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
 
 Order 9 copies of Life, The Universe And Everything (specifying an order ID):
 
-**Bash**
+**curl**
 ```
 curl \
   -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' \
@@ -225,7 +225,7 @@ curl \
   http://localhost:4004/catalog/Orders
 ```
 
-**PowerShell**
+**Invoke-WebRequest**
 ```powershell
 Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
   -ContentType "application/json" `
