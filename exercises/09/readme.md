@@ -357,5 +357,3 @@ While this was a little intense as far as creation of artefacts was concerned, w
 1. What other features can you imagine being useful to users and supported by Fiori Elements and annotations?
 
 1. Which variable have you accessed in the `mta.yaml` descriptor and where has it been defined?
-
-1. Where has this variable been used?
