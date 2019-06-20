@@ -43,9 +43,9 @@ If there is an `app/` directory with content, it will serve that instead.
 
 ### 2. Add a new module to the project descriptor
 
-This new directory contains all UI files and represents a new module. It's necessary to add information to the project descriptor, defining the new UI module.
+This new directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform. It's necessary to add information to the project descriptor that holds information relating to this. The information to add describes will describe this new UI module.
 
-:point_right: Add this new module to the project descriptor file `mta.yaml` next to, and in vertical alignment with, the other `modules` as follows:
+:point_right: Add this new module section to the project descriptor file `mta.yaml` next to, and in vertical alignment with, the other `modules` as follows:
 ```
 - name: bookshop-ui
   type: nodejs
@@ -63,6 +63,7 @@ This new directory contains all UI files and represents a new module. It's neces
         url: ~{url}
 ```
 
+> Take care to use correct whitespace in this file when adding this section - the YAML file format is very strict!
 
 
 ### 3. Add a Fiori sandbox environment to the UI index page
