@@ -154,7 +154,8 @@ To prepare the app for a multiple databases, change the content to:
 
 :point_right: As we want to use a local SQLite database, we need to install a client library to allow the CAP engine to communicate with this DB. Install the `sqlite3` package for this purpose:
 ```
-npm install -D sqlite3
+user@host:~/bookshop
+=> npm install -D sqlite3
 ```
 
 _Note: the use of the `-D` parameter signifies that the `sqlite3` package is a dependency for development purposes only. Have a look at what gets added to `package.json` at this point to see the two different types of package dependencies._
