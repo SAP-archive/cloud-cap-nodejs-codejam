@@ -68,9 +68,10 @@ This new directory contains all UI files and represents a new module in the cont
 
 ### 3. Add a Fiori sandbox environment to the UI index page
 
-To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
+Let's now get back to the HTML in the `index.html` file. To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
-:point_right: Add these `script` elements between the `title` element and the end of the `head` element:
+:point_right: Add these `script` elements between the `title` element and the end of the `head` element in `index.html`:
+
 ```html
     <script>
         window['sap-ushell-config'] = {
