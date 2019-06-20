@@ -354,6 +354,4 @@ While this was a little intense as far as creation of artefacts was concerned, w
 
 1. Why do we put the internationalization file in the `srv/` directory (rather than the `app/` directory)?
 
-1. What other features can you imagine being useful to users and supported by Fiori Elements and annotations?
-
 1. Which variable have you accessed in the `mta.yaml` descriptor and where has it been defined?
