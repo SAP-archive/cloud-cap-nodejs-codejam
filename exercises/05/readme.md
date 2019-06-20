@@ -1,4 +1,4 @@
-# Exercise 05 - Adding a second entity, using generic features
+# Exercise 05 - Adding a further entity, using generic features
 
 In this exercise you'll add a further entity to the data model and expose it through the service. In defining this entity you'll make use of some [generic features](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/454731d38a1e49c3aa5b182e5209bd20.html) available for all CAP projects.
 
