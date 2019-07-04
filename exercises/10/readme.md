@@ -1,4 +1,4 @@
-# Exercise 10
+# Exercise 10 - Deploy the app to Cloud Foundry
 
 
 In this exercise you'll make your project cloud-ready. In a cloud deployment, all modules will run as independent (but linked) applications. Therefore you need make add a couple of files to define the individual applications.
@@ -112,21 +112,22 @@ So far, the `package.json` file in your project root only defines scripts to tes
 "deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
 ```
 
-You might have noticed, that the `shx` command isn't a typical shell command. This is actually a command from another node module.
+You might have noticed, that the `shx` command isn't a typical shell command. This is actually a command from another node module. Same goes for the `mbt` command. This tool allows you in package your project into a deployable archive, which you'll need to bring the app to the SAP Cloud Platform.
 
 :point_right: Install this module in your project via the command line to allow its usage in the npm scripts.
 ```
 npm install shx
+npm install mbt
 ```
 
-### 4. Build the project
+### 6. Build the project
 We're almost there. To make our project ready for deployment, we need to package it into a single archive which can be used a delivery unit.
 
 :point_right: Trigger the build process with the following command.
 ```
 npm run build:mta
 ```
-### 5. Deploy the archive
+### 7. Deploy the archive
 Now you should see a new directory `mta_archives/` which contains the `ID` and `version` we defined in to `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
 
 :point_right: Execute the following command to trigger the deployment process.
