@@ -33,7 +33,7 @@ Here's an overview of the exercises in this CodeJam.
 - [Exercise 07 - Defining a second service](exercises/07/)
 - [Exercise 08 - Adding custom logic, and debugging](exercises/08/)
 - [Exercise 09 - Introducing an app at the UI layer](exercises/09/)
-- [Exercise 10 - Deploy a simple project to the Cloud](exercises/10/)
+- [Exercise 10 - Deploy the app to Cloud Foundry](exercises/10/)
 
 ### Feedback
 
