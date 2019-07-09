@@ -40,7 +40,7 @@ You might have noticed that there is no module descriptor for the `srv module` d
     "dependencies": {
         "@sap/cds": "^3.13.0",
         "express": "^4.17.1",
-        "hdb": "^0.17.0"
+        "@sap/hana-client": "^2.4.142"
     },
     "engines": {
         "node": "^10"
@@ -72,7 +72,7 @@ Similar to the `srv` module, we need to add a module descriptor in the `app/` di
 {
   "name": "bookshop-ui",
   "dependencies": {
-    "@sap/approuter": "^6.0.0"
+    "@sap/approuter": "^6.0.1"
   },
   "engines": {
       "node": "^10"
