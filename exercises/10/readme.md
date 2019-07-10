@@ -141,6 +141,18 @@ cf deploy mta_archives/bookshop_1.0.0.mtar
 
 > Note: You can also use `npm run deploy:cf` to trigger both, the build and deploy steps
 
+
+### 8. Check the apps and services in Cloud Foundry
+
+You can and should check the status of what you've deployed to your trial Cloud Foundry environment on the SAP Cloud Platform. 
+
+Use the following commands do to this:
+
+```
+cf apps
+cf services
+```
+
 ## Summary
 
 You have learned the basic commands to interact with the Cloud Foundry Command Line Interface to check the state of the deployed applications. You also added the necessary scripts to your project to automate the build and deploy steps via the command line.
@@ -149,6 +161,4 @@ You have learned the basic commands to interact with the Cloud Foundry Command L
 
 1. Can you guess what the script `deploy:cf` does? Is there anything special to this script (compared to the other scripts)?
 
-1. When you run the commands from step 2 again, what do you see now?
-
-1. Check the SAP Cloud Platform Cockpit to see the same information. Are all apps in the `running` state now?
+1. When you run the commands to check the apps and services, what do you see? Are all apps in the "Running" state?
