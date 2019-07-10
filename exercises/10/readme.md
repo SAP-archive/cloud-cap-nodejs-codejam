@@ -15,13 +15,18 @@ At the end of these steps, your project will be deployed to SAP Cloud Platform C
 cf login -a https://api.cf.eu10.hana.ondemand.com
 ```
 
-### 2. Explore the artefacts in Cloud Foundry
-:point_right: Run the following commands to see all deployed apps and provisioned backing services.
+### 2. Tailor the HDI container declaration to the trial landscape
+:point_right: Replace the exising service definition in the `mta.yaml` file with this one.
 ```
-cf apps
-cf services
+resources:
+  - name: bookshop-db-hdi-container
+    type: com.sap.xs.hdi-container
+    properties:
+      hdi-container-name: ${service-name}
+    parameters:
+      service: hanatrial
 ```
-
+This changes ensures that the correct HDI container will be used in the trial landscape. This step is only necessary when you want to deploy the project to the trial landscape.
 
 ### 3. Add a independent project descriptor
 You might have noticed that there is no module descriptor for the `srv module` defined. For the local development, such a descriptor is not needed as CDS knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, such a file is required to define the module dependencies and start commands.
@@ -33,15 +38,14 @@ You might have noticed that there is no module descriptor for the `srv module` d
     "name": "project-srv",
     "version": "1.0.0",
     "dependencies": {
-        "@sap/cds": "^3.10.0",
-        "express": "^4.16.4",
-        "hdb": "^0.17.0"
+        "@sap/cds": "^3.13.0",
+        "express": "^4.17.1",
+        "@sap/hana-client": "^2.4.142"
     },
     "engines": {
         "node": "^10"
     },
     "scripts": {
-        "postinstall": "npm dedupe",
         "start": "cds serve gen/csn.json"
     },
     "cds": {
@@ -68,7 +72,7 @@ Similar to the `srv` module, we need to add a module descriptor in the `app/` di
 {
   "name": "bookshop-ui",
   "dependencies": {
-    "@sap/approuter": "^6.0.0"
+    "@sap/approuter": "^6.0.1"
   },
   "engines": {
       "node": "^10"

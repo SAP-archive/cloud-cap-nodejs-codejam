@@ -81,6 +81,19 @@ When successfully installed, you should see the extension thus:
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
+### 3. Verify your development environment
+
+:point_right: Run the following command from the terminal to check whether all required tools are installed.
+```shell
+npx check-sap-cloud-readiness -codejam-cap
+```
+
+You should see an output similar to this:
+![out](output.png)
+
+If necessary, follow the printed instructions and double check the [prerequisites](../prerequisites.md) to install the missing tools. Please contact the instructor of this CodeJam if you need help.
+
+> This is an experimental tool, please contact the instructor if you have any questions.
 
 ## Summary
 
