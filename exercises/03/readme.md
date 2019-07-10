@@ -294,5 +294,3 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 1. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
 
 1. Even though the `Authors` entity definition finally appeared in the metadata file at the end of step 2, you might have noticed that the content of the metadata document looked shorter overall than it did. What disappeared?
-
-1. Apart from the specification that the `sqlite3` package was to be recorded as a development dependency, what was the biggest difference to the previous install of `@sap/cds`?
