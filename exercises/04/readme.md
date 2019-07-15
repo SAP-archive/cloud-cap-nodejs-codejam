@@ -16,6 +16,8 @@ The SAP Cloud Application Programming Model adopts a "convention over configurat
 
 :point_right: Create a `csv/` directory within the `db/` directory, and copy into it the CSV files (from this repository) [my.bookshop-Books.csv](my.bookshop-Books.csv) and [my.bookshop-Authors.csv](my.bookshop-Authors.csv). Use the "Raw" link from within each of these GitHub resources to get the actual CSV data to download (and don't forget to ensure the `.csv` extension is used for the files that you save).
 
+![raw option on the csv pages](raw-option.png)
+
 Your directory structure should then look something like this (the screenshot also shows the content of the two CSV files):
 
 ![the CSV files in the right place](csv-files.png)
