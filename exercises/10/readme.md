@@ -40,7 +40,7 @@ You might have noticed that there is no module descriptor for the `srv module` d
     "dependencies": {
         "@sap/cds": "^3.13.0",
         "express": "^4.17.1",
-        "@sap/hana-client": "^2.4.142"
+        "@sap/hana-client": "^2.4.144"
     },
     "engines": {
         "node": "^10"
@@ -89,9 +89,6 @@ Similar to the `srv` module, we need to add a module descriptor in the `app/` di
 {
     "welcomeFile": "webapp/",
     "authenticationMethod": "none",
-    "logout": {
-        "logoutEndpoint": "/do/logout"
-    },
     "routes": [{
         "source": "^/webapp/(.*)$",
         "target": "$1",
@@ -112,15 +109,14 @@ So far, the `package.json` file in your project root only defines scripts to tes
 :point_right: Add the following script definitions to the `"scripts"` section of `package.json` for build and deploy step processes:
 ```
 "deploy:cds": "cds deploy",
-"build:mta": "cds build/all && shx cp db/csv/Data.hdbtabledata db/src/gen/csv/ && mbt build -p=cf",
+"build:mta": "cds build/all && mbt build -p=cf",
 "deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
 ```
 
-You might have noticed, that the `shx` command isn't a typical shell command. This is actually a command from another node module. Same goes for the `mbt` command. This tool allows you in package your project into a deployable archive, which you'll need to bring the app to the SAP Cloud Platform.
+You might have noticed, that the `mbt` command isn't a typical shell command. This is actually a command from another node module. This tool allows you in package your project into a deployable archive, which you'll need to bring the app to the SAP Cloud Platform.
 
 :point_right: Install this module in your project via the command line to allow its usage in the npm scripts.
 ```
-npm install shx
 npm install mbt
 ```
 
