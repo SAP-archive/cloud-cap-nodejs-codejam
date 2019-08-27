@@ -171,8 +171,6 @@ Put the new entity through its paces by performing some OData Create operations 
 
 An OData Create operation (request and response) to insert a new order looks in raw form like this:
 
-> Note: do not try to execute the following lines at all, this is just an illustration of the HTTP Request and HTTP Response
-
 Request:
 ```
 POST /catalog/Orders HTTP/1.1
