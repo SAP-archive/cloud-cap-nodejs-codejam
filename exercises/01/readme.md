@@ -87,10 +87,6 @@ Open the `Command Palette` by pressing `Ctrl-Shift-P` (Windows) or ⇧⌘P (macO
 
 ![Command Palette navigation in the menu bar](command-palette.png)
 
-Search for `code` the command palette and execute `Install 'code' command in PATH`. 
-
-![Installing the code command via the Command Palette by searching for 'code'](install-code-path.png)
-
 A success message for the process should then appear at the bottom right of the screen. 
 
 ![success message that the 'code' command was succesfully installed](sucessfully-installed.png)
