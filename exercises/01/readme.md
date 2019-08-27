@@ -81,7 +81,7 @@ When successfully installed, you should see the extension thus:
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
-To be able to open VS Code from the usual OS command line you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS code. 
+To be able to open VS Code from the OS command line you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS Code. 
 
 Open the `Command Palette` by pressing `Ctrl-Shift-P` (Windows) or ⇧⌘P (macOS) in VS Code. You can also open it via the menu bar: View -> Command Palette.
 

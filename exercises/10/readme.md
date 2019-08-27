@@ -12,8 +12,6 @@ At the end of these steps, your project will be deployed to SAP Cloud Platform C
 
 :point_right: Run the following command from your command line to log in to the referenced Cloud Foundry endpoint. When prompted use your SAP Cloud Platform credentials.
 
-> If you are surprised what your SAP Cloud Platform credentials are, make sure you have a SAP Cloud Platform Cloud Foundry Trial as described in the [Prerequisites - SAP Cloud Platform](https://github.com/SAP-samples/cloud-cap-nodejs-codejam/blob/master/prerequisites.md#cloud-platform).
-
 ```
 cf login -a https://api.cf.eu10.hana.ondemand.com
 ```
