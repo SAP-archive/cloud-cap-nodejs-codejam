@@ -83,18 +83,17 @@ When successfully installed, you should see the extension thus:
 
 To be able to open VS Code from the usual OS command line you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS code. 
 
-Open the `Command Palette` by pressing `Ctrl+Shift+P` in VS Code or via the menu bar.
+Open the `Command Palette` by pressing `Ctrl-Shift-P` (Windows) or ⇧⌘P (macOS) in VS Code. You can also open it via the menu bar: View -> Command Palette.
 
-![command palette](command-palette.png)
+![Command Palette navigation in the menu bar](command-palette.png)
 
 Search for `code` the command palette and execute `Install 'code' command in PATH`. 
 
-![command palette](install-code-path.png)
+![Installing the code command via the Command Palette by searching for 'code'](install-code-path.png)
 
 A success message for the process should then appear at the bottom right of the screen. 
 
-![command palette](sucessfully-installed.png)
-
+![success message that the 'code' command was succesfully installed](sucessfully-installed.png)
 
 ### 3. Verify your development environment
 
