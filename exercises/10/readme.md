@@ -10,7 +10,8 @@ At the end of these steps, your project will be deployed to SAP Cloud Platform C
 
 ### 1. Sign in to Cloud Foundry
 
-:point_right: Run the following command from your command line to log in to the referenced Cloud Foundry endpoint. When prompted use your SAP Cloud Platform credentials
+:point_right: Run the following command from your command line to log in to the referenced Cloud Foundry endpoint. When prompted use your SAP Cloud Platform credentials.
+
 ```
 cf login -a https://api.cf.eu10.hana.ondemand.com
 ```

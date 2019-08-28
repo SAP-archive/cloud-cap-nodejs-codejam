@@ -6,7 +6,7 @@ There are hardware and software prerequisites for participating in this CodeJam.
 
 Each participant should have their own laptop with enough admin privileges to be able to install software. You should also be able to access a command line shell (e.g. `cmd.exe` on Windows). The laptop should also be able to connect to the host organization's guest network for Internet access, and have enough power for the whole day.
 
-## Cloud Platform
+## SAP Cloud Platform
 
 Each attendee should have an SAP Cloud Platform trial account, and specifically a Cloud Foundry environment with an organization and a space defined. See the following tutorials for more details:
 
