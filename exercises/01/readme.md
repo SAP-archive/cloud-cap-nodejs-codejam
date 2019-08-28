@@ -89,7 +89,7 @@ Open the `Command Palette` by pressing `Ctrl-Shift-P` (Windows) or ⇧⌘P (macO
 
 A success message for the process should then appear at the bottom right of the screen. 
 
-![success message that the 'code' command was succesfully installed](sucessfully-installed.png)
+![message that the 'code' command was successfully installed](sucessfully-installed.png)
 
 ### 3. Verify your development environment
 
