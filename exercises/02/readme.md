@@ -68,13 +68,13 @@ user@host:~
 => cds init --help
 ```
 
-Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context.
+Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context. `--skip-sample-models` avoids the creation of a sample entitys and services that you should define yourself.
 
 :point_right: Use all of these options to initialize a new project directory thus:
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose bookshop
+=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose bookshop --skip-sample-models
 ```
 
 You should see output that looks similar to this:
@@ -122,9 +122,9 @@ Briefly, the directories and contents can be described thus:
 | Directory      | Contents |
 | -------------- | -------- |
 | `.vscode`      | VS Code specific files for launch configurations (useful for debugging, which we will cover in [exercise 08](../08/)) |
-| `db`           | Where the data models (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules db` option will have a basic data model file in the form of `data-model.cds` with a small sample definition, like here |
+| `db`           | Where the data models (in CDS) are specified.  |
 | `node_modules` | This is the normal place where NPM packages (modules) are to be found in a Node.js based project |
-| `srv`          | Where the service definitions (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules srv` option will have a basic service definition file in the form of `cat-service.cds` with a small service definition, like here |
+| `srv`          | Where the service definitions (in CDS) are specified.  |
 | `mta.yaml`          | This is the central descriptor file for the project. It defines all modules (microservices) and backing services (like databases). This information will be used to build the .mtar archive during design time and to deploy & provision the apps and services during deploy time.  |
 
 Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project) and a readme file.
