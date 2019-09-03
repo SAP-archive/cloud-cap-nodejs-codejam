@@ -68,13 +68,13 @@ user@host:~
 => cds init --help
 ```
 
-Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context. `--skip-sample-models` avoids the creation of a sample entitys and services that you should define yourself.
+Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context. `--skip-sample-models` avoids the creation of sample skeleton files which you will build step by step in this CodeJam yourself.
 
 :point_right: Use all of these options to initialize a new project directory thus:
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose bookshop --skip-sample-models
+=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose --skip-sample-models bookshop 
 ```
 
 You should see output that looks similar to this:
