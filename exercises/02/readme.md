@@ -134,7 +134,7 @@ Besides the directories there are also a number of files, including the project'
 :point_right: Create a new file called `data-model.cds` in the `db` folder of the recently created project, copy the following lines to the file and save it:
 
 ```cds: 
-namespace my.bookshop:;
+namespace my.bookshop;
 
 entity Books {
   key ID : Integer;
