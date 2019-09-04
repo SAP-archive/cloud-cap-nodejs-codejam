@@ -164,7 +164,7 @@ The key files in this project as far as the business domain is concerned are the
 
 ### 6. Start up the service
 
-Yes, you've not written a single line of code yet but you're going to start up the service in the skeleton project. VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
+Now you're going to start up the service in the skeleton project. VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
 
 :point_right: Open the integrated terminal in VS Code. Do this by opening the Command Palette and searching for 'integrated terminal'. You may wish to use the keyboard shortcut for this - note there is a keyboard shortcut for toggling the integrated terminal in and out of view as well.
 
