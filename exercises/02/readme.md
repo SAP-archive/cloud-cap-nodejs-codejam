@@ -68,13 +68,13 @@ user@host:~
 => cds init --help
 ```
 
-Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context.
+Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context. `--skip-sample-models` avoids the creation of sample skeleton files which you will build step by step in this CodeJam yourself.
 
 :point_right: Use all of these options to initialize a new project directory thus:
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose bookshop
+=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose --skip-sample-models bookshop 
 ```
 
 You should see output that looks similar to this:
@@ -122,24 +122,49 @@ Briefly, the directories and contents can be described thus:
 | Directory      | Contents |
 | -------------- | -------- |
 | `.vscode`      | VS Code specific files for launch configurations (useful for debugging, which we will cover in [exercise 08](../08/)) |
-| `db`           | Where the data models (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules db` option will have a basic data model file in the form of `data-model.cds` with a small sample definition, like here |
+| `db`           | Where the data models (in CDS) are specified.  |
 | `node_modules` | This is the normal place where NPM packages (modules) are to be found in a Node.js based project |
-| `srv`          | Where the service definitions (in CDS) are specified. A skeleton CDS project that has been initialized with the `--modules srv` option will have a basic service definition file in the form of `cat-service.cds` with a small service definition, like here |
+| `srv`          | Where the service definitions (in CDS) are specified.  |
 | `mta.yaml`          | This is the central descriptor file for the project. It defines all modules (microservices) and backing services (like databases). This information will be used to build the .mtar archive during design time and to deploy & provision the apps and services during deploy time.  |
 
 Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project) and a readme file.
 
+### 4. Create a basic entity and service definition
 
-### 4. Examine the data model and service definition files
+:point_right: Create a new file called `data-model.cds` in the `db` folder of the recently created project, copy the following lines to the file and save it:
+
+```cds: 
+namespace my.bookshop;
+
+entity Books {
+  key ID : Integer;
+  title  : String;
+  stock  : Integer;
+}
+```
+
+:point_right: Create a new file called `cat-service.cds` in the `srv` folder of the recently created project, copy the following lines to the file and save it: 
+
+```cds: 
+using my.bookshop as my from '../db/data-model';
+
+service CatalogService {
+    entity Books as projection on my.Books;
+}
+````
+
+You have now created a entity definition as well as a service definition for your project. 
+
+### 5. Examine the data model and service definition files
 
 The key files in this project as far as the business domain is concerned are the `db/data-model.cds` and the `srv/cat-service.cds` files.
 
 :point_right: Have a brief look inside each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted, including the definitions and the annotations (which start with `@`).
 
 
-### 5. Start up the service
+### 6. Start up the service
 
-Yes, you've not written a single line of code yet but you're going to start up the service in the skeleton project. VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
+Now you're going to start up the service in the skeleton project. VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
 
 :point_right: Open the integrated terminal in VS Code. Do this by opening the Command Palette and searching for 'integrated terminal'. You may wish to use the keyboard shortcut for this - note there is a keyboard shortcut for toggling the integrated terminal in and out of view as well.
 
@@ -175,7 +200,7 @@ You should see output similar to this:
 The OData service is now running, and available on [http://localhost:4004](http://localhost:4004).
 
 
-### 6. Explore the OData service
+### 7. Explore the OData service
 
 While we have no data in the OData service (we don't even have a persistence layer yet!) we can ask the OData service for the two well-known documents: the service document and the metadata document.
 
