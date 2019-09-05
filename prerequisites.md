@@ -35,6 +35,10 @@ Before the CodeJam day, participants must ensure they have the following install
     (Details: <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>)
 - Make : <https://www.gnu.org/software/make/>
 - SQLite : <https://sqlite.org/index.html>
+- Windows Build Tools (for Windows User only): 
+    ```bash
+    npm install -g windows-build-tools@4.0.0
+    ````
 
 _Note: If you're running Windows, it's likely that you won't have `SQLite` or `make` installed. In this case, we recommend that you use the [Chocolatey](https://chocolatey.org/) package manager to install both ([SQLite](https://chocolatey.org/packages/sqlite) and [make](https://chocolatey.org/packages/make)) - see below._
 

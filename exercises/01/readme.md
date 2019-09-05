@@ -63,11 +63,11 @@ This should eventually produce output similar to this:
 
 ```sh
 /user/.nvm/versions/node/v10.15.3/bin/cds -> /user/.nvm/versions/node/v10.15.3/lib/node_modules/@sap/cds/bin/cds.js
-+ @sap/cds@3.5.2
++ @sap/cds@3.16.3
 added 38 packages from 75 contributors in 6.015s
 ```
 
-Here you can see that the version of the `@sap/cds` package installed is 3.5.2. It may be that the version of `@sap/cds` that is installed when you do this exercise will be different (newer).
+Here you can see that the version of the `@sap/cds` package installed is 3.16.3. It may be that the version of `@sap/cds` that is installed when you do this exercise will be different (newer).
 
 ### 2. Install the CDS extension for VS Code
 
@@ -77,15 +77,23 @@ Extensions can be installed directly in VS Code from the extension marketplace, 
 
 :point_right: Go to the [Cloud section of the SAP Development Tools website](https://tools.hana.ondemand.com/#cloud) and find the "CDS Language Support for Visual Studio Code" section. Follow the instructions there to download and subsequently install the extension.
 
+To install the downloaded extension in VS Code have a look at the screenshot below: 
+
+![CDS Extension installation in VS Code](vscode-extension-import.png)
+
 When successfully installed, you should see the extension thus:
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
-To be able to open VS Code from the OS command line you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS Code. 
+**For macOS users only:** To be able to open VS Code from the OS command line you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS Code. 
 
 Open the `Command Palette` by pressing `Ctrl-Shift-P` (Windows) or ⇧⌘P (macOS) in VS Code. You can also open it via the menu bar: View -> Command Palette.
 
 ![Command Palette navigation in the menu bar](command-palette.png)
+
+Search for `code` and press Enter. 
+
+![search for code in the command palette](install-code-path.png)
 
 A success message for the process should then appear at the bottom right of the screen. 
 

@@ -39,7 +39,7 @@ You might have noticed that there is no module descriptor for the `srv module` d
     "name": "project-srv",
     "version": "1.0.0",
     "dependencies": {
-        "@sap/cds": "^3.13.0",
+        "@sap/cds": "^3.16.3",
         "express": "^4.17.1",
         "@sap/hana-client": "^2.4.144"
     },

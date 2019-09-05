@@ -14,7 +14,7 @@ After completing these steps you'll be familiar with how you can use the CDS com
 
 ### 1. Initialize a new CAP project
 
-Before you start creating a new project we recommend that you create a dedicated directory for this CodeJam within your users directory instead of any system directories (e.g. DO NOT work in C:\Windows\System32).
+Before you start creating a new project we recommend that you create a dedicated directory for this CodeJam within your users directory (C:\Users\YourUser) instead of any system directories (e.g. DO NOT work in C:\Windows\System32).
 
 The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS command line tool `cds` which you installed in [exercise 01](../01/).
 
@@ -111,7 +111,7 @@ If this approach is not available to you, simply start VS Code through your oper
 
 ### 3. Explore the initialized project structure
 
-The skeleton project that has been initialized is visible in VS Code. This is what it should look like (it shows also the `db/data-model.cds` file opened, which you can do manually):
+The skeleton project that has been initialized is visible in VS Code. This is what it should look like. 
 
 ![initialized project in VS Code](initialized-project-in-vscode.png)
 
@@ -149,7 +149,7 @@ entity Books {
 using my.bookshop as my from '../db/data-model';
 
 service CatalogService {
-    entity Books as projection on my.Books;
+    @readonly entity Books as projection on my.Books;
 }
 ````
 
