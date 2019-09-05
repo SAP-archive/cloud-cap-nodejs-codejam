@@ -14,7 +14,7 @@ After completing these steps you'll be familiar with how you can use the CDS com
 
 ### 1. Initialize a new CAP project
 
-Before you start creating a new project we recommend that you create a dedicated directory for this CodeJam within your users directory (C:\Users\YourUser) instead of any system directories (e.g. DO NOT work in C:\Windows\System32).
+Before you start creating a new project we recommend that you create a dedicated directory for this CodeJam within your users directory instead of any system directories (e.g. DO NOT work in C:\Windows\System32).
 
 The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS command line tool `cds` which you installed in [exercise 01](../01/).
 
