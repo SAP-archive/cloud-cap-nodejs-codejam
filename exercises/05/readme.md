@@ -162,7 +162,7 @@ _Note: If you're running Windows, you can use a double-semicolon (;;) in place o
 
 Following the enhancements, it's worth taking a look at what the `Orders` entity looks like now.
 
-Open the [metadata document](http://localhost:4004/catalog/$metadata) and look at the definition of the `Orders` entity in the XML. It should look like this:
+Open the [metadata document](http://localhost:4004/catalog/$metadata) and find the specific definition of the `Orders` entity within the XML. It should look like this:
 
 ![Orders entity definition](orders-entity.png)
 
