@@ -83,7 +83,7 @@ It means that you can easily set a breakpoint and launch the service in debug mo
 
 :point_right: Before proceeding with the main part of this step, make sure the service is not running - go to the integrated terminal and stop it with Ctrl-C.
 
-:point_right: Now, set a breakpoint on the `console.log` line you added in the custom logic handler, by clicking in the margin to the left of the line (or hitting F9 when on the line), to set a red mark as shown:
+:point_right: Now, set a breakpoint on the `console.log` line you added in the custom logic handler, by clicking in the margin to the left of the line numbers (or hitting F9 when on the line), to set a red mark as shown:
 
 ![breakpoint set](breakpoint-set.png)
 
