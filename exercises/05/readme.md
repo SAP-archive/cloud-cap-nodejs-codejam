@@ -139,7 +139,9 @@ In the same way as you've done previously, it's now time to redeploy and then re
 ```sh
 user@host:~/bookshop
 => cds deploy && cds serve all
-> initializing from csv files at ./db/csv...
+ > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
+ > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
+/> successfully deployed database to bookshop.db
 
 [cds] - connect to datasource - sqlite:bookshop.db
 [cds] - serving CatalogService at /catalog
@@ -149,8 +151,8 @@ user@host:~/bookshop
   db/data-model.cds
   node_modules/@sap/cds/common.cds
 
-[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
-[cds] - launched in: 824.746ms
+[cds] - server listening on http://localhost:4004 ... (terminate with ^C)
+[cds] - launched in: 722.087ms
 ```
 
 _Note: If you're running Windows, you can use a double-semicolon (;;) in place of the `&&`. It's not quite the same but will work just fine in most cases._
