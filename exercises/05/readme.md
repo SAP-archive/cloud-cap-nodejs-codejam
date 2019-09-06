@@ -41,7 +41,9 @@ Observe that the CDS Language Service extension picks up the new `Orders` entity
 ```sh
 user@host:~/bookshop
 => cds deploy
-> initializing from csv files at ./db/csv...
+ > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
+ > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
+/> successfully deployed database to bookshop.db
 user@host:~/bookshop
 =>
 ```
