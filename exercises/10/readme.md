@@ -91,7 +91,7 @@ Similar to the `srv` module, we need to add a module descriptor for the `app` mo
 }
 ```
 
-:point_right: Add a new file `xs-app.json` to the same directory (`app/`) to configure the app router. This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
+:point_right: Add a new file `xs-app.json` to the same directory (`app/`), with the following content, to configure the app router:
 
 ```json
 {
@@ -109,23 +109,28 @@ Similar to the `srv` module, we need to add a module descriptor for the `app` mo
 
 ```
 
+This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
+
 
 ### 5. Add npm scripts to trigger the deployment
-So far, the `package.json` file in your project root only defines scripts to test the project locally.
+
+So far, the `package.json` file in your project root only defines scripts for local project execution.
 
 
-:point_right: Add the following script definitions to the `"scripts"` section of `package.json` for build and deploy step processes:
+:point_right: Add the following script definitions to the `"scripts"` section of the project's root `package.json` for build and deploy step processes:
+
 ```
-"deploy:cds": "cds deploy",
 "build:mta": "cds build/all && mbt build -p=cf",
 "deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
 ```
 
-You might have noticed, that the `mbt` command isn't a typical shell command. This is actually a command from another node module. This tool allows you in package your project into a deployable archive, which you'll need to bring the app to the SAP Cloud Platform.
+You might have noticed, that the `mbt` command isn't a typical shell command. This is actually a command from another Node module. This tool allows you to package your project into a deployable archive, which you'll need in order to get the app  onto the SAP Cloud Platform.
 
-:point_right: Install this module in your project via the command line to allow its usage in the npm scripts.
+:point_right: Install this module in your project to allow its usage in the npm scripts, like this:
+
 ```
-npm install mbt
+user@host:~/bookshop
+=> npm install mbt
 ```
 
 ### 6. Build the project
