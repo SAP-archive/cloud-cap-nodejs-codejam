@@ -41,7 +41,7 @@ You're right. It's not there.
 
 While there is now a second entity definition in the data model, it is not exposed in the existing service. In this step, you'll remedy that.
 
-:point_right: Open up the `srv/cat-service.cds` file and add a second entity to the `CatalogService` definition. While you're there, remove the `@readonly` annotation that you see against the existing entity in the service - we will look at these annotations in a later exercise.
+:point_right: Open up the `srv/cat-service.cds` file and add a second entity to the `CatalogService` definition.
 
 This is what the contents of `srv/cat-service.cds` should look like after you've added the new entity and removed the annotation:
 
