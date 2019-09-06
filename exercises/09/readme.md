@@ -43,9 +43,11 @@ If there isn't anything that can be sensibly served in the `app/` directory it w
 
 ### 2. Add a new module to the project descriptor
 
-This new directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform. It's necessary to add information to the project descriptor that holds information relating to this. The information to add describes will describe this new UI module.
+This new `app/` directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform. 
 
-:point_right: Replace the content of your `mta.yaml` with the following lines. (Basically only the `bookshop-ui` module was added. The formatting of `yaml` files has to be done very exactly, so the whole content has been replaced for the sake of simplicity)
+For this to work and be included in what we eventually deploy and run, we must add information to the main deployment descriptor file `mta.yaml` that holds information relating to this.
+
+:point_right: Replace the content of your `mta.yaml` file with the following lines. (Basically only the `bookshop-ui` module was added, but the formatting of `yaml` files is very unforgiving, so just copy / paste the entire content from here and replace everything, to keep things simple!)
 ```
 _schema-version: 2.0.0
 ID: bookshop
@@ -95,10 +97,7 @@ resources:
 
 ```
 
-
 This snippet not only describes the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
-
-> Take care to use correct whitespace in this file when adding this section - the YAML file format is very sensitive!
 
 
 ### 3. Add a Fiori sandbox environment to the UI index page
