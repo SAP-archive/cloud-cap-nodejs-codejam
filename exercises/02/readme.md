@@ -131,7 +131,7 @@ Besides the directories there are also a number of files, including the project'
 
 ### 4. Create a simple data model and service definition
 
-:point_right: Create a new file called `data-model.cds` in the `db` folder of the recently created project, copy the following lines to the file and save it:
+:point_right: Create a new file called `data-model.cds` in the `db/` directory of the recently created project, copy the following lines to the file and save it:
 
 ```cds: 
 namespace my.bookshop;
@@ -143,7 +143,7 @@ entity Books {
 }
 ```
 
-:point_right: Create a new file called `cat-service.cds` in the `srv` folder of the recently created project, copy the following lines to the file and save it: 
+:point_right: Create a new file called `cat-service.cds` in the `srv/` directory of the recently created project, copy the following lines to the file and save it: 
 
 ```cds: 
 using my.bookshop as my from '../db/data-model';
@@ -155,11 +155,11 @@ service CatalogService {
 
 You have now created a entity definition as well as a service definition for your project. 
 
-### 5. Examine the data model and service definition files
+### 5. Examine the contents data model and service definition files
 
-The key files in this project as far as the business domain is concerned are the `db/data-model.cds` and the `srv/cat-service.cds` files.
+The key files in this project as far as the business domain is concerned are the `db/data-model.cds` and the `srv/cat-service.cds` files that you just added.
 
-:point_right: Have a brief look inside each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted, including the definitions and the annotations (which start with `@`).
+:point_right: Have a brief look at the content of each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted, including the definitions and the annotations (which start with `@`).
 
 
 ### 6. Start up the service
