@@ -143,9 +143,10 @@ user@host:~/bookshop
 => npm run build:mta
 ```
 ### 7. Deploy the archive
-Now you should see a new directory `mta_archives/` which contains the `ID` and `version` we defined in to `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
+Now you should see a new directory `mta_archives/` which contains an archive file named with the `ID` and `version` we defined in the `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
 
-:point_right: Execute the following command to trigger the deployment process.
+:point_right: Execute the following command to trigger the deployment process:
+
 ```
 user@host:~/bookshop
 => cf deploy mta_archives/bookshop_1.0.0.mtar
