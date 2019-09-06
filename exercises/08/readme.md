@@ -121,7 +121,7 @@ srv.path
 
 At this point we're confident enough to start adding custom logic, by [registering custom handlers](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html).
 
-:point_right: Add the following code after the call to `console.log` in the `cat-service.js` file:
+:point_right: Add the following code directly after the call to `console.log` in the `cat-service.js` file:
 
 ```js
   if (srv.name === 'CatalogService') {
