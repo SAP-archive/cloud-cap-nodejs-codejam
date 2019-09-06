@@ -32,7 +32,7 @@ user@host:~/bookshop
 => cds deploy
 ```
 
-During deployment this time you should see an extra message:
+During deployment this time you should see extra messages:
 
 ```
  > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
