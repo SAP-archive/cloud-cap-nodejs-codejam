@@ -45,22 +45,54 @@ If there is an `app/` directory with content, it will serve that instead.
 
 This new directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform. It's necessary to add information to the project descriptor that holds information relating to this. The information to add describes will describe this new UI module.
 
-:point_right: Add this new module section to the project descriptor file `mta.yaml` next to, and in vertical alignment with, the other `modules` as follows:
+:point_right: Replace the content of your `mta.yaml` with the following lines. (Basically only the `bookshop-ui` module was added. The formatting of `yaml` files has to be done very exactly, so the whole content has been replaced for the sake of simplicity)
 ```
-- name: bookshop-ui
-  type: nodejs
-  path: app
-  parameters:
-    memory: 256M
-    disk-quota: 256M
-  requires:
-    - name: srv_api
-      group: destinations
-      properties:
-        forwardAuthToken: true
-        strictSSL: false
-        name: srv_api
-        url: ~{url}
+_schema-version: 2.0.0
+ID: bookshop
+version: 1.0.0
+modules:
+  - name: bookshop-db
+    type: hdb
+    path: db
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: bookshop-db-hdi-container
+  - name: bookshop-srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 256M
+    provides:
+      - name: srv_api
+        properties:
+          url: ${default-url}
+    requires:
+      - name: bookshop-db-hdi-container
+  - name: bookshop-ui
+    type: nodejs
+    path: app
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: srv_api
+        group: destinations
+        properties: 
+          forwardAuthToken: true
+          strictSSL: true
+          name: srv_api
+          url: ~{url}
+resources:
+  - name: bookshop-db-hdi-container
+    type: com.sap.xs.hdi-container
+    properties:
+      hdi-container-name: ${service-name}
+    parameters:
+      service: hanatrial
+
 ```
 
 

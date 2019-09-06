@@ -49,48 +49,6 @@ The `.hdiconfig` file specifies the configuration of the HANA Deployment Infrast
 "plugin_version": "12.1.0",
 ```
 
-While SQLite automatically imports the CSV files, we need to provide more information for HANA to import those files. These import instructions are encoded in a `.hdbtabledata` file and will be read during the deployment process to the Cloud Foundry environment.
-
- :point_right: Create a new `db/csv/Data.hdbtabledata` file with the following content to specify which data should be imported into the HANA tables:
-
-```
-{
-   "format_version": 1,
-   "imports": [
-       {
-           "target_table": "MY_BOOKSHOP_AUTHORS",
-           "source_data": {
-           "data_type": "CSV",
-               "file_name": "my.bookshop-Authors.csv",
-               "has_header": true
-           },
-           "import_settings": {
-           "import_columns": [
-                   "ID",
-                   "NAME"
-               ]
-           }
-       },
-       {
-           "target_table": "MY_BOOKSHOP_BOOKS",
-           "source_data": {
-           "data_type": "CSV",
-               "file_name": "my.bookshop-Books.csv",
-               "has_header": true
-           },
-           "import_settings": {
-           "import_columns": [
-                   "ID",
-                   "TITLE",
-                   "AUTHOR_ID",
-                   "STOCK"
-               ]
-           }
-       }
-   ]
-}
-```
-
 ### 4. Restart the service
 
 :point_right: Restart the service thus:

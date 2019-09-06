@@ -111,7 +111,7 @@ If this approach is not available to you, simply start VS Code through your oper
 
 ### 3. Explore the initialized project structure
 
-The skeleton project that has been initialized is visible in VS Code. This is what it should look like (it shows also the `db/data-model.cds` file opened, which you can do manually):
+The skeleton project that has been initialized is visible in VS Code. This is what it should look like. 
 
 ![initialized project in VS Code](initialized-project-in-vscode.png)
 
@@ -149,7 +149,7 @@ entity Books {
 using my.bookshop as my from '../db/data-model';
 
 service CatalogService {
-    entity Books as projection on my.Books;
+    @readonly entity Books as projection on my.Books;
 }
 ````
 

@@ -1,6 +1,6 @@
 # Prerequisites
 
-There are hardware and software prerequisites for participating in this CodeJam. There are also some optional, recommended items that you might like to have too.
+There are hardware and software prerequisites for participating in this CodeJam. There are also some optional, recommended items that you might like to have too. Administration rights are an essential requirement due to the installation of some local tools. 
 
 ## Hardware
 
@@ -27,13 +27,18 @@ Before the CodeJam day, participants must ensure they have the following install
 - Node.js (latest LTS version 10): <https://nodejs.org/en/download/>
 - Postman : <https://www.getpostman.com/downloads/>
 - The Cloud Foundry command line tool: <https://docs.cloudfoundry.org/cf-cli/install-go-cli.html>
-- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin): <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>
+- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin): 
     ```bash
     cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
     cf install-plugin multiapps
     ```
+    (Details: <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>)
 - Make : <https://www.gnu.org/software/make/>
 - SQLite : <https://sqlite.org/index.html>
+- Windows Build Tools (for Windows User only): 
+    ```bash
+    npm install -g windows-build-tools@4.0.0
+    ````
 
 _Note: If you're running Windows, it's likely that you won't have `SQLite` or `make` installed. In this case, we recommend that you use the [Chocolatey](https://chocolatey.org/) package manager to install both ([SQLite](https://chocolatey.org/packages/sqlite) and [make](https://chocolatey.org/packages/make)) - see below._
 
