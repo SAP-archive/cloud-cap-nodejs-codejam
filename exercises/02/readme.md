@@ -129,7 +129,7 @@ Briefly, the directories and contents can be described thus:
 
 Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project) and a readme file.
 
-### 4. Create a basic entity and service definition
+### 4. Create a simple data model and service definition
 
 :point_right: Create a new file called `data-model.cds` in the `db` folder of the recently created project, copy the following lines to the file and save it:
 
