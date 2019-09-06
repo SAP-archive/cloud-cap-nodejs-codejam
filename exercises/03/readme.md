@@ -127,7 +127,7 @@ As it stands, the OData service has no storage. We can actually simulate storage
 
 _Note: Ensure you select the top level `package.json` file - there's also one in the `db/` directory but that's not the one you want._
 
-To prepare the app for a multiple databases, change the content to:
+To prepare the app for a multiple databases, change the content of the "cds" section to this (not forgetting the comma at the end):
 
 ```json
 "cds": {
@@ -149,7 +149,7 @@ To prepare the app for a multiple databases, change the content to:
     "odata": {
         "version": "v4"
     }
-}
+},
 ```
 
 :point_right: As we want to use a local SQLite database, we need to install a client library to allow the CAP engine to communicate with this DB. Install the `sqlite3` package for this purpose:
