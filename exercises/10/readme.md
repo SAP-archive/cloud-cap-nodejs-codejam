@@ -37,9 +37,9 @@ This step is only necessary when you want to deploy the project to the trial lan
 
 ### 3. Add a project descriptor file for the srv module
 
-You might have noticed that there is no project descriptor for the `srv` module defined. For the local development, such a descriptor is not needed as CDS knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, such a file is required to define the module dependencies and start commands.
+You might have noticed that there is no project descriptor for the `srv` module defined. For local development, such a descriptor is not needed as CAP knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, a descriptor is required, to define the module dependencies and start commands.
 
-:point_right: Add a new `package.json` file with the following content to the `srv/` directory, representing the server module, to make it cloud-ready.
+:point_right: Create a new project descriptor file `package.json` in the `srv/` directory, and add the following content representing the server module, to make it cloud-ready:
 
 ```json
 {
