@@ -125,8 +125,8 @@ At this point we're confident enough to start adding custom logic, by [registeri
 
 ```js
   if (srv.name === 'CatalogService') {
-    srv.after ('READ', 'Books', each => {
-      if (each.stock > 500) each.title = '(5% off!) ' + each.title
+    srv.after ('READ', 'Books', xs => {
+      xs.map(x => x.stock > 500 && (x.title = `(10% off!) ${x.title}`))
     })
   }
 ```
