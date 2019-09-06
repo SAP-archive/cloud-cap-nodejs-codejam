@@ -35,7 +35,9 @@ user@host:~/bookshop
 During deployment this time you should see an extra message:
 
 ```
-> initializing from csv files at ./db/csv...
+ > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
+ > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
+/> successfully deployed database to bookshop.db
 ```
 
 
