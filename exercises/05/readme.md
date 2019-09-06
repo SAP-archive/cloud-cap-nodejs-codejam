@@ -106,7 +106,7 @@ entity Orders : cuid {
 
 The use of `cuid` in this position will cause a key property of type `UUID` to be added implicitly to this entity definition.
 
-:point_right: Add the `managed` aspect to the entity thus:
+:point_right: Now also add the `managed` aspect to the entity thus:
 
 ```
 entity Orders : cuid, managed {
