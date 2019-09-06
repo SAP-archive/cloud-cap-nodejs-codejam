@@ -35,11 +35,11 @@ resources:
 
 This step is only necessary when you want to deploy the project to the trial landscape.
 
-### 3. Add a project descriptor file for the srv module
+### 3. Add a module descriptor file for the srv module
 
-You might have noticed that there is no project descriptor for the `srv` module defined. For local development, such a descriptor is not needed as CAP knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, a descriptor is required, to define the module dependencies and start commands.
+You might have noticed that there is no module descriptor for the `srv` module defined. For local development, such a descriptor is not needed as CAP knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, a descriptor is required, to define the module dependencies and start commands.
 
-:point_right: Create a new project descriptor file `package.json` in the `srv/` directory, and add the following content representing the server module, to make it cloud-ready:
+:point_right: Create a new descriptor file `package.json` in the `srv/` directory, and add the following content representing the server module, to make it cloud-ready:
 
 ```json
 {
@@ -71,10 +71,10 @@ You might have noticed that there is no project descriptor for the `srv` module 
 
 
 ### 4. Add the app router configuration
-Similar to the `srv` module, we need to add a module descriptor in the `app/` directory as well. We will embed the UI source files into an app router, to be able to connect the srv module and to forward requests to it.
 
+Similar to the `srv` module, we need to add a module descriptor for the `app` module as well. We will embed the UI source files into an app router, to be able to connect to the `srv` module and to forward requests to it.
 
-:point_right: Add a `package.json` file in the `app/` directory to start this module as a independent app router application within Cloud Foundry:
+:point_right: Create a new `package.json` file in the `app/` directory with the following content, to start this module as an independent app router application within Cloud Foundry:
 
 ```json
 {
