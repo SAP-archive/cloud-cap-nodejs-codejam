@@ -313,7 +313,7 @@ Now let's look at important content that will help us join together in our minds
 annotate CatalogService.Books with @(
     UI: {
         Identification: [ {Value: title} ],
-        SelectionFields: [],
+        SelectionFields: [ title ],
         LineItem: [
             {Value: ID},
             {Value: title},
