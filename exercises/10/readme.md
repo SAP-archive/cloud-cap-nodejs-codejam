@@ -17,7 +17,10 @@ cf login -a https://api.cf.eu10.hana.ondemand.com
 ```
 
 ### 2. Tailor the HDI container declaration to the trial landscape
-:point_right: Replace the exising service definition in the `mta.yaml` file with this one.
+
+In a [previous exercise](../09) you may have seen that your `mta.yaml` deployment descriptor file referenced the "hana" service for the HDI container. We need to ensure that the correct HDI container will be used in the trial landscape. 
+
+:point_right: Replace the `resources` section in the `mta.yaml` file with this:
 ```
 resources:
   - name: bookshop-db-hdi-container
@@ -27,7 +30,7 @@ resources:
     parameters:
       service: hanatrial
 ```
-This changes ensures that the correct HDI container will be used in the trial landscape. This step is only necessary when you want to deploy the project to the trial landscape.
+This step is only necessary when you want to deploy the project to the trial landscape.
 
 ### 3. Add a independent project descriptor
 You might have noticed that there is no module descriptor for the `srv module` defined. For the local development, such a descriptor is not needed as CDS knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, such a file is required to define the module dependencies and start commands.
