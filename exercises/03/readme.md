@@ -173,6 +173,8 @@ SYNOPSIS
     Deploys the given model to a database. If no model is given it looks up
     according configuration from package.json or .cdsrc.json in key
     cds.requires.db.  Same for the database.
+    
+    [...]
 ```
 
 Use this command to deploy the data model and service definition to a new SQLite-based database (databases with SQLite are simply files on the local filesystem).
@@ -293,4 +295,4 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 
 1. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
 
-1. Even though the `Authors` entity definition finally appeared in the metadata file at the end of step 2, you might have noticed that the content of the metadata document looked shorter overall than it did. What disappeared?
+1. Why might you use the `cds compile` command at all?
