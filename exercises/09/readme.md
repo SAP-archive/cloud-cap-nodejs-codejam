@@ -93,7 +93,7 @@ resources:
     properties:
       hdi-container-name: ${service-name}
     parameters:
-      service: hanatrial
+      service: hana
 
 ```
 
