@@ -30,6 +30,9 @@ resources:
     parameters:
       service: hanatrial
 ```
+
+> Take care to get the whitespace and indentation right!
+
 This step is only necessary when you want to deploy the project to the trial landscape.
 
 ### 3. Add a independent project descriptor
