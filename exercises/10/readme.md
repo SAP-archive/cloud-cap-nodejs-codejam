@@ -13,7 +13,8 @@ At the end of these steps, your project will be deployed to SAP Cloud Platform C
 :point_right: Run the following command from your command line to log in to the referenced Cloud Foundry endpoint. When prompted use your SAP Cloud Platform credentials.
 
 ```
-cf login -a https://api.cf.eu10.hana.ondemand.com
+user@host:~/bookshop
+=> cf login -a https://api.cf.eu10.hana.ondemand.com
 ```
 
 ### 2. Tailor the HDI container declaration to the trial landscape
@@ -138,14 +139,16 @@ We're almost there. To make our project ready for deployment, we need to package
 
 :point_right: Trigger the build process with the following command.
 ```
-npm run build:mta
+user@host:~/bookshop
+=> npm run build:mta
 ```
 ### 7. Deploy the archive
 Now you should see a new directory `mta_archives/` which contains the `ID` and `version` we defined in to `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
 
 :point_right: Execute the following command to trigger the deployment process.
 ```
-cf deploy mta_archives/bookshop_1.0.0.mtar
+user@host:~/bookshop
+=> cf deploy mta_archives/bookshop_1.0.0.mtar
 ```
 
 > Note: You can also use `npm run deploy:cf` to trigger both, the build and deploy steps
