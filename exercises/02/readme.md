@@ -226,8 +226,6 @@ With a single command, you've initialized a basic OData service project and with
 
 1. What is the difference between the data model and the service definition? Why do we need both?
 
-1. What are the annotations in the metadata document describing, and where do they come from?
-
 1. What is returned in response to a request for the Books entityset resource right now?
 
 1. What happened to the `cds` process when you accessed the entityset? Can you think of reasons why this happened?
