@@ -143,6 +143,8 @@ entity Books {
 }
 ```
 
+> You **may** wish to use VS Code's "auto save" feature, then again you may not. Just in case you do, you can turn it on via the **File -> Auto Save** menu option.
+
 :point_right: Create a new file called `cat-service.cds` in the `srv/` directory of the recently created project, copy the following lines to the file and save it: 
 
 ```cds: 
