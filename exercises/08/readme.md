@@ -124,12 +124,33 @@ At this point we're confident enough to start adding custom logic, by [registeri
 :point_right: Add the following code directly after the call to `console.log` in the `cat-service.js` file:
 
 ```js
-  if (srv.name === 'CatalogService') {
-    srv.after ('READ', 'Books', xs => {
-      xs.map(x => x.stock > 500 && (x.title = `(10% off!) ${x.title}`))
-    })
+	if (srv.name === 'CatalogService') {
+
+		srv.after ('READ', 'Books', xs => {
+
+      // CHOOSE ONLY ONE OF THESE ...
+      // AND LET US KNOW YOUR PREFERENCE AND WHY! :-)
+
+			// option 1 start
+			xs.map(x => x.stock > 500 && (x.title = `(5% off!) ${x.title}`))
+			// option 1 end
+
+			// option 2 start
+			let newBooks = [];
+			xs.forEach(x => {
+				if (x.stock > 500) {
+					x.title = '(10% off!) ' + x.title
+				}
+				newBooks.push(x)
+			})
+			return newBooks
+			// option 2 end
+
+		})
+
   }
 ```
+
 
 :point_right: Restart the service (you can choose to do it normally or in debug mode so you can explore with breakpoints in this code) and check that the [titles for certain books](http://localhost:4004/catalog/Books) have been modified to show a discount, like this:
 
