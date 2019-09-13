@@ -214,6 +214,16 @@ curl \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
 ```
+
+For Windows users, this is the equivalent command:
+
+```
+curl ^
+  -d "{\"book_ID\":201,\"quantity\":5}" ^
+  -H "Content-Type: application/json" ^
+  http://localhost:4004/catalog/Orders
+```
+
 **Invoke-WebRequest**
 ```powershell
 Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
