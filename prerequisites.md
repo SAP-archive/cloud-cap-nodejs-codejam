@@ -11,7 +11,6 @@ Each participant should have their own laptop with enough admin privileges to be
 Each attendee should have an SAP Cloud Platform trial account, and specifically a Cloud Foundry environment with an organization and a space defined. See the following tutorials for more details:
 
 - [Get a Free Trial Account on SAP Cloud Platform](https://developers.sap.com/tutorials/hcp-create-trial-account.html)
-- [Create a Cloud Foundry Account](https://developers.sap.com/tutorials/cp-cf-create-account.html)
 - [Log in via the Cloud Foundry Command Line Interface](https://developers.sap.com/tutorials/cp-cf-download-cli.html)
 
 ## Software
