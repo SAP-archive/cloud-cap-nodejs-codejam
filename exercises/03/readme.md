@@ -102,25 +102,32 @@ Don't forget to save the file.
 
 ### 4. Deploy the service to a persistence layer
 
-As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
+As it stands, the OData service uses the file based database SQLite. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
 
-:point_right: Update the database definition in `package.json` to include a SQLite DB for local testing. This will fix the issue you encountered before when the Node.js `cds` process crashed. Currently, you'll see a section that describes the persistence layer configuration:
+:point_right: Update the database definition in `package.json` to include a HANA DB for productional usage. Currently, you'll see a section that describes the persistence layer configuration:
 
 ```json
 "cds": {
-    "requires": {
-        "db": {
-            "kind": "hana",
-            "model": [
-                "db",
-                "srv"
-            ]
+        "requires": {
+            "db": {
+                "kind": "sqlite",
+                "model": [
+                    "db",
+                    "srv"
+                ],
+                "credentials": {
+                    "database": "bookshopSQL.db"
+                }
+            }
+        },
+        "odata": {
+            "version": "v4"
         }
     },
-    "odata": {
-        "version": "v4"
-    }
-}
+    "files": [
+        "db",
+        "srv"
+    ]
 
 ```
 
@@ -130,34 +137,34 @@ To prepare the app for a multiple databases, change the content of the "cds" sec
 
 ```json
 "cds": {
-    "requires": {
-      "db": {
-         "kind": "sqlite",
-         "model": [
-             "db", 
-             "srv"
-         ],
-         "credentials": {
-             "database": "bookshop.db"
-         },
-         "[production]": {
-             "kind": "hana"
-         }
-      }
+        "requires": {
+            "db": {
+                "kind": "sqlite",
+                "model": [
+                    "db",
+                    "srv"
+                ],
+                "credentials": {
+                    "database": "bookshopSQL.db"
+                },
+                "[production]": {
+                    "kind": "hana"
+                }
+            }
+        },
+        "odata": {
+            "version": "v4"
+        }
     },
-    "odata": {
-        "version": "v4"
-    }
-},
 ```
 
-:point_right: As we want to use a local SQLite database, we need to install a client library to allow the CAP engine to communicate with this DB. Install the `sqlite3` package for this purpose:
-```
-user@host:~/bookshop
-=> npm install -D sqlite3
-```
+_Note: As we want to use a local SQLite database, we need to install a client library to allow the CAP engine to communicate with this DB. This was already done by creating the project sceletion through `cds init --modules db,srv [...]`. Since the database and thus the library is only used in the development environment and not needed for productional usages, it'll only be installed in the development environment caused by the following section in the root package.json:_
 
-_Note: the use of the `-D` parameter signifies that the `sqlite3` package is a dependency for development purposes only. Have a look at what gets added to `package.json` at this point to see the two different types of package dependencies._
+```
+"devDependencies": {
+        "sqlite3": "^4.1.0"
+    },
+```
 
 :point_right: Explore the `cds deploy` command like this:
 
@@ -182,7 +189,7 @@ Use this command to deploy the data model and service definition to a new SQLite
 
 ```
 user@host:~/bookshop
-=> cds deploy
+=> cds deploy --to sqlite:bookshop.db
 ```
 
 This should complete fairly quietly.
