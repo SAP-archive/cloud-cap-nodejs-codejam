@@ -138,7 +138,7 @@ In the same way as you've done previously, it's now time to redeploy and then re
 
 ```sh
 user@host:~/bookshop
-=> cds deploy && cds serve all
+=> cds deploy --to sqlite:bookshop.db && cds serve all
  > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
  > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
 /> successfully deployed database to bookshop.db
