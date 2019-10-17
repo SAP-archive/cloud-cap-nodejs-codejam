@@ -74,7 +74,7 @@ Amongst other things, you should see a `--modules` option to specify a list of m
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose --skip-sample-models bookshop 
+=> cds init --modules db,srv --mta --insecure --verbose --skip-sample-models bookshop 
 ```
 
 You should see output that looks similar to this:
