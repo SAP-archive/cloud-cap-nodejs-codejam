@@ -17,26 +17,7 @@ user@host:~/bookshop
 => cf login -a https://api.cf.eu10.hana.ondemand.com
 ```
 
-### 2. Tailor the HDI container declaration to the trial landscape
-
-In a [previous exercise](../09) you may have seen that your `mta.yaml` deployment descriptor file referenced the "hana" service for the HDI container. We need to ensure that the correct HDI container will be used in the trial landscape. 
-
-:point_right: Replace the `resources` section in the `mta.yaml` file with this:
-```
-resources:
-  - name: bookshop-db-hdi-container
-    type: com.sap.xs.hdi-container
-    properties:
-      hdi-container-name: ${service-name}
-    parameters:
-      service: hanatrial
-```
-
-> Take care to get the whitespace and indentation right!
-
-This step is only necessary when you want to deploy the project to the trial landscape.
-
-### 3. Add a module descriptor file for the srv module
+### 2. Add a module descriptor file for the srv module
 
 You might have noticed that there is no module descriptor for the `srv` module defined. For local development, such a descriptor is not needed as CAP knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, a descriptor is required, to define the module dependencies and start commands.
 
@@ -71,7 +52,7 @@ You might have noticed that there is no module descriptor for the `srv` module d
 
 
 
-### 4. Add the app router configuration
+### 3. Add the app router configuration
 
 Similar to the `srv` module, we need to add a module descriptor for the `app` module as well. We will embed the UI source files into an app router, to be able to connect to the `srv` module and to forward requests to it.
 
@@ -113,7 +94,7 @@ Similar to the `srv` module, we need to add a module descriptor for the `app` mo
 This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
 
 
-### 5. Add npm scripts to trigger the deployment
+### 4. Add npm scripts to trigger the deployment
 
 So far, the `package.json` file in your project root only defines scripts for local project execution.
 
@@ -134,7 +115,7 @@ user@host:~/bookshop
 => npm install mbt
 ```
 
-### 6. Build the project
+### 5. Build the project
 We're almost there. To make our project ready for deployment, we need to package it into a single archive which can be used a delivery unit.
 
 :point_right: Trigger the build process with the following command.
@@ -142,7 +123,7 @@ We're almost there. To make our project ready for deployment, we need to package
 user@host:~/bookshop
 => npm run build:mta
 ```
-### 7. Deploy the archive
+### 6. Deploy the archive
 Now you should see a new directory `mta_archives/` which contains an archive file named with the `ID` and `version` we defined in the `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
 
 :point_right: Execute the following command to trigger the deployment process:
@@ -155,7 +136,7 @@ user@host:~/bookshop
 > Note: You can also use `npm run deploy:cf` to trigger both, the build and deploy steps
 
 
-### 8. Check the apps and services in Cloud Foundry
+### 7. Check the apps and services in Cloud Foundry
 
 You can and should check the status of what you've deployed to your trial Cloud Foundry environment on the SAP Cloud Platform. 
 
