@@ -176,7 +176,7 @@ This should open up the terminal at the bottom of VS Code like this:
 
 ![integrated terminal in view](integrated-terminal-in-view.png)
 
-:point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify the service definition directory `srv` in the invocation:
+:point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving.
 
 ```sh
 user@host:~/bookshop
