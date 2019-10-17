@@ -30,7 +30,6 @@ user@host:~/bookshop
 => cds serve all
 ```
 
-(If you want, you can also use `cds serve srv` like you did in [exercise 02](../02/)).
 
 :point_right: Open up (or refresh) the [service metadata document](http://localhost:4004/catalog/$metadata) and check for the entity definition you've just added.
 
