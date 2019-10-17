@@ -347,7 +347,7 @@ _Note: You may see some warnings that there are no texts for the internationaliz
 
 The final thing to do in this step is to redeploy because we have added CDS artefacts.
 
-:point_right: Do this now, with `cds deploy`, before restarting the service with `cds serve all`.
+:point_right: Do this now, with `cds deploy --to sqlite:bookshop.db`, before restarting the service with `cds serve all`.
 
 
 ### 8. Test the app
@@ -374,7 +374,7 @@ Book=Book
 Books=Books
 ```
 
-:point_right: Redeploy and restart the service (`cds deploy && cds serve all`) and reload the app. You should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
+:point_right: Redeploy and restart the service (`cds deploy --to sqlite:bookshop.db && cds serve all`) and reload the app. You should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
 
 
 ## Summary
