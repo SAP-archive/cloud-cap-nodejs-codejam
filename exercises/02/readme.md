@@ -180,23 +180,23 @@ This should open up the terminal at the bottom of VS Code like this:
 
 ```sh
 user@host:~/bookshop
-=> cds serve srv
+=> cds serve all
 ```
 
-Note: You can also specify simply `cds serve all` to have `cds` look for appropriate configuration to serve. There is also currently a synonym `cds run` which will do essentially the same thing.
+Note: There is also currently a synonym `cds run` which will do essentially the same thing.
 
 You should see output similar to this:
 
 ```
-[cds] - connect to datasource - hana:db,srv
+[cds] - connect to datasource - sqlite:bookshopSQL.db
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
   srv/cat-service.cds
   db/data-model.cds
 
-[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
-[cds] - launched in: 566.451ms
+[cds] - launched in: 618.665ms
+[cds] - server listening on http://localhost:4004 ...
 ```
 
 The OData service is now running, and available on [http://localhost:4004](http://localhost:4004).
