@@ -29,7 +29,7 @@ Your directory structure should then look something like this (the screenshot al
 
 ```sh
 user@host:~/bookshop
-=> cds deploy
+=> cds deploy --to sqlite:bookshop.db
 ```
 
 During deployment this time you should see extra messages:
@@ -94,4 +94,4 @@ Your OData service now has sample data that you can access via OData operations.
 
 1. Does the order of the fields defined in the CSV files have to match the order of the properties defined in the entities in the data model?
 
-1. Where do you think the format of the CSV file names has come from?
+2. Where do you think the format of the CSV file names has come from?
