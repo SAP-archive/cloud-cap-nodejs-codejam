@@ -63,8 +63,8 @@ This should eventually produce output similar to this:
 
 ```sh
 /user/.nvm/versions/node/v10.15.3/bin/cds -> /user/.nvm/versions/node/v10.15.3/lib/node_modules/@sap/cds/bin/cds.js
-+ @sap/cds@3.16.3
-added 38 packages from 75 contributors in 6.015s
++ @sap/cds@3.17.4
+added 67 packages from 104 contributors in 5.296s
 ```
 
 Here you can see that the version of the `@sap/cds` package installed is 3.16.3. It may be that the version of `@sap/cds` that is installed when you do this exercise will be different (newer).
