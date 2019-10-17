@@ -194,6 +194,8 @@ user@host:~/bookshop
 
 This should complete fairly quietly.
 
+_Note: It's often not needed to have a persistent database. You could also use `cds run --in-memory` - CAP will automatically bootstrap an in-memory sqlite database when starting the server process._
+
 ### 5. Explore the new database
 
 At this point you should have a new file `bookshop.db` in the project folder.
