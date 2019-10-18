@@ -26,7 +26,7 @@ Before the CodeJam day, participants must ensure they have the following install
 - Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
 - Node.js (latest LTS version 10): <https://nodejs.org/en/download/>
 - Postman : <https://www.getpostman.com/downloads/>
-- The Cloud Foundry command line tool: <https://docs.cloudfoundry.org/cf-cli/install-go-cli.html>
+- The Cloud Foundry command line tool: <https://github.com/cloudfoundry/cli/releases/tag/v6.46.1>
 - The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin): 
     ```bash
     cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
