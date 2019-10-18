@@ -127,8 +127,6 @@ As it stands, the OData service uses the file based database SQLite. We can actu
 
 ```
 
-_Note: Ensure you select the top level `package.json` file - there's also one in the `db/` directory but that's not the one you want._
-
 To prepare the app for a multiple databases, change the content of the "cds" section to this (not forgetting the comma at the end):
 
 ```json
