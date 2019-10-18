@@ -123,11 +123,7 @@ As it stands, the OData service uses the file based database SQLite. We can actu
         "odata": {
             "version": "v4"
         }
-    },
-    "files": [
-        "db",
-        "srv"
-    ]
+    }
 
 ```
 
