@@ -139,7 +139,7 @@ To prepare the app for a multiple databases, change the content of the "cds" sec
                     "srv"
                 ],
                 "credentials": {
-                    "database": "bookshopSQL.db"
+                    "database": "bookshop.db"
                 },
                 "[production]": {
                     "kind": "hana"
