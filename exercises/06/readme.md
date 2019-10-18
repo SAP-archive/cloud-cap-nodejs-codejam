@@ -86,7 +86,7 @@ What does this do, precisely? Let's find out.
 
 ```sh
 user@host:~/bookshop
-=> cds deploy && cds serve all
+=> cds deploy --to sqlite:bookshop.db && cds serve all
 ```
 
 :point_right: Now examine the OData service's [metadata](http://localhost:4004/catalog/$metadata), and you should find annotations that look like this:
