@@ -40,24 +40,7 @@ During deployment this time you should see extra messages:
 /> successfully deployed database to bookshop.db
 ```
 
-
-### 3. Adjust HANA configuration file
-
-There is a configuration file which is used when a deployment is made to HANA on the SAP Cloud Platform. It contains various information about plugins that are needed. When a CAP project is initialized with `cds init` such a configuration file is created as part of what is generated. 
-
-There is a general plugin version setting that refers to HANA 2 but we need to modify that for use within the Cloud Foundry trial environment on SAP Cloud Platform. 
-
-The configuration file is `.hdiconfig` and it can be found in the `db/src/` directory.
-
-Edit this file to replace the current value for `plugin_version` (near the top of the file) to be as follows:
-
-```
-"plugin_version": "12.1.0",
-```
-
-> We could make this modification later but as we're thinking about data right now we might as well make the change here.
-
-### 4. Restart the service
+### 3. Restart the service
 
 :point_right: Restart the service thus:
 
@@ -71,7 +54,7 @@ Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localh
 ![Books and Authors in the OData service](books-and-authors.png)
 
 
-### 5. Try out some OData query operations
+### 4. Try out some OData query operations
 
 The [OData standard](https://www.odata.org/) describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly.
 
