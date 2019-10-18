@@ -116,7 +116,7 @@ As it stands, the OData service uses the file based database SQLite. We can actu
                     "srv"
                 ],
                 "credentials": {
-                    "database": "bookshopSQL.db"
+                    "database": "bookshop.db"
                 }
             }
         },
