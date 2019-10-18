@@ -99,7 +99,7 @@ resources:
 
 This snippet not only describes the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
 
-_Note: If you want to run the application in non-trial environment, use `service: hana` instead of `service: hana`.
+_Note: If you want to run the application in non-trial environment, use `service: hana` instead of `service: hanatrial`.
 
 
 
