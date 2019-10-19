@@ -93,8 +93,32 @@ Similar to the `srv` module, we need to add a module descriptor for the `app` mo
 
 This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
 
+### 4. Add a package.json to your srv directory
 
-### 4. Add npm scripts to trigger the deployment
+Since we didn't define that we want to to run our application in the SAP Cloud Platform, we need to add a descriptor how to initiate loading CSV files for SAP HANA in SAP Cloud Platform. This would have been created automatically by providing `--db-technology hana` and `--mta` to `cds init`.
+
+:point_right: Create a new file called `package.json` in the `srv/` directory and paste the following content: 
+
+```
+{
+  "name": "deploy",
+  "dependencies": {
+    "@sap/hdi-deploy": "^3.8.2"
+  },
+  "engines": {
+    "node": "^8"
+  },
+  "scripts": {
+    "postinstall": "node .build.js",
+    "start": "node node_modules/@sap/hdi-deploy/deploy.js"
+  }
+}
+
+```
+
+_Note: If you use `--db-technology hana` to create your project, you can also use `cds deploy --to hana` to at least deploy the database artefacts to a HDI container automatically. 
+
+### 5. Add npm scripts to trigger the deployment
 
 So far, the `package.json` file in your project root only defines scripts for local project execution.
 
@@ -115,7 +139,7 @@ user@host:~/bookshop
 => npm install mbt
 ```
 
-### 5. Build the project
+### 6. Build the project
 We're almost there. To make our project ready for deployment, we need to package it into a single archive which can be used a delivery unit.
 
 :point_right: Trigger the build process with the following command.
@@ -123,7 +147,7 @@ We're almost there. To make our project ready for deployment, we need to package
 user@host:~/bookshop
 => npm run build:mta
 ```
-### 6. Deploy the archive
+### 7. Deploy the archive
 Now you should see a new directory `mta_archives/` which contains an archive file named with the `ID` and `version` we defined in the `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
 
 :point_right: Execute the following command to trigger the deployment process:
@@ -136,7 +160,7 @@ user@host:~/bookshop
 > Note: You can also use `npm run deploy:cf` to trigger both, the build and deploy steps
 
 
-### 7. Check the apps and services in Cloud Foundry
+### . Check the apps and services in Cloud Foundry
 
 You can and should check the status of what you've deployed to your trial Cloud Foundry environment on the SAP Cloud Platform. 
 
