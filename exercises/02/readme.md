@@ -74,7 +74,7 @@ Amongst other things, you should see a `--modules` option to specify a list of m
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose --skip-sample-models bookshop 
+=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose --skip-sample-models bookshop
 ```
 
 You should see output that looks similar to this:
@@ -111,7 +111,7 @@ If this approach is not available to you, simply start VS Code through your oper
 
 ### 3. Explore the initialized project structure
 
-The skeleton project that has been initialized is visible in VS Code. This is what it should look like. 
+The skeleton project that has been initialized is visible in VS Code. This is what it should look like.
 
 ![initialized project in VS Code](initialized-project-in-vscode.png)
 
@@ -133,7 +133,7 @@ Besides the directories there are also a number of files, including the project'
 
 :point_right: Create a new file called `data-model.cds` in the `db/` directory of the recently created project, copy the following lines to the file and save it:
 
-```cds: 
+```cds:
 namespace my.bookshop;
 
 entity Books {
@@ -145,9 +145,9 @@ entity Books {
 
 > You **may** wish to use VS Code's "auto save" feature, then again you may not. Just in case you do, you can turn it on via the **File -> Auto Save** menu option.
 
-:point_right: Create a new file called `cat-service.cds` in the `srv/` directory of the recently created project, copy the following lines to the file and save it: 
+:point_right: Create a new file called `cat-service.cds` in the `srv/` directory of the recently created project, copy the following lines to the file and save it:
 
-```cds: 
+```cds:
 using my.bookshop as my from '../db/data-model';
 
 service CatalogService {
@@ -155,7 +155,7 @@ service CatalogService {
 }
 ````
 
-You have now created a entity definition as well as a service definition for your project. 
+You have now created a entity definition as well as a service definition for your project.
 
 ### 5. Examine the contents data model and service definition files
 
@@ -176,14 +176,12 @@ This should open up the terminal at the bottom of VS Code like this:
 
 ![integrated terminal in view](integrated-terminal-in-view.png)
 
-:point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify the service definition directory `srv` in the invocation:
+:point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify `all`, like this, so that `cds` will look for appropriate configuration to serve:
 
 ```sh
 user@host:~/bookshop
-=> cds serve srv
+=> cds serve all
 ```
-
-Note: You can also specify simply `cds serve all` to have `cds` look for appropriate configuration to serve. There is also currently a synonym `cds run` which will do essentially the same thing.
 
 You should see output similar to this:
 

@@ -30,8 +30,6 @@ user@host:~/bookshop
 => cds serve all
 ```
 
-(If you want, you can also use `cds serve srv` like you did in [exercise 02](../02/)).
-
 :point_right: Open up (or refresh) the [service metadata document](http://localhost:4004/catalog/$metadata) and check for the entity definition you've just added.
 
 You're right. It's not there.
@@ -135,7 +133,7 @@ To prepare the app for a multiple databases, change the content of the "cds" sec
       "db": {
          "kind": "sqlite",
          "model": [
-             "db", 
+             "db",
              "srv"
          ],
          "credentials": {
@@ -173,7 +171,7 @@ SYNOPSIS
     Deploys the given model to a database. If no model is given it looks up
     according configuration from package.json or .cdsrc.json in key
     cds.requires.db.  Same for the database.
-    
+
     [...]
 ```
 
