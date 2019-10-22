@@ -97,7 +97,7 @@ This file not only defines the welcome page, but also defines which requests are
 
 Since we didn't define that we want to to run our application in the SAP Cloud Platform, we need to add a descriptor how to initiate loading CSV files for SAP HANA in SAP Cloud Platform. This would have been created automatically by providing `--db-technology hana` and `--mta` to `cds init`.
 
-:point_right: Create a new file called `package.json` in the `srv/` directory and paste the following content: 
+:point_right: Create a new file called `package.json` in the `db/` directory and paste the following content: 
 
 ```
 {
@@ -116,7 +116,25 @@ Since we didn't define that we want to to run our application in the SAP Cloud P
 
 ```
 
-_Note: If you use `--db-technology hana` to create your project, you can also use `cds deploy --to hana` to at least deploy the database artefacts to a HDI container automatically. 
+_Note: If you use `--db-technology hana` to create your project, you can also use `cds deploy --to hana` to at least deploy the database artefacts to a HDI container automatically.
+
+:point_right: Create a new file called `build.js` in the `db/` directory and paste the following content: 
+
+```JavaScript
+const fs = require('fs');
+const childproc = require('child_process');
+
+if (fs.existsSync('../package.json')) {
+    // true at build-time, false at CF staging time
+    childproc.execSync('npm install && npm run build', {
+        cwd: '..',
+        stdio: 'inherit'
+    });
+}
+ 
+```
+
+_Note: Both the `package.json` and `build.js` file would have been created automatically by adding `--db-technology hana` to the `cds init` command. Since deployment to SAP HANA and SQLite was somewhat buggy at the time of our CodeJam, you have to do that now manually. 
 
 ### 5. Add npm scripts to trigger the deployment
 
