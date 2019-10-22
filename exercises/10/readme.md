@@ -93,7 +93,7 @@ Similar to the `srv` module, we need to add a module descriptor for the `app` mo
 
 This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
 
-### 4. Add a package.json to your srv directory
+### 4. Add files to your db directory
 
 Since we didn't define that we want to to run our application in the SAP Cloud Platform, we need to add a descriptor how to initiate loading CSV files for SAP HANA in SAP Cloud Platform. This would have been created automatically by providing `--db-technology hana` and `--mta` to `cds init`.
 
