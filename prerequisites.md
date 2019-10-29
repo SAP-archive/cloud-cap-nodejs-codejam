@@ -18,15 +18,15 @@ Each attendee should have an SAP Cloud Platform trial account, and specifically 
 
 There are some mandatory and optional requirements with respect to software. The installation instructions are dependent on the operating system. Before the CodeJam day, participants must ensure they have the following installed on their laptops:
 
-### Windows
+### Windows 
 
-Please install the following tools manuall:
+Please install the following tools manually:
 
 - Chrome (latest version): <https://www.google.com/chrome/>
 - Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
 - Postman : <https://www.getpostman.com/downloads/>
 
-1. Install Chocolatey by executing this as **Administrator**:
+1. Install Chocolatey (Package Manager) by executing this as an **Administrator**:
 
   ```bash
   @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
@@ -39,7 +39,7 @@ Please install the following tools manuall:
   
 3. Now use Chocolatey to install SQLite:
   ```bash
-  choco install nodejs-lts
+  choco install sqlite
   ```
 
 4. Use Chocolatey to install make:
@@ -57,38 +57,24 @@ Please install the following tools manuall:
   cf install-plugin multiapps
   ```
   
-
-- The Cloud Foundry command line tool: <https://github.com/cloudfoundry/cli/releases/tag/v6.46.1>
-- The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin): 
-    ```bash
-    cf install-plugin multiapps
-    ```
-    (Details: <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>)
-- Windows Build Tools (for Windows User only): 
-    ```bash
-    npm install -g windows-build-tools@4.0.0
-    ````
-
-
 Once you're done installing, please ensure you can successfully start the executables `sqlite3`, `make`, `cf` and `node` from the command line, and check that you can successfully install packages with the `npm` command that also gets installed with Node.js.
 
-#### Installing SQLite and make on Windows
+### macOS/Linux 
 
-Use the [Chocolatey](https://chocolatey.org/) package manager:
+Please install the following tools manually:
 
-1. Install Chocolatey by executing this as admin:
+- Chrome (latest version): https://www.google.com/chrome/
+- Visual Studio Code (also known as VS Code): https://code.visualstudio.com/download
+- Node.js (latest LTS version 10): https://nodejs.org/en/download/
+- Postman : https://www.getpostman.com/downloads/
+- The Cloud Foundry command line tool: https://github.com/cloudfoundry/cli/releases
 
+Furthermore, use the Cloud Foundry CLI to install a plugin to enable the Cloud Foundry CLI to later deploy your Multi-Target Application (MTA) to Cloud Foundry:
   ```bash
-  @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+  cf install
   ```
-
-2. Now use Chocolatey to install SQLite and then make:
-  ```bash
-  choco install sqlite
-  choco install make
-  ```
-
-### Optional
+  
+### Recommended
 
 Some of the exercises require you to make HTTP requests, and for this you can use Postman (a mandatory software requirement above). Alternatively you can also use cURL, a command line HTTP client. Instructions for the HTTP requests in each exercise are given for both Postman and cURL. So you may want to install cURL; you can do so by visiting [https://curl.haxx.se/](https://curl.haxx.se/).
 
