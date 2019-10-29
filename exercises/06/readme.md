@@ -25,11 +25,10 @@ Right now the `Books` and `Authors` entities are exposed in the `CatalogService`
 
 :point_right: In the Postman collection you imported, try out the requests in the folder "**(A) Before @readonly annotations**", running them in the order they're presented (the creation of the new book is for the new author, which needs to exist first).
 
-If you want to use the command line instead of Postman, use the following invocations.
+If you want to use `curl` on the command line instead of Postman, use the following invocations.
 
 First, add the author "Iain M Banks":
 
-**curl**
 ```
 curl \
   -d '{"ID": 162, "name": "Iain M Banks"}' \
@@ -37,30 +36,13 @@ curl \
   http://localhost:4004/catalog/Authors
 ```
 
-**Invoke-WebRequest**
-```powershell
-Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Authors `
-  -ContentType "application/json" `
-  -Method POST `
-  -Body '{"ID": 162, "name": "Iain M Banks"}'
-```
-
 Now add the book "Consider Phlebas":
 
-**curl**
 ```
 curl \
   -d '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
-```
-
-**Invoke-WebRequest**
-```powershell
-Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books `
-  -ContentType "application/json" `
-  -Method POST `
-  -Body '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }'
 ```
 
 Check that the creation requests are successful, and that you can see the new author and book in an OData Query operation: [http://localhost:4004/catalog/Authors?$expand=books](http://localhost:4004/catalog/Authors?$expand=books).
@@ -93,29 +75,20 @@ user@host:~/bookshop
 
 ![readonly annotations](readonly-annotations.png)
 
-Is this just a recommendation that can be overridden? Let's find out.
+Are these annotations just recommendations that can be overridden? Let's find out.
 
 
 ### 4. Attempt to modify the Books and Authors entitysets
 
 We can think of the annotations that we saw in the metadata document as guidelines for a UI, but we want to ensure that the restrictions are really in effect in the service itself. Let's try to create another entry in the `Books` entityset.
 
-:point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**". If you want to use the command line instead of Postman, use one of the following invocations to add the book "The Player of Games":
+:point_right: In the same Postman collection you imported, try out the first request in the folder "**(B) After @readonly annotations**". If you want to use `curl` on the command line instead of Postman, use the following invocation to add the book "The Player of Games":
 
-**curl**
 ```sh
 curl \
   -d '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
-```
-
-**Invoke-WebRequest**
-```powershell
-Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books `
-  -ContentType "application/json" `
-  -Method POST `
-  -Body '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }'
 ```
 
 The request is an OData Create request for a new book. You should see that this request is rejected with HTTP status code 405 "Method Not Allowed", with an error like this supplied in the response body:
@@ -135,19 +108,12 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 [2019-05-29T15:16:39.694Z | WARNING | 1939700]: Method Not Allowed
 ```
 
-:point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove the book "The Raven". If you want to use command line instead of Postman, use one of the following invocations:
+:point_right: Next, try out the second request in that same folder - it's an OData Delete operation, to remove the book "The Raven". If you want to use `curl` on the command line instead of Postman, use this invocation:
 
-**curl**
 ```sh
 curl \
   -X DELETE \
   'http://localhost:4004/catalog/Books(251)'
-```
-
-**Invoke-WebRequest**
-```powershell
-Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Books%28251%29 `
-  -Method DELETE
 ```
 
 It should also fail in a similar way.
