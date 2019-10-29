@@ -16,31 +16,59 @@ Each attendee should have an SAP Cloud Platform trial account, and specifically 
 
 ## Software
 
-There are some mandatory and optional requirements with respect to software.
+There are some mandatory and optional requirements with respect to software. The installation instructions are dependent on the operating system. Before the CodeJam day, participants must ensure they have the following installed on their laptops:
 
-### Mandatory
+### Windows
 
-Before the CodeJam day, participants must ensure they have the following installed on their laptops:
+Please install the following tools manuall:
 
 - Chrome (latest version): <https://www.google.com/chrome/>
 - Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
-- Node.js (latest LTS version 10): <https://nodejs.org/en/download/>
 - Postman : <https://www.getpostman.com/downloads/>
+
+1. Install Chocolatey by executing this as **Administrator**:
+
+  ```bash
+  @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+  ```
+
+2. Now use Chocolatey to install Node.js (LTS):
+  ```bash
+  choco install nodejs-lts
+  ```
+  
+3. Now use Chocolatey to install SQLite:
+  ```bash
+  choco install nodejs-lts
+  ```
+
+4. Use Chocolatey to install make:
+  ```bash
+  choco install make
+  ```
+
+5. Use Chocolatey to install the Cloud Foundry CLI:
+  ```bash
+  choco install cloudfoundry-cli
+  ```
+  
+6. Use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
+  ```bash
+  cf install-plugin multiapps
+  ```
+  
+
 - The Cloud Foundry command line tool: <https://github.com/cloudfoundry/cli/releases/tag/v6.46.1>
 - The Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin): 
     ```bash
-    cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
     cf install-plugin multiapps
     ```
     (Details: <https://github.com/cloudfoundry-incubator/multiapps-cli-plugin>)
-- Make : <https://www.gnu.org/software/make/>
-- SQLite : <https://sqlite.org/index.html>
 - Windows Build Tools (for Windows User only): 
     ```bash
     npm install -g windows-build-tools@4.0.0
     ````
 
-_Note: If you're running Windows, it's likely that you won't have `SQLite` or `make` installed. In this case, we recommend that you use the [Chocolatey](https://chocolatey.org/) package manager to install both ([SQLite](https://chocolatey.org/packages/sqlite) and [make](https://chocolatey.org/packages/make)) - see below._
 
 Once you're done installing, please ensure you can successfully start the executables `sqlite3`, `make`, `cf` and `node` from the command line, and check that you can successfully install packages with the `npm` command that also gets installed with Node.js.
 
