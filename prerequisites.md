@@ -18,7 +18,7 @@ Each attendee should have an SAP Cloud Platform trial account, and specifically 
 
 There are some mandatory and optional requirements with respect to software. The installation instructions are dependent on the operating system. Before the CodeJam day, participants must ensure they have the following installed on their laptops. 
 
-There's also a [macOS section](https://github.com/maxstreifeneder/cloud-cap-nodejs-codejam/blob/master/prerequisites.md#macoslinux---mandatory) and [highly recommended Chrome extensions](./prerequisites.md#recommended-chrome-extensions). 
+There's also a [macOS section](./prerequisites.md#macoslinux---mandatory) and [highly recommended Chrome extensions](./prerequisites.md#recommended-chrome-extensions). 
 
 ### Windows - Mandatory
 
