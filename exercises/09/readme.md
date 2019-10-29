@@ -36,7 +36,7 @@ If there isn't anything that can be sensibly served in the `app/` directory it w
 </html>
 ```
 
-:point_right: Restart the service (with `cds serve all`) and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, you are not shown the "Welcome to cds.services" landing page - instead, the page is empty, except for the page title in the browser tab, that shows us that the HTML we entered has been loaded:
+:point_right: Restart the service (with `cds serve all`) and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, while the the page itself looks empty, there is the page title "Bookshop" in the browser tab, that shows us that the HTML we entered has been loaded:
 
 ![title in browser tab](title-in-browser-tab.png)
 
@@ -140,10 +140,9 @@ Here's a brief summary of what each of these `script` elements are for, in order
 1. Loading and bootstrapping of SAPUI5
 1. Some JavaScript to declare a function to run when the initialization of SAPUI5 is complete; the function creates a launchpad and places it into the Document Object Model
 
-Reloading the browser tab should now show the beginnings of something recognizable as a Fiori launchpad:
+Reloading the browser tab should now show the beginnings of something recognizable as a Fiori launchpad, like this:
 
 ![an empty Fiori launchpad](empty-fiori-launchpad.png)
-
 
 ### 4. Introduce a basic UI app to the Fiori launchpad
 
@@ -170,7 +169,7 @@ The first thing to do is to add an entry to the sandbox launchpad configuration 
 </script>
 ```
 
-Reloading the index page in the browser should show this:
+Reloading the index page in the browser should show something like this:
 
 ![Fiori launchpad with tile](launchpad-with-tile.png)
 
@@ -300,7 +299,7 @@ This is the point where you can introduce an `index.cds` file which controls whi
 using from './cat-service';
 ```
 
-_Note: At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty._
+> At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
 
 
 ### 7. Add annotations for the service
@@ -343,7 +342,7 @@ annotate CatalogService.Authors with {
 }
 ```
 
-_Note: You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now._
+> You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now.
 
 The final thing to do in this step is to redeploy because we have added CDS artefacts.
 
