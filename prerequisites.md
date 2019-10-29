@@ -16,9 +16,11 @@ Each attendee should have an SAP Cloud Platform trial account, and specifically 
 
 ## Software
 
-There are some mandatory and optional requirements with respect to software. The installation instructions are dependent on the operating system. Before the CodeJam day, participants must ensure they have the following installed on their laptops:
+There are some mandatory and optional requirements with respect to software. The installation instructions are dependent on the operating system. Before the CodeJam day, participants must ensure they have the following installed on their laptops. 
 
-### Windows 
+There's also a macOS section and highly recommended Chrome extensions. 
+
+### Windows - Mandatory
 
 Please install the following tools manually:
 
@@ -59,7 +61,7 @@ Please install the following tools manually:
   
 Once you're done installing, please ensure you can successfully start the executables `sqlite3`, `make`, `cf` and `node` from the command line, and check that you can successfully install packages with the `npm` command that also gets installed with Node.js.
 
-### macOS/Linux 
+### macOS/Linux - Mandatory
 
 Please install the following tools manually:
 
@@ -69,7 +71,7 @@ Please install the following tools manually:
 - Postman : https://www.getpostman.com/downloads/
 - The Cloud Foundry command line tool: https://github.com/cloudfoundry/cli/releases
 
-Furthermore, use the Cloud Foundry CLI to install the so called `multiappas`plugin. This plugin enables the Cloud Foundry CLI to deploy your Multi-Target Application (MTA) to Cloud Foundry:
+Furthermore, use the Cloud Foundry CLI to install the so called `multiapps`plugin. This plugin enables the Cloud Foundry CLI to deploy your Multi-Target Application (MTA) to Cloud Foundry. To do so, execute the following command in the Terminal.
   ```bash
   cf install-plugin multiapps
   ```
