@@ -40,7 +40,7 @@ Here the `Stats` service exposes the Orders entity in a read-only fashion as in 
 
 Now let's create a number of orders, and see what the `OrderInfo` entityset shows us. We can do this quickly using another Postman collection, and using Postman's "Collection Runner" feature.
 
-Note: If you want to do this using `curl` or `Invoke-WebRequest`, jump to the [using the command line](#commandline) section.
+Note: If you want to do this using `curl`, jump to the [using `curl` on the command line](#commandline) section.
 
 **Using Postman**
 
@@ -56,11 +56,9 @@ This screenshot shows what the collection looks like (it contains multiple POST 
 
 :point_right: Use the large blue "Run ..." button to execute all the requests - a results window should appear.
 
-<a name="commandline"></a>**Using the command line**
+<a name="commandline"></a>**Using `curl` on the command line**
 
 Order 2 copies of Wuthering Heights:
-
-**curl**
 
 ```sh
 curl \
@@ -69,18 +67,7 @@ curl \
   http://localhost:4004/catalog/Orders
 ```
 
-**Invoke-WebRequest**
-
-```powershell
-Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
-  -ContentType "application/json" `
-  -Method POST `
-  -Body '{"book_ID":201,"quantity":2}'
-```
-
 Order 7 copies of Eleonora:
-
-**curl**
 
 ```sh
 curl \
@@ -89,18 +76,7 @@ curl \
   http://localhost:4004/catalog/Orders
 ```
 
-**Invoke-WebRequest**
-
-```powershell
-Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
-  -ContentType "application/json" `
-  -Method POST `
-  -Body '{"book_ID":252,"quantity":7}'
-```
-
 Order 42 copies of The Hitch Hiker's Guide To The Galaxy (obviously!):
-
-**curl**
 
 ```sh
 curl \
@@ -108,16 +84,6 @@ curl \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
 ```
-
-**Invoke-WebRequest**
-
-```powershell
-Invoke-WebRequest -UseBasicParsing http://localhost:4004/catalog/Orders `
-  -ContentType "application/json" `
-  -Method POST `
-  -Body '{"book_ID":421,"quantity":42}'
-```
-
 
 Now it's time to take a look at what the service will show us for these orders. We know we can't look at the `Orders` entityset as it has a `@insertonly` annotation shortcut based restriction, so we turn to our new service `Stats`.
 
