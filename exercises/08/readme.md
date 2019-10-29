@@ -119,9 +119,9 @@ srv.path
 
 ### 5. Add custom logic
 
-At this point we're confident enough to start adding custom logic, by [registering custom handlers](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html).
+At this point we're confident enough to start adding custom logic, by [registering custom handlers](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/94c7b69cc4584a1a9dfd9cb2da295d5e.html). The custom logic should cause a discount message ("10% off!") to appear with the titles of books that are highly stocked (and therefore are those which we want to discount in order to get rid of). 
 
-:point_right: Add the following code directly after the call to `console.log` in the `cat-service.js` file:
+:point_right: Add the following code directly after the call to `console.log` in the `cat-service.js` file. As you do, notice in the code the comments that the custom logic is implemented in two different ways, using two different programming styles - you only need one of them. Comment out (or delete) one of them, leaving the one you prefer:
 
 ```js
   if (srv.name === 'CatalogService') {
@@ -132,7 +132,7 @@ At this point we're confident enough to start adding custom logic, by [registeri
       // AND LET US KNOW YOUR PREFERENCE AND WHY! :-)
 
       // option 1 start
-      xs.map(x => x.stock > 500 && (x.title = `(5% off!) ${x.title}`))
+      xs.map(x => x.stock > 500 && (x.title = `(10% off!) ${x.title}`))
       // option 1 end
 
       // option 2 start
