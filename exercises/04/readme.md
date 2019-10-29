@@ -7,7 +7,7 @@ In this exercise you'll seed the persistence layer with data from CSV files, whi
 
 ## Steps
 
-After completing these steps you'll have some authors and books data in your OData service and will have explored that data in the browser with OData query operations.
+After completing these steps you'll have some authors and books data in your OData service and will have explored that data in the browser with OData Query operations.
 
 
 ### 1. Bring sample CSV files in the project
@@ -49,12 +49,12 @@ user@host:~/bookshop
 => cds serve all
 ```
 
-Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Authors) entitysets in the OData service will show data in response to OData query and read operations.
+Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Authors) entitysets in the OData service will show data in response to OData Query and Read operations.
 
 ![Books and Authors in the OData service](books-and-authors.png)
 
 
-### 4. Try out some OData query operations
+### 4. Try out some OData Query operations
 
 The [OData standard](https://www.odata.org/) describes a number of different operations - Create, Read, Update, Delete and Query (otherwise known as 'CRUD+Q'). With your browser you can try out Read and Query operations directly.
 
