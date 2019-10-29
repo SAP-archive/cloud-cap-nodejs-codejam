@@ -74,7 +74,7 @@ entity Books {
 }
 ```
 
-Note that as you type, the CDS Language Services extension that you installed in [exercise 01](../01/) provides very useful command completion, recognising the entities defined as well as the CDS syntax itself:
+Note that as you type, the CDS Language Services extension for VS Code that you installed in [exercise 01](../01/) provides very useful command completion, recognising the entities defined as well as the CDS syntax itself:
 
 ![command completion](command-completion.png)
 
@@ -103,7 +103,7 @@ Don't forget to save the file.
 
 As it stands, the OData service has no storage. We can actually simulate storage with [service provider](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/b9c34890348b4f2184e07a6731bce50b.html) logic in JavaScript but that's not a path we want to explore right now (we'll look at it in [exercise 08](../08/)). Instead, we'll use a real database in the form of [SQLite](https://sqlite.org) and deploy the data model and service definition to it.
 
-:point_right: Update the database definition in `package.json` to include a SQLite DB for local testing. This will fix the issue you encountered before when the Node.js `cds` process crashed. Currently, you'll see a section that describes the persistence layer configuration:
+:point_right: Update the database definition in the project's top-level `package.json` file to include a SQLite DB for local testing. This will fix the issue you encountered before when the Node.js `cds` process crashed. Currently, you'll see a section that describes the persistence layer configuration:
 
 ```json
 "cds": {
@@ -123,7 +123,7 @@ As it stands, the OData service has no storage. We can actually simulate storage
 
 ```
 
-_Note: Ensure you select the top level `package.json` file - there's also one in the `db/` directory but that's not the one you want._
+> Ensure you select the top level `package.json` file - there's also one in the `db/` directory but that's not the one you want.
 
 To prepare the app for a multiple databases, change the content of the "cds" section to this (not forgetting the comma at the end):
 
@@ -156,7 +156,7 @@ user@host:~/bookshop
 => npm install -D sqlite3
 ```
 
-_Note: the use of the `-D` parameter signifies that the `sqlite3` package is a dependency for development purposes only. Have a look at what gets added to `package.json` at this point to see the two different types of package dependencies._
+> The use of the `-D` (or `--save-dev`) parameter signifies that the `sqlite3` package is a dependency for development purposes only. Have a look at what gets added to `package.json` at this point to see the two different types of package dependencies.
 
 :point_right: Explore the `cds deploy` command like this:
 
@@ -204,7 +204,7 @@ sqlite> .quit
 user@host:~/bookshop
 ```
 
-_Note: The `sqlite3` command line utility is not related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../../prerequisites.md)._
+> The `sqlite3` command line utility is not directly related to the `sqlite3` NPM package you just installed; it came from the installation of SQLite itself as described in the [prerequisites](../../prerequisites.md).
 
 
 ### 6. Dig into the link between the CDS definitions and the artefacts in the database
