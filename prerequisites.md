@@ -69,9 +69,9 @@ Please install the following tools manually:
 - Postman : https://www.getpostman.com/downloads/
 - The Cloud Foundry command line tool: https://github.com/cloudfoundry/cli/releases
 
-Furthermore, use the Cloud Foundry CLI to install a plugin to enable the Cloud Foundry CLI to later deploy your Multi-Target Application (MTA) to Cloud Foundry:
+Furthermore, use the Cloud Foundry CLI to install the so called `multiappas`plugin. This plugin enables the Cloud Foundry CLI to deploy your Multi-Target Application (MTA) to Cloud Foundry:
   ```bash
-  cf install
+  cf install-plugin multiapps
   ```
   
 ### Recommended
