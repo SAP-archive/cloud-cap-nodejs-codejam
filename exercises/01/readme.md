@@ -62,12 +62,12 @@ user@host:~
 This should eventually produce output similar to this:
 
 ```sh
-/user/.nvm/versions/node/v10.15.3/bin/cds -> /user/.nvm/versions/node/v10.15.3/lib/node_modules/@sap/cds/bin/cds.js
-+ @sap/cds@3.16.3
-added 38 packages from 75 contributors in 6.015s
+/Users/i347491/.nvm/versions/node/v10.16.3/bin/cds -> /Users/i347491/.nvm/versions/node/v10.16.3/lib/node_modules/@sap/cds/bin/cds.js
++ @sap/cds@3.18.3
+added 69 packages from 144 contributors in 6.416s
 ```
 
-Here you can see that the version of the `@sap/cds` package installed is 3.16.3. It may be that the version of `@sap/cds` that is installed when you do this exercise will be different (newer).
+Here you can see that the version of the `@sap/cds` package installed is 3.18.3. It may be that the version of `@sap/cds` that is installed when you do this exercise will be different (newer).
 
 ### 2. Install the CDS extension for VS Code
 
@@ -81,27 +81,28 @@ To install the downloaded extension in VS Code have a look at the screenshot bel
 
 ![CDS Extension installation in VS Code](vscode-extension-import.png)
 
-When successfully installed, you should see the extension thus:
+When successfully installed, you should see the extension thus (again, the version number may be different):
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
-**For macOS users only:** To be able to open VS Code from the OS command line you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS Code. 
+> **For macOS users only:** To be able to open VS Code from the command line (which you will be doing in a subsequent exercise) you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS Code. 
 
-Open the `Command Palette` by pressing `Ctrl-Shift-P` (Windows) or ⇧⌘P (macOS) in VS Code. You can also open it via the menu bar: View -> Command Palette.
+> Open the `Command Palette` with ⇧⌘P. You can also open it via the menu bar: View -> Command Palette.
 
-![Command Palette navigation in the menu bar](command-palette.png)
+> ![Command Palette navigation in the menu bar](command-palette.png)
 
-Search for `code` and press Enter. 
+> Search for `code` and press Enter. 
 
-![search for code in the command palette](install-code-path.png)
+> ![search for code in the command palette](install-code-path.png)
 
-A success message for the process should then appear at the bottom right of the screen. 
+> A success message for the process should then appear at the bottom right of the screen. 
 
-![message that the 'code' command was successfully installed](sucessfully-installed.png)
+> ![message that the 'code' command was successfully installed](sucessfully-installed.png)
 
 ### 3. Verify your development environment
 
-:point_right: Run the following command from the terminal to check whether all required tools are installed.
+:point_right: Run the following command from the terminal to check whether all required tools are installed (this is an experimental tool, please contact the instructor if you have any questions:
+.
 ```shell
 npx check-sap-cloud-readiness -codejam-cap
 ```
@@ -109,9 +110,8 @@ npx check-sap-cloud-readiness -codejam-cap
 You should see an output similar to this:
 ![out](output.png)
 
-If necessary, follow the printed instructions and double check the [prerequisites](../prerequisites.md) to install the missing tools. Please contact the instructor of this CodeJam if you need help.
+If necessary, double check the [prerequisites](../prerequisites.md) to install the missing tools. Please contact the instructor of this CodeJam if you need help.
 
-> This is an experimental tool, please contact the instructor if you have any questions.
 
 ## Summary
 
