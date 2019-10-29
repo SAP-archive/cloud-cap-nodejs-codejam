@@ -76,7 +76,7 @@ Furthermore, use the Cloud Foundry CLI to install the so called `multiapps`plugi
   cf install-plugin multiapps
   ```
   
-### Recommended
+### Recommended Chrome Extensions
 
 Some of the exercises require you to make HTTP requests, and for this you can use Postman (a mandatory software requirement above). Alternatively you can also use cURL, a command line HTTP client. Instructions for the HTTP requests in each exercise are given for both Postman and cURL. So you may want to install cURL; you can do so by visiting [https://curl.haxx.se/](https://curl.haxx.se/).
 
