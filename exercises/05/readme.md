@@ -207,7 +207,6 @@ If you want to create the Orders entities using the command line with `curl`, he
 
 :point_right: Order 5 copies of Wuthering Heights (no order ID specified):
 
-**curl**
 ```shell
 curl \
   -d '{"book_ID":201,"quantity":5}' \
@@ -226,7 +225,6 @@ curl ^
 
 :point_right: Order 9 copies of Life, The Universe And Everything (specifying an order ID):
 
-**curl**
 ```
 curl \
   -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' \
