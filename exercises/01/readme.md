@@ -101,8 +101,8 @@ When successfully installed, you should see the extension thus (again, the versi
 
 ### 3. Verify your development environment
 
-:point_right: Run the following command from the terminal to check whether all required tools are installed (this is an experimental tool, please contact the instructor if you have any questions:
-.
+:point_right: Run the following command from the terminal to check whether all required tools are installed (this is an experimental tool, please contact the instructor if you have any questions):
+
 ```shell
 npx check-sap-cloud-readiness -codejam-cap
 ```
