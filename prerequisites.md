@@ -37,26 +37,26 @@ Next, install Chocolatey by executing this **as an Administrator**:
 Now you must use Chocolatey to install the following mandatory software requirements:
 
 1. Use Chocolatey to install Node.js Long Term Support (LTS) version:
-  ```bash
-  choco install nodejs-lts
-  ```
+```bash
+choco install nodejs-lts
+```
   
-1. Use Chocolatey to install SQLite:
-  ```bash
-  choco install sqlite
-  ```
+2. Use Chocolatey to install SQLite:
+```bash
+choco install sqlite
+```
 
-1. Use Chocolatey to install make:
-  ```bash
-  choco install make
-  ```
+3. Use Chocolatey to install make:
+```bash
+choco install make
+```
 
-1. Use Chocolatey to install the Cloud Foundry command line interface (CLI):
+4. Use Chocolatey to install the Cloud Foundry command line interface (CLI):
   ```bash
   choco install cloudfoundry-cli
   ```
   
-1. Use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
+Finally, use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
   ```bash
   cf install-plugin multiapps
   ```
