@@ -9,16 +9,16 @@ With Core Data & Services (CDS) as the definition language and CAP as the framew
 
 ## Steps
 
-After completing these steps you'll be familiar with how you can use the CDS command line tool to initialize a project with an OData service.
+After completing these steps you'll be familiar with how you can use the `cds` command line tool to initialize a project with an OData service.
 
 
 ### 1. Initialize a new CAP project
 
-Before you start creating a new project we recommend that you create a dedicated directory for this CodeJam within your users directory instead of any system directories (e.g. DO NOT work in C:\Windows\System32).
+> Before you start creating a new project we recommend that you create a dedicated directory for this CodeJam within your home  directory instead of any system directories (e.g. DO NOT work in `C:\Windows\System32\`).
 
-The first thing to do in any new CAP based project is to initialize that project by indirectly creating a directory with various basic files in it. This can be achieved with the CDS command line tool `cds` which you installed in [exercise 01](../01/).
+For any new CAP based project you start by indirectly creating a directory containing various basic files. This can be achieved with the CDS command line tool `cds` which you installed in [exercise 01](../01/).
 
-The `cds` tool should be available in your executable path, having been installed as part of the Node.js `@sap/cds` package in the [previous exercise](../01/).
+The `cds` tool should be available in your executable path, having been installed globally as part of the Node.js `@sap/cds` package.
 
 :point_right: First, explore the `cds` command line tool by executing it with no parameters; you will see what options are available:
 
@@ -29,34 +29,25 @@ user@host:~
 USAGE
 
     cds <command> [<args>]
-    cds <src> == cds compile <src>
-
+    cds <src>  =  cds compile <src>
+    cds        =  cds help
 
 COMMANDS
 
-  c | compile    ...individual models (= the default)
-  d | deploy     ...data models to a database
-  s | serve      ...service models to REST clients
-  b | build      ...whole modules or projects
-  i | init       ...jump-starts a new project
-  e | env        get/set current cds configuration
-  r | repl       cds's read-eval-event-loop
-  h | help       shows usage for cds and individual commands
-  v | version    prints detailed version information
+    i | init       jump-start cds-based projects
+    c | compile    process models selectively
+    m | import     add models from external sources
+    s | serve      run servers locally
+    r | repl       read-eval-event loop
+    e | env        get/set cds configuration
+    b | build      prepare for deployment
+    d | deploy     e.g. to databases or cloud
+    v | version    get detailed version information
+    ? | help       get detailed usage information
 
-  cds help <command> gives more help about each (also with --help)
-  cds <file> without <command> defaults to cds compile.
-  cds without any arguments shows this help.
-
-
-EXAMPLES
-
-  cds model.cds
-  cds compile model.cds
-  cds compile model.json --to cdl
-  cds serve cat-service
-  cds build --clean
-  cds compile --help
+  Learn more about each with:
+  cds help <command> or
+  cds <command> ?
 ```
 
 Note that with `cds init` a new project can be quickly initialized.
@@ -68,9 +59,9 @@ user@host:~
 => cds init --help
 ```
 
-Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context. `--skip-sample-models` avoids the creation of sample skeleton files which you will build step by step in this CodeJam yourself.
+Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context. `--skip-sample-models` avoids the creation of sample CDS source files which you will build step by step in this CodeJam yourself.
 
-:point_right: Use all of these options to initialize a new project directory thus:
+:point_right: Use all of these options to initialize a new project directory called `bookshop` thus:
 
 ```sh
 user@host:~
@@ -82,16 +73,17 @@ You should see output that looks similar to this:
 ```
 Initializing project in folder bookshop.
 Copying templates for type db to db ...
-Creating mta file /Users/i347491/local/projects/codejams/bookshop/mta.yaml ...
+Creating mta file /private/tmp/bookshop/mta.yaml ...
 Copying templates for type srv to srv ...
-Creating mta file /Users/i347491/local/projects/codejams/bookshop/mta.yaml ...
-Updating npm dependencies in /Users/i347491/local/projects/codejams/bookshop/package.json ...
+Creating mta file /private/tmp/bookshop/mta.yaml ...
+Updating npm dependencies in /private/tmp/bookshop/package.json ...
 Running npm install...
-added 81 packages from 111 contributors and audited 174 packages in 5.084s
+npm notice created a lockfile as package-lock.json. You should commit this file.
+added 120 packages from 178 contributors and audited 220 packages in 6.978s
 found 0 vulnerabilities
 
 Done.
-
+Learn about first steps at https://cap.cloud.sap/docs/get-started/in-a-nutshell
 ```
 
 
@@ -106,7 +98,7 @@ user@host:~
 => code bookshop
 ```
 
-If this approach is not available to you, simply start VS Code through your operating system's GUI and open the directory manually.
+If this approach is not available to you, simply start VS Code through your operating system's GUI and open the directory manually (with menu path "File → Open").
 
 
 ### 3. Explore the initialized project structure
@@ -127,7 +119,7 @@ Briefly, the directories and contents can be described thus:
 | `srv`          | Where the service definitions (in CDS) are specified.  |
 | `mta.yaml`          | This is the central descriptor file for the project. It defines all modules (microservices) and backing services (like databases). This information will be used to build the .mtar archive during design time and to deploy & provision the apps and services during deploy time.  |
 
-Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project) and a readme file.
+Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project).
 
 ### 4. Create a simple data model and service definition
 
@@ -155,18 +147,18 @@ service CatalogService {
 }
 ````
 
-You have now created a entity definition as well as a service definition for your project.
+You have now created a simple data model as well as a service definition for your project.
 
-### 5. Examine the contents data model and service definition files
+### 5. Examine the data model and service definition
 
 The key files in this project as far as the business domain is concerned are the `db/data-model.cds` and the `srv/cat-service.cds` files that you just added.
 
-:point_right: Have a brief look at the content of each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted, including the definitions and the annotations (which start with `@`).
+:point_right: Have a brief look at the content of each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted.
 
 
 ### 6. Start up the service
 
-Now you're going to start up the service in the skeleton project. VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
+Now you're going to start up the service in the skeleton project. **VS Code has an integrated terminal which you can and should use for this and subsequent command line activities**.
 
 :point_right: Open the integrated terminal in VS Code. Do this by opening the Command Palette and searching for 'integrated terminal'. You may wish to use the keyboard shortcut for this - note there is a keyboard shortcut for toggling the integrated terminal in and out of view as well.
 
@@ -193,11 +185,12 @@ You should see output similar to this:
   srv/cat-service.cds
   db/data-model.cds
 
-[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
-[cds] - launched in: 566.451ms
+[cds] - launched in: 533.555ms
+[cds] - server listening on http://localhost:4004 ...
+[ terminate with ^C ]
 ```
 
-The OData service is now running, and available on [http://localhost:4004](http://localhost:4004).
+The OData service is now running, and available via [http://localhost:4004](http://localhost:4004).
 
 
 ### 7. Explore the OData service
@@ -210,7 +203,7 @@ While we have no data in the OData service (we don't even have a persistence lay
 
 The [catalog](http://localhost:4004/catalog) link will take you to the service document and the [$metadata](http://localhost:4004/catalog/$metadata) link will take you to the metadata document.
 
-:point_right: Explore the metadata document and familiarize yourself with the content. Note the entityset definition and the entity type describing the `Books` entity. Note also the annotations describing particular service capabilities.
+:point_right: Explore the metadata document and familiarize yourself with the content. Note the entityset definition and the entity type describing the `Books` entity.
 
 :point_right: There is also a link to the [Books](http://localhost:4004/catalog/Books) entityset. Follow this link to see what the service returns. Check what happens to the Node.js `cds` process when you try to access the entityset.
 
