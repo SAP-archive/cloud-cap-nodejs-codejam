@@ -110,7 +110,7 @@ npx check-sap-cloud-readiness -codejam-cap
 You should see an output similar to this:
 ![out](output.png)
 
-If necessary, double check the [prerequisites](../prerequisites.md) to install the missing tools. Please contact the instructor of this CodeJam if you need help.
+If necessary, double check the [prerequisites](../../prerequisites.md)  to install the missing tools. Please contact the instructor of this CodeJam if you need help.
 
 
 ## Summary
