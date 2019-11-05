@@ -54,6 +54,10 @@ choco install make
   ```bash
   choco install cloudfoundry-cli
   ```
+5. Install Windows Build Tools: 
+  ```bash
+  npm install --global windows-build-tools
+  ```
   
 Finally, use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
   ```bash
