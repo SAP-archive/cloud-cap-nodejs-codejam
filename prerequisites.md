@@ -27,7 +27,7 @@ First, install the following tools manually:
 - Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
 - Postman : <https://www.getpostman.com/downloads/>
 
-Next, install Chocolatey by executing this **as an Administrator**:
+Next, install Chocolatey by executing this **as an Administrator**. Therefore open a command prompt as an **administrator** ( [Youtube Tutorial](https://www.youtube.com/watch?v=btg5hYs72gc) )
 
   ```bash
   @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
