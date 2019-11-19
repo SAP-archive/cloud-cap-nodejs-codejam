@@ -54,11 +54,22 @@ choco install sqlite
 choco install make
 ```
 
-4. Use Chocolatey to install the Cloud Foundry command line interface (CLI):
+4. Use Chocolatey to install curl (command-line client for URLs):
+```bash
+choco install curl
+```
+
+5. Use Chocolatey to install jq (lightweight and flexible command-line JSON processor):
+```bash
+choco install jq
+```
+
+6. Use Chocolatey to install the Cloud Foundry command line interface (CLI):
   ```bash
   choco install cloudfoundry-cli
   ```
-5. Install Windows Build Tools: 
+  
+7. Install Windows Build Tools: 
   ```bash
   npm install --global windows-build-tools
   ```
