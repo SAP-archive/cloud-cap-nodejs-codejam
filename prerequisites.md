@@ -27,7 +27,11 @@ First, install the following tools manually:
 - Visual Studio Code (also known as VS Code): <https://code.visualstudio.com/download>
 - Postman : <https://www.getpostman.com/downloads/>
 
-Next, install Chocolatey by executing this **as an Administrator**:
+Next, install Chocolatey. Therefore open a command prompt as an **administrator**. 
+
+![Open command prompt as administrator](command-prompt-admin.png)
+
+Execute the following command in this recently opened command prompt to install Chocolatey:
 
   ```bash
   @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
@@ -54,13 +58,17 @@ choco install make
   ```bash
   choco install cloudfoundry-cli
   ```
+5. Install Windows Build Tools: 
+  ```bash
+  npm install --global windows-build-tools
+  ```
   
 Finally, use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
   ```bash
   cf install-plugin multiapps
   ```
   
-Once you're done installing, please ensure you can successfully start the executables `sqlite3`, `make`, `cf` and `node` from the command line, and check that you can successfully install packages with the `npm` command that also gets installed with Node.js.
+Once you're done installing, please ensure you can successfully start the executables `sqlite3`, `make`, `cf` and `node` from the command line.
 
 
 ### macOS/Linux - Mandatory
@@ -83,7 +91,7 @@ cf install-plugin multiapps
 
 Some of the exercises require you to make HTTP requests, and for this you can use Postman (a mandatory software requirement above). 
 
-Alternatively you can also use `curl`, a command line HTTP client. Instructions for the HTTP requests in each exercise are given for both Postman and `curl`. To install `curl` visit [https://curl.haxx.se/](https://curl.haxx.se/) and follow the [download instructions](https://curl.haxx.se/download.html).
+Alternatively you can also use `curl`, a command line HTTP client. Instructions for the HTTP requests in each exercise are given for both Postman and `curl`. To install `curl` visit [https://curl.haxx.se/](https://curl.haxx.se/) and follow the [download instructions](https://curl.haxx.se/download.html) (Windows users can install `curl` with Chocolatey too: `choco install curl`).
 
 
 Further to the software prerequisites described above, we also recommend a couple of Chrome extensions, both of which make viewing HTTP responses in JSON and XML more pleasant:
