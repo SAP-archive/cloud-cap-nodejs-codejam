@@ -152,7 +152,7 @@ The first thing to do is to add an entry to the sandbox launchpad configuration 
 
 :point_right: Do this by adding this "browse-books" section to the `applications` property in the "sap-ushell-config" - remember that this is inside the first `script` element in the file (context is shown):
 
-```javascript
+```html
 <script>
     window['sap-ushell-config'] = {
         defaultRenderer: 'fiori2',
@@ -289,6 +289,10 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 ```
 
+Now you can open the "Browse Books" app and see all data - or better: see all (empty) lines. The reason for this, is that the Fiori Elements app does not yet know which properties to display.
+
+![empty table](empty-table.png)
+
 ### 6. Create a CDS index file
 
 This is the point where you can introduce an `index.cds` file which controls which services are exposed.
@@ -383,5 +387,7 @@ While this was a little intense as far as creation of artefacts was concerned, w
 ## Questions
 
 1. Why do we put the internationalization file in the `srv/` directory (rather than the `app/` directory)?
+<!-- we annotate the service and not the UI -->
 
-1. Which variable have you accessed in the `mta.yaml` descriptor and where has it been defined?
+2. Which variable have you accessed in the `mta.yaml` descriptor and where has it been defined?
+<!-- srv_api, comes from srv module -->

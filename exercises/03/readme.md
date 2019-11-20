@@ -290,7 +290,10 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 ## Questions
 
 1. What are other possible targets in the compilation context?
+<!--- yaml, edmx, when inspecting cdsc you can find hana,odata,cds,swager,sql,csn as well --->
 
-1. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
+2. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
+<!--- different consumers on the same data (APIs, UIs), leverage features of a view, separation of concerns,  --->
 
-1. Why might you use the `cds compile` command at all?
+3. Why might you use the `cds compile` command at all?
+<!--- to understand what happens under the hood when you run cds deploy --->

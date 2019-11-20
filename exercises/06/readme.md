@@ -45,7 +45,7 @@ curl \
   http://localhost:4004/catalog/Books
 ```
 
-Check that the creation requests are successful, and that you can see the new author and book in an OData Query operation: [http://localhost:4004/catalog/Authors?$expand=books](http://localhost:4004/catalog/Authors?$expand=books).
+Check that the creation requests are successful, and that you can see the new author and book in an OData Query operation: <http://localhost:4004/catalog/Authors?$expand=books>.
 
 
 ### 3. Restrict access to the Books and Authors entities
@@ -187,6 +187,11 @@ In this exercise you used shortcut annotations to restrict access to the entitie
 
 ## Questions
 
-1. How might the annotations relating to the read-only restrictions be useful in a UI context?
+1. Did you notice anything special about your request to <http://localhost:4004/catalog/Authors?$expand=books> in step 2?
+<!--- expand call  --->
 
-1. What was the format of the OData Delete operation - did we need to supply a payload?
+2. How might the annotations relating to the read-only restrictions be useful in a UI context?
+<!--- FE autorenders (or hides) component depending on metadata  --->
+
+3. What was the format of the OData Delete operation - did we need to supply a payload?
+<!--- nope, because of REST  --->

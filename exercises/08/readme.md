@@ -165,7 +165,10 @@ You have added custom logic and learned how to debug a service in VS Code. The o
 ## Questions
 
 1. What other hooks do you think might be useful in customizing a service?
+<!-- before CRUD, after CRUD -->
 
-1. What is the command used in the launch configuration for starting the service in debug mode - is it `cds serve all`?
+2. What is the command used in the launch configuration for starting the service in debug mode - is it `cds serve all`?
+<!-- cds run in memory with inspect breakpoint --->
 
-1. How many times is the function (that is supplied to the `after` hook) called?
+3. How many times is the function (that is supplied to the `after` hook) called?
+<!-- 1 -->

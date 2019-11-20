@@ -37,44 +37,13 @@ Execute the following command in this recently opened command prompt to install 
   @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
   ```
 
-Now you must use Chocolatey to install the following mandatory software requirements:
 
-1. Use Chocolatey to install Node.js Long Term Support (LTS) version:
+Use Chocolatey to install Node.js Long Term Support (LTS) version, SQLite, make, curl (command-line client for URLs), jq (lightweight and flexible command-line JSON processor), Cloud Foundry command line interface (CLI) and the Microsoft Build Tools:
 ```bash
-choco install nodejs-lts
+choco install -y nodejs-lts make curl jq cloudfoundry-cli microsoft-build-tools
 ```
   
-2. Use Chocolatey to install SQLite:
-```bash
-choco install sqlite
-```
-
-3. Use Chocolatey to install make:
-```bash
-choco install make
-```
-
-4. Use Chocolatey to install curl (command-line client for URLs):
-```bash
-choco install curl
-```
-
-5. Use Chocolatey to install jq (lightweight and flexible command-line JSON processor):
-```bash
-choco install jq
-```
-
-6. Use Chocolatey to install the Cloud Foundry command line interface (CLI):
-  ```bash
-  choco install cloudfoundry-cli
-  ```
-  
-7. Install Windows Build Tools: 
-  ```bash
-  npm install --global windows-build-tools
-  ```
-  
-Finally, use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
+Next, use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
   ```bash
   cf install-plugin multiapps
   ```

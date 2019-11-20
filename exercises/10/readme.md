@@ -40,16 +40,16 @@ This step is only necessary when you want to deploy the project to the trial lan
 
 You might have noticed that there is no module descriptor for the `srv` module defined. For local development, such a descriptor is not needed as CAP knows how to parse those files. For the deployment to Cloud Foundry, on the other hand, a descriptor is required, to define the module dependencies and start commands.
 
-:point_right: Create a new descriptor file `package.json` in the `srv/` directory, and add the following content representing the server module, to make it cloud-ready:
+:point_right: Create a new descriptor file `package.json` in the **`srv/` directory**, and add the following content representing the server module, to make it cloud-ready:
 
 ```json
 {
-    "name": "project-srv",
+    "name": "bookshop-srv",
     "version": "1.0.0",
     "dependencies": {
-        "@sap/cds": "^3.16.3",
+        "@sap/cds": "^3.18.4",
         "express": "^4.17.1",
-        "@sap/hana-client": "^2.4.144"
+        "@sap/hana-client": "^2.4.167"
     },
     "engines": {
         "node": "^10"
@@ -66,7 +66,6 @@ You might have noticed that there is no module descriptor for the `srv` module d
         }
     }
 }
-
 ```
 
 
@@ -75,20 +74,20 @@ You might have noticed that there is no module descriptor for the `srv` module d
 
 Similar to the `srv` module, we need to add a module descriptor for the `app` module as well. We will embed the UI source files into an app router, to be able to connect to the `srv` module and to forward requests to it.
 
-:point_right: Create a new `package.json` file in the `app/` directory with the following content, to start this module as an independent app router application within Cloud Foundry:
+:point_right: Create a new `package.json` file in the **`app/` directory** with the following content, to start this module as an independent app router application within Cloud Foundry:
 
 ```json
 {
-  "name": "bookshop-ui",
-  "dependencies": {
-    "@sap/approuter": "^6.0.1"
-  },
-  "engines": {
-      "node": "^10"
-  },
-  "scripts": {
-    "start": "node node_modules/@sap/approuter/approuter.js"
-  }
+    "name": "bookshop-ui",
+    "dependencies": {
+        "@sap/approuter": "^6.6.0"
+    },
+    "engines": {
+        "node": "^10"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js"
+    }
 }
 ```
 
@@ -118,11 +117,10 @@ This file not only defines the welcome page, but also defines which requests are
 So far, the `package.json` file in your project root only defines scripts for local project execution.
 
 
-:point_right: Add the following script definitions to the `"scripts"` section of the project's root `package.json` for build and deploy step processes:
+:point_right: Add the following script definition to the `"scripts"` section of the **project's root `package.json`** for build step processes:
 
-```
-"build:mta": "cds build/all && mbt build -p=cf",
-"deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
+```json
+"build:mta": "cds build/all && mbt build -p=cf"
 ```
 
 You might have noticed, that the `mbt` command isn't a typical shell command. This is actually a command from another Node module. This tool allows you to package your project into a deployable archive, which you'll need in order to get the app  onto the SAP Cloud Platform.
@@ -152,8 +150,6 @@ user@host:~/bookshop
 => cf deploy mta_archives/bookshop_1.0.0.mtar
 ```
 
-> Note: You can also use `npm run deploy:cf` to trigger both, the build and deploy steps
-
 
 ### 8. Check the apps and services in Cloud Foundry
 
@@ -172,6 +168,9 @@ You have learned the basic commands to interact with the Cloud Foundry Command L
 
 ## Questions
 
-1. Can you guess what the script `deploy:cf` does? Is there anything special to this script (compared to the other scripts)?
+1. Can you guess what the second subcommand of the `build:mta` script does? Are you able to run this command (`mbt build -p=cf`) straight from the terminal?
+<!-- no bc it's installed locally, but works with npx prefix -->
 
-1. When you run the commands to check the apps and services, what do you see? Are all apps in the "Running" state?
+2. When you run the commands to check the apps and services, what do you see? Are all apps in the "Running" state?
+<!-- db is stopped-->
+

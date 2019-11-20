@@ -76,5 +76,7 @@ Your OData service now has sample data that you can access via OData operations.
 ## Questions
 
 1. Does the order of the fields defined in the CSV files have to match the order of the properties defined in the entities in the data model?
+<!--- nope, databases work on sets --->
 
-1. Where do you think the format of the CSV file names has come from?
+2. Where do you think the format of the CSV file names has come from?
+<!--- namespace + table name --->

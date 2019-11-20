@@ -98,7 +98,7 @@ user@host:~
 => code bookshop
 ```
 
-If this approach is not available to you, simply start VS Code through your operating system's GUI and open the directory manually (with menu path "File → Open").
+> If this approach is not available to you, simply start VS Code through your operating system's GUI and open the directory manually (with menu path "File → Open").
 
 
 ### 3. Explore the initialized project structure
@@ -115,7 +115,7 @@ Briefly, the directories and contents can be described thus:
 | -------------- | -------- |
 | `.vscode`      | VS Code specific files for launch configurations (useful for debugging, which we will cover in [exercise 08](../08/)) |
 | `db`           | Where the data models (in CDS) are specified.  |
-| `node_modules` | This is the normal place where NPM packages (modules) are to be found in a Node.js based project |
+| `node_modules` | This is the place where NPM packages (modules) are to be found in a Node.js based project |
 | `srv`          | Where the service definitions (in CDS) are specified.  |
 | `mta.yaml`          | This is the central descriptor file for the project. It defines all modules (microservices) and backing services (like databases). This information will be used to build the .mtar archive during design time and to deploy & provision the apps and services during deploy time.  |
 
@@ -168,6 +168,9 @@ This should open up the terminal at the bottom of VS Code like this:
 
 ![integrated terminal in view](integrated-terminal-in-view.png)
 
+> **Windows users:** Please make sure to select `cmd` as your default shell before you continue:
+![default shell](default-shell-windows.png)
+
 :point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify `all`, like this, so that `cds` will look for appropriate configuration to serve:
 
 ```sh
@@ -215,10 +218,14 @@ With a single command, you've initialized a basic OData service project and with
 
 ## Questions
 
-1. Why is there an focus on "TTM" (time to metadata) - what advantages does that bring?
+1. Why is there an focus on "Contracts First" (As all you need to run a service is a service definition) - what advantages does that bring?
+<!--- UI teams can start to work right away --->
 
-1. What is the difference between the data model and the service definition? Why do we need both?
+2. What is the difference between the data model and the service definition? Why do we need both?
+<!--- db model for schema, service for access (control) --->
 
-1. What is returned in response to a request for the Books entityset resource right now?
+3. What is returned in response to a request for the Books entityset resource right now?
+<!--- error --->
 
-1. What happened to the `cds` process when you accessed the entityset? Can you think of reasons why this happened?
+4. What happened to the `cds` process when you accessed the entityset? Can you think of reasons why this happened?
+<!--- crash --->
