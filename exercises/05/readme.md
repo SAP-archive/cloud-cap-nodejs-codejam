@@ -155,8 +155,6 @@ user@host:~/bookshop
 [cds] - launched in: 722.087ms
 ```
 
-> If you're running Windows, you can use a double-semicolon (;;) in place of the `&&`. It's not quite the same but will work just fine in most cases.
-
 
 ### 5. Examine what the Orders entity looks like now
 

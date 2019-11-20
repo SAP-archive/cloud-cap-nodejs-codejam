@@ -168,6 +168,9 @@ This should open up the terminal at the bottom of VS Code like this:
 
 ![integrated terminal in view](integrated-terminal-in-view.png)
 
+> **Windows users:** Please make sure to select `cmd` as your default shell before you continue:
+![default shell](default-shell-windows.png)
+
 :point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify `all`, like this, so that `cds` will look for appropriate configuration to serve:
 
 ```sh
