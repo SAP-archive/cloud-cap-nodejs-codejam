@@ -44,12 +44,12 @@ You might have noticed that there is no module descriptor for the `srv` module d
 
 ```json
 {
-    "name": "project-srv",
+    "name": "bookshop-srv",
     "version": "1.0.0",
     "dependencies": {
-        "@sap/cds": "^3.16.3",
+        "@sap/cds": "^3.18.4",
         "express": "^4.17.1",
-        "@sap/hana-client": "^2.4.144"
+        "@sap/hana-client": "^2.4.167"
     },
     "engines": {
         "node": "^10"
@@ -66,7 +66,6 @@ You might have noticed that there is no module descriptor for the `srv` module d
         }
     }
 }
-
 ```
 
 
@@ -79,16 +78,16 @@ Similar to the `srv` module, we need to add a module descriptor for the `app` mo
 
 ```json
 {
-  "name": "bookshop-ui",
-  "dependencies": {
-    "@sap/approuter": "^6.0.1"
-  },
-  "engines": {
-      "node": "^10"
-  },
-  "scripts": {
-    "start": "node node_modules/@sap/approuter/approuter.js"
-  }
+    "name": "bookshop-ui",
+    "dependencies": {
+        "@sap/approuter": "^6.6.0"
+    },
+    "engines": {
+        "node": "^10"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js"
+    }
 }
 ```
 
@@ -120,7 +119,7 @@ So far, the `package.json` file in your project root only defines scripts for lo
 
 :point_right: Add the following script definitions to the `"scripts"` section of the project's root `package.json` for build and deploy step processes:
 
-```
+```json
 "build:mta": "cds build/all && mbt build -p=cf",
 "deploy:cf": "npm run build:mta && cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
 ```
@@ -173,5 +172,8 @@ You have learned the basic commands to interact with the Cloud Foundry Command L
 ## Questions
 
 1. Can you guess what the script `deploy:cf` does? Is there anything special to this script (compared to the other scripts)?
+<!-- wildcards for name and version -->
 
-1. When you run the commands to check the apps and services, what do you see? Are all apps in the "Running" state?
+2. When you run the commands to check the apps and services, what do you see? Are all apps in the "Running" state?
+<!-- db is stopped-->
+

@@ -43,31 +43,31 @@ user-agent = "npm/6.4.1 node/v10.15.3 linux x64"
 ; "npm config ls -l" to show all defaults.
 ```
 
-:point_right: Next, explore the information about the `@sap/cds` package, including its dependencies, with:
+:point_right: Next, explore the information about the `@sap/cds-dk` (the dk stands for development kit)package, including its dependencies, with:
 
 ```sh
 user@host:~
-=> npm info @sap/cds
+=> npm info @sap/cds-dk
 ```
 
 This will show you that it has dependencies on other `@sap` namespaced packages, and also that there is a 'binary' (in other words an executable) called `cds` that's delivered as part of the package.
 
-:point_right: Now, install the `@sap/cds` package globally:
+:point_right: Now, install the `@sap/cds-dk` package globally:
 
 ```sh
 user@host:~
-=> npm install --global @sap/cds
+=> npm install --global @sap/cds-dk
 ```
 
 This should eventually produce output similar to this:
 
 ```sh
-/Users/i347491/.nvm/versions/node/v10.16.3/bin/cds -> /Users/i347491/.nvm/versions/node/v10.16.3/lib/node_modules/@sap/cds/bin/cds.js
-+ @sap/cds@3.18.3
-added 69 packages from 144 contributors in 6.416s
+/Users/d056949/.nvm/versions/node/v10.15.3/bin/cds -> /Users/d056949/.nvm/versions/node/v10.15.3/lib/node_modules/@sap/cds-dk/bin/cds.js
++ @sap/cds-dk@1.1.4
+updated 1 package in 27.076s
 ```
 
-Here you can see that the version of the `@sap/cds` package installed is 3.18.3. It may be that the version of `@sap/cds` that is installed when you do this exercise will be different (newer).
+Here you can see that the version of the `@sap/cds-dk` package installed is 3.18.4. It may be that the version of `@sap/cds-dk` that is installed when you do this exercise will be different (newer).
 
 ### 2. Install the CDS extension for VS Code
 
@@ -120,9 +120,13 @@ You've now installed the key tools for developing with CAP locally, and are all 
 ## Questions
 
 1. What are the benefits of using NPM here?
+<!--- easy to user and de-facto standard --->
 
-1. What are the `@sap` namespaced packages upon which `@sap/cds` depends?
+2. What are the `@sap` namespaced packages upon which `@sap/cds-dk` depends?
+<!--- cds-sidecar-client, edm-converters, cds, generator-cds --->
 
-1. What is the significance of using the `--global` option when installing the `@sap/cds` package?
+3. What is the significance of using the `--global` option when installing the `@sap/cds-dk` package?
+<!--- globally available --->
 
-1. What is the meaning of the `.vsix` file type for the VS Code extension? Can we dig into that to see what's inside?
+4. What is the meaning of the `.vsix` file type for the VS Code extension? Can we dig into that to see what's inside?
+<!--- VSI (Visual Studio Installer) and with most things, we tacked an "x" on the end, unzip, contains extension (node app), manifest and xml --->

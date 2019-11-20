@@ -102,5 +102,7 @@ It's easy to explore building different views on the same underlying data model,
 ## Questions
 
 1. Why might it be better to specify properties to _exclude_, rather than properties to _include_?
+<!-- depending on the data model, how many "unused" properties you have -->
 
-1. What did the order creation HTTP requests look like - which service was used, and why?
+2. What did the order creation HTTP requests look like - which service was used, and why?
+<!-- used the old one  -->
