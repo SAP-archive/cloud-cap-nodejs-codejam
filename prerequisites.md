@@ -40,7 +40,7 @@ Execute the following command in this recently opened command prompt to install 
 
 Use Chocolatey to install Node.js Long Term Support (LTS) version, SQLite, make, curl (command-line client for URLs), jq (lightweight and flexible command-line JSON processor), Cloud Foundry command line interface (CLI) and the Microsoft Build Tools:
 ```bash
-choco install -y nodejs-lts make curl jq cloudfoundry-cli microsoft-build-tools
+choco install -y nodejs-lts sqlite make curl jq cloudfoundry-cli microsoft-build-tools
 ```
   
 Next, use the Cloud Foundry CLI to install a plugin to deploy your MultiTarget Application (MTA) to Cloud Foundry:
