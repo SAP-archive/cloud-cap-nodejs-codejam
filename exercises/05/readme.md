@@ -205,7 +205,7 @@ If you want to create the Orders entities using the command line with `curl`, he
 
 :point_right: Order 5 copies of Wuthering Heights (no order ID specified):
 
-```shell
+```sh
 curl \
   -d '{"book_ID":201,"quantity":5}' \
   -H 'Content-Type: application/json' \
@@ -214,7 +214,7 @@ curl \
 
 For Windows users, this is the equivalent command (basically you have to use double quotes throughout, and therefore some must be escaped with `\`, and the line continuation character is `^` rather than `\`):
 
-```
+```sh
 curl ^
   -d "{\"book_ID\":201,\"quantity\":5}" ^
   -H "Content-Type: application/json" ^
@@ -223,10 +223,16 @@ curl ^
 
 :point_right: Order 9 copies of Life, The Universe And Everything (specifying an order ID):
 
-```
+```sh
 curl \
   -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' \
   -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Orders
+
+# For Windows users:
+curl ^
+  -d "{\"ID\": \"527ef85a-aef2-464b-89f6-6a3ce64f2e14\", \"book_ID\":427,\"quantity\":9}" ^
+  -H "Content-Type: application/json" ^
   http://localhost:4004/catalog/Orders
 ```
 
