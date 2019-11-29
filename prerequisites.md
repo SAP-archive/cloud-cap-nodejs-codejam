@@ -1,6 +1,10 @@
 # Prerequisites
 
-There are hardware and software prerequisites for participating in this CodeJam. There are also some optional, recommended items that you might like to have too. **Administration rights are an essential requirement due to the installation of some local tools**. 
+There are hardware and software prerequisites for participating in this CodeJam. There are also some optional, recommended items that you might like to have too. 
+
+Administration rights are an essential requirement due to the installation of some local tools. 
+
+Please ensure you complete all the prerequisites **before the day of the CodeJam**.
 
 ## Hardware
 
