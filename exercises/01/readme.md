@@ -14,7 +14,7 @@ The CDS command line tool is the heart of everything you do when developing CAP 
 
 :point_right: First, relate the `@sap` namespace to the SAP NPM registry:
 
-```shell
+```sh
 user@host:~
 => npm set @sap:registry=https://npm.sap.com
 ```
@@ -103,7 +103,7 @@ When successfully installed, you should see the extension thus (again, the versi
 
 :point_right: Run the following command from the terminal to check whether all required tools are installed (this is an experimental tool, please contact the instructor if you have any questions):
 
-```shell
+```sh
 npx check-sap-cloud-readiness -codejam-cap
 ```
 

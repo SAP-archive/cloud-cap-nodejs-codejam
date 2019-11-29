@@ -34,8 +34,10 @@ curl \
   -d '{"ID": 162, "name": "Iain M Banks"}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Authors
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
   -d "{\"ID\": 162, \"name\": \"Iain M Banks\"}" ^
   -H "Content-Type: application/json" ^
@@ -49,8 +51,10 @@ curl \
   -d '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
   -d "{\"ID\": 44138, \"title\": \"Consider Phlebas\", \"stock\": 541, \"author_ID\": 162 }" ^
   -H "Content-Type: application/json" ^
@@ -101,8 +105,10 @@ curl \
   -d '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
   -d "{\"ID\": 47110, \"title\": \"The Player of Games\", \"stock\": 405, \"author_ID\": 162 }" ^
   -H "Content-Type: application/json" ^
@@ -132,8 +138,10 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 curl \
   -X DELETE \
   'http://localhost:4004/catalog/Books(251)'
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
 -X DELETE ^
 "http://localhost:4004/catalog/Books(251)"

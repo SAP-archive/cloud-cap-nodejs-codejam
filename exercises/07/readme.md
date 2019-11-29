@@ -65,8 +65,10 @@ curl \
   -d '{"book_ID":201,"quantity":2}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
   -d "{\"book_ID\": 201, \"quantity\": 2}" ^
   -H "Content-Type: application/json" ^
@@ -80,8 +82,10 @@ curl \
   -d '{"book_ID":252,"quantity":7}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
   -d "{\"book_ID\": 252, \"quantity\": 7}" ^
   -H "Content-Type: application/json" ^
@@ -95,8 +99,10 @@ curl \
   -d '{"book_ID":421,"quantity":42}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
   -d "{\"book_ID\": 421, \"quantity\": 42}" ^
   -H "Content-Type: application/json" ^

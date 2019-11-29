@@ -228,8 +228,10 @@ curl \
   -d '{"ID": "527ef85a-aef2-464b-89f6-6a3ce64f2e14", "book_ID":427,"quantity":9}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+```
 
-# For Windows users:
+For Windows users:
+```sh
 curl ^
   -d "{\"ID\": \"527ef85a-aef2-464b-89f6-6a3ce64f2e14\", \"book_ID\":427,\"quantity\":9}" ^
   -H "Content-Type: application/json" ^
