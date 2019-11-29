@@ -29,19 +29,31 @@ If you want to use `curl` on the command line instead of Postman, use the follow
 
 First, add the author "Iain M Banks":
 
-```
+```sh
 curl \
   -d '{"ID": 162, "name": "Iain M Banks"}' \
   -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Authors
+
+# For Windows users:
+curl ^
+  -d "{\"ID\": 162, \"name\": \"Iain M Banks\"}" ^
+  -H "Content-Type: application/json" ^
   http://localhost:4004/catalog/Authors
 ```
 
 Now add the book "Consider Phlebas":
 
-```
+```sh
 curl \
   -d '{"ID": 44138, "title": "Consider Phlebas", "stock": 541, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
+  http://localhost:4004/catalog/Books
+
+# For Windows users:
+curl ^
+  -d "{\"ID\": 44138, \"title\": \"Consider Phlebas\", \"stock\": 541, \"author_ID\": 162 }" ^
+  -H "Content-Type: application/json" ^
   http://localhost:4004/catalog/Books
 ```
 
@@ -89,6 +101,12 @@ curl \
   -d '{"ID": 47110, "title": "The Player of Games", "stock": 405, "author_ID": 162 }' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Books
+
+# For Windows users:
+curl ^
+  -d "{\"ID\": 47110, \"title\": \"The Player of Games\", \"stock\": 405, \"author_ID\": 162 }" ^
+  -H "Content-Type: application/json" ^
+  http://localhost:4004/catalog/Books
 ```
 
 The request is an OData Create request for a new book. You should see that this request is rejected with HTTP status code 405 "Method Not Allowed", with an error like this supplied in the response body:
@@ -114,6 +132,11 @@ You should also see a line in the terminal (where you invoked `cds serve all`) l
 curl \
   -X DELETE \
   'http://localhost:4004/catalog/Books(251)'
+
+# For Windows users:
+curl ^
+-X DELETE ^
+"http://localhost:4004/catalog/Books(251)"
 ```
 
 It should also fail in a similar way.

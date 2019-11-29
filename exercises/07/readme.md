@@ -65,6 +65,12 @@ curl \
   -d '{"book_ID":201,"quantity":2}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+
+# For Windows users:
+curl ^
+  -d "{\"book_ID\": 201, \"quantity\": 2}" ^
+  -H "Content-Type: application/json" ^
+  http://localhost:4004/catalog/Orders
 ```
 
 Order 7 copies of Eleonora:
@@ -74,6 +80,12 @@ curl \
   -d '{"book_ID":252,"quantity":7}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+
+# For Windows users:
+curl ^
+  -d "{\"book_ID\": 252, \"quantity\": 7}" ^
+  -H "Content-Type: application/json" ^
+  http://localhost:4004/catalog/Authors
 ```
 
 Order 42 copies of The Hitch Hiker's Guide To The Galaxy (obviously!):
@@ -83,6 +95,12 @@ curl \
   -d '{"book_ID":421,"quantity":42}' \
   -H 'Content-Type: application/json' \
   http://localhost:4004/catalog/Orders
+
+# For Windows users:
+curl ^
+  -d "{\"book_ID\": 421, \"quantity\": 42}" ^
+  -H "Content-Type: application/json" ^
+  http://localhost:4004/catalog/Authors
 ```
 
 Now it's time to take a look at what the service will show us for these orders. We know we can't look at the `Orders` entityset as it has a `@insertonly` annotation shortcut based restriction, so we turn to our new service `Stats`.
