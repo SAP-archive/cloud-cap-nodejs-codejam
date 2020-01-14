@@ -1,6 +1,6 @@
 # Exercise 05 - Adding a further entity, using generic features
 
-In this exercise you'll add a further entity to the data model and expose it through the service. In defining this entity you'll make use of some [generic features](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/454731d38a1e49c3aa5b182e5209bd20.html) available for all CAP projects.
+In this exercise you'll add a further entity to the data model and expose it through the service. In defining this entity you'll make use of some [generic features](https://cap.cloud.sap/docs/cds/common) available for all CAP projects.
 
 
 ## Steps
@@ -12,7 +12,7 @@ At the end of these steps you'll have a third entity `Orders`, and will have per
 
 If this is a bookshop service, we need to be able to place orders. So you should now add a third entity to the data model, for those orders.
 
-:point_right: Open the `db/data-model.cds` file and first of all add this third entity (not forgetting to save the file when you're done):
+:point_right: Open the `db/schema.cds` file and first of all add this third entity (not forgetting to save the file when you're done):
 
 ```cds
 entity Orders {
@@ -22,9 +22,9 @@ entity Orders {
 }
 ```
 
-We're not quite done with this entity, but for now, have a look at the fruits of your labor by adding a new entry to the service definition for this entity, redeploying and then restarting the service.
+We're not quite done with this entity, but for now, you're about to have a first look at the fruits of your labor by adding a new entry to the service definition for this entity.
 
-:point_right: Add the entry to the `CatalogService` service definition in the `srv/cat-service.cds` file:
+:point_right: Add the entry to the `CatalogService` service definition in the `srv/service.cds` file:
 
 ```
 service CatalogService {
@@ -34,9 +34,19 @@ service CatalogService {
 }
 ```
 
-Observe that the CDS Language Service extension picks up the new `Orders` entity straight away (as long as you've saved the `db/data-model.cds` file) and offers it as a suggestion in the code completion feature.
+Observe that the CDS Language Service extension picks up the new `Orders` entity straight away (as long as you've saved the `db/schema.cds` file) and offers it as a suggestion in the code completion feature.
 
-:point_right: Now redeploy to have the data model and service definition changes reflected in the persistence layer (note that the CSV data will be used again to seed the tables):
+:point_right: Noting that your service has been automatically restarted (by `cds watch`) already, take a look at the new `Orders` entity: <http://localhost:4000/catalog/Orders>.
+
+You should see an error both in the response returned, and in the service log output, that looks something like this:
+
+```
+SQLITE_ERROR: no such table: CatalogService_Orders
+```
+
+That's because we still need to deploy the changes to the persistence layer, to have a new table and view created there for the `Orders` entity.
+
+:point_right: Do this now (note that the CSV data will be used again to seed the tables):
 
 ```sh
 user@host:~/bookshop
@@ -48,21 +58,13 @@ user@host:~/bookshop
 =>
 ```
 
-:point_right: Once you've redeployed, restart the service:
+> If you want to make sure that the new table and view are there now, you can check with `sqlite3 bookshop.db .tables`.
+
+:point_right: Once you've redeployed, restart `cds watch`:
 
 ```sh
 user@host:~/bookshop
-=> cds serve all
-
-[cds] - connect to datasource - sqlite:bookshop.db
-[cds] - serving CatalogService at /catalog
-[cds] - service definitions loaded from:
-
-  srv/cat-service.cds
-  db/data-model.cds
-
-[cds] - server listens at http://localhost:4004 ... (terminate with ^C)
-[cds] - launched in: 821.718ms
+=> cds watch
 ```
 
 The `Orders` entity is now available in the service (but there is [no data](http://localhost:4004/catalog/Orders) as yet).
@@ -87,7 +89,7 @@ You will now enhance the `Orders` entity using some of the common features made 
 - adding creation and modification information
 - adding a country property referring to the `Country` type
 
-:point_right: First, import the common features to the data model file by adding the following line to `db/data-model.cds`, on the line below the `namespace` declaration:
+:point_right: First, import the common features to the data model file by adding the following line to `db/schema.cds`, on the line below the `namespace` declaration:
 
 ```cds
 using { cuid, managed, Country } from '@sap/cds/common';
@@ -147,8 +149,8 @@ user@host:~/bookshop
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
-  srv/cat-service.cds
-  db/data-model.cds
+  srv/service.cds
+  db/schema.cds
   node_modules/@sap/cds/common.cds
 
 [cds] - server listening on http://localhost:4004 ... (terminate with ^C)
