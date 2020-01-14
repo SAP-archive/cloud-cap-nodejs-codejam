@@ -49,7 +49,7 @@ entity Authors {
 
 This is deliberately very simple at this point. Don't forget to save the file ... at which point your service should restart automatically thanks to `cds watch`.
 
-:point_right: Open up (or refresh) the [service metadata document](http://localhost:4004/catalog/$metadata) and check for the entity definition you've just added.
+:point_right: Open up (or refresh) the [service metadata document](http://localhost:4004/catalog/$metadata) and check for the Authors entity definition you've just added.
 
 You're right. It's not there.
 
