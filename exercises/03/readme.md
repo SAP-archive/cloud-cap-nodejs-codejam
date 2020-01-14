@@ -125,7 +125,8 @@ As it stands, the OData service has no storage. We can actually simulate storage
 As we want to use a local SQLite database (SQLite was defined in the [prerequisites](../../prerequisites.md) for this CodeJam), we need to install a client library to allow the CAP engine to communicate with this DB.
 
 :point_right: Do that now, i.e. install the `sqlite3` package for this purpose:
-```
+
+```sh
 user@host:~/bookshop
 => npm install -D sqlite3
 ```
