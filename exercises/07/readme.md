@@ -14,7 +14,7 @@ At the end of these steps, you'll have two OData services both exposing differen
 
 Service definitions can live alongside each other in the same CDS file.
 
-:point_right: In `srv/cat-service.cds`, add a second service definition thus:
+:point_right: In `srv/service.cds`, add a second service definition thus:
 
 ```cds
 service Stats {
@@ -31,7 +31,15 @@ service Stats {
 
 Here the `Stats` service exposes the Orders entity in a read-only fashion as in the `CatalogService`, but uses the `excluding` clause to omit specific properties. These properties are not of interest to the analysis UI so are explicitly left out. Note that it also exposes the information as an entity called `OrderInfo`.
 
-:point_right: Now redeploy and start serving the services (`cds deploy && cds serve all`) and check the root document at [http://localhost:4004/](http://localhost:4004/). You should see something like this:
+:point_right: Effect a deployment to the persistence layer so that the relevant artefact will be created (specifically the view `Stats_OrderInfo`):
+
+```sh
+user@host:~/bookshop
+=> cds deploy
+```
+
+
+:point_right: Start the service up again via `cds watch` and check the root document at [http://localhost:4004/](http://localhost:4004/). You should see something like this:
 
 ![two services](two-services.png)
 
