@@ -25,7 +25,10 @@ Your directory structure should then look something like this (the screenshot al
 
 ### 2. Redeploy to the persistence layer
 
-:point_right: The CSV files are discovered and used during a `cds deploy`, so deploy again thus:
+The CSV files are discovered and used during a `cds deploy`, so a new deployment is required. While the `cds watch` will restart the service, it won't do a deploy for us, so we'll do that manually now.
+
+:point_right: Deploy again, this time noting that you don't have to specify the `--to` option:
+
 
 ```sh
 user@host:~/bookshop
@@ -35,18 +38,18 @@ user@host:~/bookshop
 During deployment this time you should see extra messages:
 
 ```
- > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
  > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
+ > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
 /> successfully deployed to ./bookshop.db
 ```
 
 ### 3. Restart the service
 
-:point_right: Restart the service thus:
+:point_right: Now the data's been loaded, you should fire up `cds watch` again:
 
 ```sh
 user@host:~/bookshop
-=> cds serve all
+=> cds watch
 ```
 
 Now the [Books](http://localhost:4004/catalog/Books) and [Authors](http://localhost:4004/catalog/Authors) entitysets in the OData service will show data in response to OData Query and Read operations.
@@ -80,3 +83,5 @@ Your OData service now has sample data that you can access via OData operations.
 
 2. Where do you think the format of the CSV file names has come from?
 <!--- namespace + table name --->
+
+3. How come we didn't have to specify the details (in `--to`) during the deployment in this exercise?
