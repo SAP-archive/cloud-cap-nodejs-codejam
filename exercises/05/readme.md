@@ -74,9 +74,9 @@ The `Orders` entity is now available in the service (but there is [no data](http
 
 When a new order comes in we want to capture the date and time. If we were running in an authenticated environment (in this CodeJam we're not, but CAP supports it) we also want to capture the user associated with the creation. Similarly we want to capture modification information.
 
-We can use some [common CDS definitions](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/454731d38a1e49c3aa5b182e5209bd20.html) that are available to us, built into `@sap/cds` itself. These definitions can be found in the file `@sap/cds/common.cds` in the `node_modules/` directory.
+We can use some [common CDS definitions](https://cap.cloud.sap/docs/guides/domain-models#use-common-reuse-types) that are available to us, built into `@sap/cds` itself. These definitions can be found in the file `@sap/cds/common.cds` in the `node_modules/` directory.
 
-:point_right: Use the Explorer view in VS Code to open up the directories under `node_modules/` in the project, to find the `common.cds` file and open it up. In particular, find and examine the `managed` [aspect](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/40582e7bbeca4311b0b165c8b9745094.html), as well as the abstract entity `cuid`.
+:point_right: Use the Explorer view in VS Code to open up the directories under `node_modules/` in the project, to find the `common.cds` file and open it up. In particular, find and examine the `managed` [aspect](https://cap.cloud.sap/docs/cds/common#aspect-managed), as well as the abstract entity `cuid`.
 
 ![looking at common.cds](common-cds.png)
 
@@ -132,20 +132,23 @@ entity Orders : cuid, managed {
 Note the difference in capitalization here. The property name is `country` which is described by the type `Country`.
 
 
-### 4. Redeploy and restart the service
+### 4. Restart the service manually and check the output
 
-In the same way as you've done previously, it's now time to redeploy and then restart the service.
+While the `cds watch` is useful, it supresses various messages to keep the noise down. But there's something in those suppressed messages that you should pay attention to.
 
-:point_right: This time, try it all in a single line, like this:
+:point_right: Terminate any running `cds watch` process, and run `cds deploy && npm start` manually:
 
 ```sh
 user@host:~/bookshop
-=> cds deploy && cds serve all
- > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
+=> cds deploy && npm start
  > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
-/> successfully deployed database to bookshop.db
+ > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
+/> successfully deployed to ./bookshop
 
-[cds] - connect to datasource - sqlite:bookshop.db
+> bookshop@1.0.0 start /tmp/codejam/bookshop
+> npx cds run
+
+[cds] - connect to datasource - sqlite:bookshop
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
@@ -153,9 +156,15 @@ user@host:~/bookshop
   db/schema.cds
   node_modules/@sap/cds/common.cds
 
-[cds] - server listening on http://localhost:4004 ... (terminate with ^C)
-[cds] - launched in: 722.087ms
+[cds] - launched in: 875.646ms
+[cds] - server listening on http://localhost:4004 ...
+[ terminate with ^C ]
 ```
+
+> If your operating system command line doesn't support `&&` then just run the two commands one after the other.
+
+Notice the extra line in the output of the "service definitions loaded from" message. It shows us that not only are definitions being loaded from what we've defined explicitly (i.e. our `srv/service.cds` and `db/schema.cds` files) but also, implicitly, from `node_modules/@sap/cds/common.cds` because of our reference to it in `db/schema.cds` in the `using` statement.
+
 
 
 ### 5. Examine what the Orders entity looks like now
