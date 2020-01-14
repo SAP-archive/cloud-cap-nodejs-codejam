@@ -18,9 +18,7 @@ After completing these steps you'll be familiar with how you can use the `cds` c
 
 For any new CAP based project you start by indirectly creating a directory containing various basic files. This can be achieved with the CDS command line tool `cds` which you installed in [exercise 01](../01/).
 
-The `cds` tool should be available in your executable path, having been installed globally as part of the Node.js `@sap/cds` package.
-
-:point_right: First, explore the `cds` command line tool by executing it with no parameters; you will see what options are available:
+The `cds` tool should be available in your executable path, having been installed globally as part of the Node.js `@sap/cds-dk` package.
 
 ```sh
 user@host:~
@@ -36,12 +34,13 @@ COMMANDS
 
     i | init       jump-start cds-based projects
     c | compile    process models selectively
-    m | import     add models from external sources
+    d | deploy     e.g. to databases or cloud
     s | serve      run servers locally
+    w | watch      restart server on file changes
+    m | import     add models from external sources
     r | repl       read-eval-event loop
     e | env        get/set cds configuration
     b | build      prepare for deployment
-    d | deploy     e.g. to databases or cloud
     v | version    get detailed version information
     ? | help       get detailed usage information
 
@@ -59,33 +58,24 @@ user@host:~
 => cds init --help
 ```
 
-Amongst other things, you should see a `--modules` option to specify a list of modules to be created when the project is initialized, and also a `--verbose` option. The options `--mta`, `--db-technology` and `--insecure` are related to deployment to Cloud Foundry and access management in that context. `--skip-sample-models` avoids the creation of sample CDS source files which you will build step by step in this CodeJam yourself.
-
-:point_right: Use all of these options to initialize a new project directory called `bookshop` thus:
+:point_right: Use some of these options to initialize a new project directory called `bookshop` thus:
 
 ```sh
 user@host:~
-=> cds init --modules db,srv --mta --insecure --db-technology hana --verbose --skip-sample-models bookshop
+=> cds init bookshop --add hana,mta
 ```
 
 You should see output that looks similar to this:
 
 ```
-Initializing project in folder bookshop.
-Copying templates for type db to db ...
-Creating mta file /private/tmp/bookshop/mta.yaml ...
-Copying templates for type srv to srv ...
-Creating mta file /private/tmp/bookshop/mta.yaml ...
-Updating npm dependencies in /private/tmp/bookshop/package.json ...
-Running npm install...
-npm notice created a lockfile as package-lock.json. You should commit this file.
-added 120 packages from 178 contributors and audited 220 packages in 6.978s
-found 0 vulnerabilities
+[cds] - creating new project in current folder
+> applying template 'hana'...
+> applying template 'mta'...
+done.
 
-Done.
-Learn about first steps at https://cap.cloud.sap/docs/get-started/in-a-nutshell
+Find samples on https://github.com/SAP-samples/cloud-cap-samples
+Learn about next steps at https://cap.cloud.sap/docs/get-started
 ```
-
 
 ### 2. Open the project in VS Code
 
@@ -111,19 +101,22 @@ The skeleton project that has been initialized is visible in VS Code. This is wh
 
 Briefly, the directories and contents can be described thus:
 
-| Directory      | Contents |
+| Directory or File | Description |
 | -------------- | -------- |
-| `.vscode`      | VS Code specific files for launch configurations (useful for debugging, which we will cover in [exercise 08](../08/)) |
-| `db`           | Where the data models (in CDS) are specified.  |
-| `node_modules` | This is the place where NPM packages (modules) are to be found in a Node.js based project |
-| `srv`          | Where the service definitions (in CDS) are specified.  |
-| `mta.yaml`          | This is the central descriptor file for the project. It defines all modules (microservices) and backing services (like databases). This information will be used to build the .mtar archive during design time and to deploy & provision the apps and services during deploy time.  |
+| `.vscode/`      | VS Code specific files for launch configurations (useful for debugging, which we will cover in [exercise 08](../08/)). This directory may or may not be visible in VS Code, depending on version and settings. |
+| `app/`          | Where any UI components live, in case you're building and serving a full stack app. |
+| `db/`           | Where the data models (in CDS) are specified.  |
+| `srv/`          | Where the service definitions (in CDS) are specified.  |
+| `.eslintrc`     | Configuration for linting of the JavaScript with [ESLint](https://eslint.org/). |
+| `.gitignore`    | Specification of what content should be ignored when using `git` for source code control, specifically for CAP-based projects. |
+| `mta.yaml`      | This is the central descriptor file for the project. It defines all modules (microservices) and backing services (like databases). This information will be used to build the .mtar archive during design time and to deploy & provision the apps and services during deploy time.  |
+| `package.json`  | The standard package descriptor file for Node.js based (NPM) packages and projects. |
+| README.md       | A small 'Getting Started' guide for this project. |
 
-Besides the directories there are also a number of files, including the project's `package.json` (present in any Node.js based project).
 
 ### 4. Create a simple data model and service definition
 
-:point_right: Create a new file called `data-model.cds` in the `db/` directory of the recently created project, copy the following lines to the file and save it:
+:point_right: Create a new file called `schema.cds` in the `db/` directory of the recently created project, copy the following lines to the file and save it:
 
 ```cds:
 namespace my.bookshop;
@@ -137,10 +130,10 @@ entity Books {
 
 > You **may** wish to use VS Code's "auto save" feature, then again you may not. Just in case you do, you can turn it on via the **File -> Auto Save** menu option.
 
-:point_right: Create a new file called `cat-service.cds` in the `srv/` directory of the recently created project, copy the following lines to the file and save it:
+:point_right: Create a new file called `service.cds` in the `srv/` directory of the recently created project, copy the following lines to the file and save it:
 
 ```cds:
-using my.bookshop as my from '../db/data-model';
+using my.bookshop as my from '../db/schema';
 
 service CatalogService {
     entity Books as projection on my.Books;
@@ -151,14 +144,16 @@ You have now created a simple data model as well as a service definition for you
 
 ### 5. Examine the data model and service definition
 
-The key files in this project as far as the business domain is concerned are the `db/data-model.cds` and the `srv/cat-service.cds` files that you just added.
+The key files in this project as far as the business domain is concerned are the `db/schema.cds` and the `srv/service.cds` files that you just added.
 
 :point_right: Have a brief look at the content of each of these files to get a basic understanding of what's there. Note the use of the `namespace` and how it is defined in the data model and referenced in the service definition. Note also the how the different parts of each file are syntax highlighted.
 
 
-### 6. Start up the service
+### 6. Install the dependencies
 
-Now you're going to start up the service in the skeleton project. **VS Code has an integrated terminal which you can and should use for this and subsequent command line activities**.
+The `package.json` file that was created when you initialized the project directory contains a list of NPM packages upon which the project is dependent. Before we can start the service up, these dependencies must be installed. Now is a good time to do that.
+
+**VS Code has an integrated terminal which you can and should use for this and subsequent command line activities**.
 
 :point_right: Open the integrated terminal in VS Code. Do this by opening the Command Palette and searching for 'integrated terminal'. You may wish to use the keyboard shortcut for this - note there is a keyboard shortcut for toggling the integrated terminal in and out of view as well.
 
@@ -171,6 +166,33 @@ This should open up the terminal at the bottom of VS Code like this:
 > **Windows users:** Please make sure to select `cmd` as your default shell before you continue:
 ![default shell](default-shell-windows.png)
 
+:point_right: In the integrated terminal, making sure first that you're in the project directory itself (where `package.json` is to be found), install the dependencies like this:
+
+```sh
+user@host:~/bookshop
+=> npm install
+```
+
+You should see output that ends something like this:
+
+```sh
+npm notice created a lockfile as package-lock.json. You should commit this file.
+added 129 packages from 181 contributors and audited 258 packages in 4.762s
+found 0 vulnerabilities
+```
+
+Great. Now your fledgling service can already be started up!
+
+### 7. Start up the service
+
+:point_right: In the same integrated terminal, use the following command to start up the service:
+
+
+```sh
+user@host:~/bookshop
+=> npm start
+```
+
 :point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify `all`, like this, so that `cds` will look for appropriate configuration to serve:
 
 ```sh
@@ -181,14 +203,17 @@ user@host:~/bookshop
 You should see output similar to this:
 
 ```
-[cds] - connect to datasource - hana:db,srv
+> bookshop@1.0.0 start /tmp/codejam/bookshop
+> npx cds run
+
+[cds] - connect to datasource - hana:undefined
 [cds] - serving CatalogService at /catalog
 [cds] - service definitions loaded from:
 
-  srv/cat-service.cds
-  db/data-model.cds
+  srv/service.cds
+  db/schema.cds
 
-[cds] - launched in: 533.555ms
+[cds] - launched in: 583.297ms
 [cds] - server listening on http://localhost:4004 ...
 [ terminate with ^C ]
 ```
@@ -229,3 +254,6 @@ With a single command, you've initialized a basic OData service project and with
 
 4. What happened to the `cds` process when you accessed the entityset? Can you think of reasons why this happened?
 <!--- crash --->
+
+5. What actually happens when you run `npm start`, and why?
+<!-- runs npx cds run, standardized way -->
