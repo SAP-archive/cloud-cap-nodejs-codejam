@@ -193,13 +193,6 @@ user@host:~/bookshop
 => npm start
 ```
 
-:point_right: In the integrated terminal, use the `cds` command line tool with the `serve` command to start serving. Specify `all`, like this, so that `cds` will look for appropriate configuration to serve:
-
-```sh
-user@host:~/bookshop
-=> cds serve all
-```
-
 You should see output similar to this:
 
 ```
