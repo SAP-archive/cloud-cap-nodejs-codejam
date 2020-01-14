@@ -153,7 +153,7 @@ The key files in this project as far as the business domain is concerned are the
 
 The `package.json` file that was created when you initialized the project directory contains a list of NPM packages upon which the project is dependent. Before we can start the service up, these dependencies must be installed. Now is a good time to do that.
 
-**VS Code has an integrated terminal which you can and should use for this and subsequent command line activities**.
+> VS Code has an integrated terminal which you can and should use for this and subsequent command line activities.
 
 :point_right: Open the integrated terminal in VS Code. Do this by opening the Command Palette and searching for 'integrated terminal'. You may wish to use the keyboard shortcut for this - note there is a keyboard shortcut for toggling the integrated terminal in and out of view as well.
 
@@ -221,7 +221,7 @@ You should see output similar to this:
 The OData service is now running, and available via [http://localhost:4004](http://localhost:4004).
 
 
-### 7. Explore the OData service
+### 8. Explore the OData service
 
 While we have no data in the OData service (we don't even have a persistence layer yet!) we can ask the OData service for the two well-known documents: the service document and the metadata document.
 
