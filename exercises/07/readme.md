@@ -31,7 +31,7 @@ service Stats {
 
 Here the `Stats` service exposes the Orders entity in a read-only fashion as in the `CatalogService`, but uses the `excluding` clause to omit specific properties. These properties are not of interest to the analysis UI so are explicitly left out. Note that it also exposes the information as an entity called `OrderInfo`.
 
-:point_right: Effect a deployment to the persistence layer so that the relevant artefact will be created (specifically the view `Stats_OrderInfo`):
+:point_right: Effect a deployment to the persistence layer so that the relevant artefact will be created:
 
 ```sh
 user@host:~/bookshop
@@ -138,3 +138,6 @@ It's easy to explore building different views on the same underlying data model,
 
 2. What did the order creation HTTP requests look like - which service was used, and why?
 <!-- used the old one  -->
+
+3. What was the artefact created in the persistence layer in Step 1?
+<!-- Stats_OrderInfo -->
