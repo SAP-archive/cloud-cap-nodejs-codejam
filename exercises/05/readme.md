@@ -136,11 +136,11 @@ Note the difference in capitalization here. The property name is `country` which
 
 While the `cds watch` is useful, it supresses various messages to keep the noise down. But there's something in those suppressed messages that you should pay attention to.
 
-:point_right: Terminate any running `cds watch` process, and run `cds deploy && npm start` manually:
+:point_right: Terminate any running `cds watch` process, and run `cds deploy && cds watch` manually:
 
 ```sh
 user@host:~/bookshop
-=> cds deploy && npm start
+=> cds deploy && cds watch
  > filling my.bookshop.Authors from db/csv/my.bookshop-Authors.csv
  > filling my.bookshop.Books from db/csv/my.bookshop-Books.csv
 /> successfully deployed to ./bookshop
