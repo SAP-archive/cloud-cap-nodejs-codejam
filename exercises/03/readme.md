@@ -171,7 +171,7 @@ This should complete fairly quietly, something like this:
 
 ### 6. Explore the new database
 
-At this point you should have a new file `bookshop.db` in the project folder.
+At this point you should have a new file `bookshop.db` in the project directory.
 
 :point_right: Have a look inside it with the `sqlite3` command line utility; use the `.tables` command to see what has been created:
 
