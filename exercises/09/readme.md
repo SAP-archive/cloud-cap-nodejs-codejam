@@ -233,22 +233,18 @@ Now you can open the "Browse Books" app and see the beginnings of a list report.
 
 ![empty table](empty-table.png)
 
-### 5. Create a CDS index file
 
-This is the point where you can introduce an `index.cds` file which controls which services are exposed.
+### 5. Create a CDS index file with annotations
 
-:point_right: Create a file `index.cds` in the `srv/` directory, and add the following single line as the initial content:
+This is the point where you can introduce an `index.cds` file which controls which services are exposed, and also which can contain annotations to drive the Fiori elements based app.
+
+:point_right: Create a file `index.cds` in the `srv/` directory, and initially add this single line, which brings in the service definitions defined in `service.cds`:
 
 ```cds
 using from './service';
 ```
 
-> At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
-
-
-### 6. Add annotations for the service
-
-Now let's look at important content that will help us join together in our minds the two complementary worlds of CAP and Fiori. This content is to be added to `index.cds` and controls what gets served to Fiori frontends, via annotations that form a rich layer of metadata over the top of the service.
+Now let's look at important content that will help us join together in our minds the two complementary worlds of CAP and Fiori. This content is to be added next to `index.cds` and controls what gets served to Fiori frontends, via annotations that form a rich layer of metadata over the top of the service.
 
 :point_right: Below the initial line (`using from ...`) that you added to `index.cds` in the previous step, add the following content:
 
@@ -289,7 +285,7 @@ annotate CatalogService.Authors with {
 > You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now.
 
 
-### 7. Test the app
+### 6. Test the app
 
 The app should be ready to invoke. Reload the Fiori launchpad and select the tile. It should open up into a nice List Report style Fiori Elements app - all driven from the service's annotations:
 
@@ -298,7 +294,7 @@ The app should be ready to invoke. Reload the Fiori launchpad and select the til
 Well done!
 
 
-### 8. Add base internationalization texts
+### 7. Add base internationalization texts
 
 Just to round things off, add some i18n texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
 
