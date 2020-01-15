@@ -118,7 +118,7 @@ Let's now get back to the HTML in the `index.html` file. To create a sandbox Fio
         src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
     <script id="sap-ui-bootstrap"
-        src="https://sapui5.hana.ondemand.com/1.72.3/resources/sap-ui-core.js"
+        src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
     		data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
     		data-sap-ui-compatVersion="edge"
     		data-sap-ui-theme="sap_fiori_3"
@@ -131,8 +131,6 @@ Let's now get back to the HTML in the `index.html` file. To create a sandbox Fio
         )
     </script>
 ```
-
-> The UI5 bootstrap is pinned at 1.72.3 currently due to an issue with elements in the latest version. This pinning will be removed as soon as this is resolved.
 
 Here's a brief summary of what each of these `script` elements are for, in order of appearance in the file:
 
@@ -290,7 +288,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 ```
 
-Now you can open the "Browse Books" app and see all data - or better: see all (empty) lines. The reason for this, is that the Fiori Elements app does not yet know which properties to display.
+Now you can open the "Browse Books" app and see the beginnings of a list report. The reason for this is that the Fiori Elements app does not yet know which properties to display.
 
 ![empty table](empty-table.png)
 
