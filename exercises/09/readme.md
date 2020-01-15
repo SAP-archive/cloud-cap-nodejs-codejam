@@ -288,7 +288,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 ```
 
-Now you can open the "Browse Books" app and see the beginnings of a list report. The reason for this is that the Fiori Elements app does not yet know which properties to display.
+Now you can open the "Browse Books" app and see the beginnings of a list report.
 
 ![empty table](empty-table.png)
 
