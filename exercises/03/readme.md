@@ -135,7 +135,7 @@ user@host:~/bookshop
 
 Now it's time to make that deployment to the persistence layer.
 
-:point_right: Explore the `cds deploy` command like this:
+:point_right: Explore the options for the deploy command like this:
 
 ```sh
 user@host:~/bookshop
@@ -160,7 +160,7 @@ Use this command to deploy the data model and service definition to a new SQLite
 
 ```
 user@host:~/bookshop
-=> cds deploy --to sqlite:bookshop
+=> cds deploy --to sqlite:bookshop.db
 ```
 
 This should complete fairly quietly, something like this:
