@@ -10,16 +10,13 @@ Following these steps, you'll build a simple Fiori app that sits in a local Fior
 
 ### 1. Introduce a basic HTML page to be served for the UI
 
-Following the "convention over configuation" theme, the Node.js flavored CAP model will also automatically serve static resources (such as UI artefacts) from a directory called `app/`. 
+Following the "convention over configuation" theme, the Node.js flavored CAP model will also automatically serve static resources (such as UI artefacts) from a directory called `app/`.
 
 If there isn't anything that can be sensibly served in the `app/` directory it will serve the "Welcome to cds.services" landing page we've seen already:
 
 ![the "Welcome to cds.services" landing page](../07/two-services.png)
 
-:point_right: Create an `app/` directory, at the same level as the `db/` and `srv/` directories. This directory that will contain the app files.
-
-
-:point_right: Create the `webapp/` directory as a child of the `app/` and create an `index.html` file within it, containing the following.
+:point_right: Create the `webapp/` directory as a child of the existing `app/` directory, and create an `index.html` file within it, containing the following:
 
 ```html
 <!DOCTYPE html>
@@ -36,14 +33,14 @@ If there isn't anything that can be sensibly served in the `app/` directory it w
 </html>
 ```
 
-:point_right: Restart the service (with `cds serve all`) and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, while the the page itself looks empty, there is the page title "Bookshop" in the browser tab, that shows us that the HTML we entered has been loaded:
+:point_right: If it's not still running, restart `cds watch` and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, while the the page itself looks empty, there is the page title "Bookshop" in the browser tab, that shows us that the HTML we entered has been loaded:
 
 ![title in browser tab](title-in-browser-tab.png)
 
 
 ### 2. Add a new module to the project descriptor
 
-This new `app/` directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform. 
+This new `app/` directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform.
 
 For this to work and be included in what we eventually deploy and run, we must add information to the main deployment descriptor file `mta.yaml` that holds information relating to this.
 
@@ -82,7 +79,7 @@ modules:
     requires:
       - name: srv_api
         group: destinations
-        properties: 
+        properties:
           forwardAuthToken: true
           strictSSL: true
           name: srv_api
@@ -104,6 +101,8 @@ This snippet not only describes the runtime environment of the new module, it al
 
 Let's now get back to the HTML in the `index.html` file. To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
+> While you have `cds watch` running, you may notice that it's not looking out for changes to HTML files, but that doesn't actually matter, as with HTML changes, the server doesn't need to be restarted. So you can make these following changes and simply switch over to the browser to refresh.
+
 :point_right: Add these `script` elements between the `title` element and the end of the `head` element in `index.html`:
 
 ```html
@@ -119,7 +118,7 @@ Let's now get back to the HTML in the `index.html` file. To create a sandbox Fio
         src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
 
     <script id="sap-ui-bootstrap"
-        src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        src="https://sapui5.hana.ondemand.com/1.72.3/resources/sap-ui-core.js"
     		data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
     		data-sap-ui-compatVersion="edge"
     		data-sap-ui-theme="sap_fiori_3"
@@ -132,6 +131,8 @@ Let's now get back to the HTML in the `index.html` file. To create a sandbox Fio
         )
     </script>
 ```
+
+> The UI5 bootstrap is pinned at 1.72.3 currently due to an issue with elements in the latest version. This pinning will be removed as soon as this is resolved.
 
 Here's a brief summary of what each of these `script` elements are for, in order of appearance in the file:
 
@@ -300,7 +301,7 @@ This is the point where you can introduce an `index.cds` file which controls whi
 :point_right: Create a file `index.cds` in the `srv/` directory, and add the following single line as the initial content:
 
 ```cds
-using from './cat-service';
+using from './service';
 ```
 
 > At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
@@ -348,10 +349,6 @@ annotate CatalogService.Authors with {
 
 > You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now.
 
-The final thing to do in this step is to redeploy because we have added CDS artefacts.
-
-:point_right: Do this now, with `cds deploy`, before restarting the service with `cds serve all`.
-
 
 ### 8. Test the app
 
@@ -377,7 +374,7 @@ Book=Book
 Books=Books
 ```
 
-:point_right: Redeploy and restart the service (`cds deploy && cds serve all`) and reload the app. You should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
+:point_right: After the `cds watch` mechanism has restarted the server, refresh the app, and you should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
 
 
 ## Summary
