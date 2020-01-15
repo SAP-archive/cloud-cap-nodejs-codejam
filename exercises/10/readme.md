@@ -150,7 +150,14 @@ Similar to the `srv` module, we need to add a descriptor file for the `app` modu
 This file not only defines the welcome page, but also defines which requests are forwarded to which Cloud Foundry application.
 
 
-### 6. Add npm scripts to trigger the deployment
+### 6. Specify HANA as a database in the configuration
+
+We're about to deploy to HANA in the form of an HDI container on the trial landscape of SAP Cloud Platform Cloud Foundry. This means we need to ensure we have the right configuration for the database, so that things get built correctly. This can be done in the `package.json` file. 
+
+:point_right: In the root level `package.json` file, find the `cds -> requires -> db -> kind` node and change the value from `sqlite` to `hana`. 
+
+
+### 7. Add npm scripts to trigger the deployment
 
 So far, the `package.json` file in your project root only defines scripts for local project execution.
 
@@ -170,7 +177,7 @@ user@host:~/bookshop
 => npm install mbt
 ```
 
-### 7. Build the project
+### 8. Build the project
 We're almost there. To make our project ready for deployment, we need to package it into a single archive which can be used a delivery unit.
 
 :point_right: Trigger the build process with the following command.
@@ -183,7 +190,7 @@ user@host:~/bookshop
 > If you want to run the two commands (`cds build/all` and `mbt build -p=cf`) manually, one after the other, to see what they do, note that you'll have to use `npx` to run the `mbt` command, like this: `npx mbt build -p=cf`. In fact, the latest version of `mbt` has the value `cf` as the default for the `-p` ('platform') flag, so you don't actually need to specify this explicitly.
 
 
-### 8. Deploy the archive
+### 9. Deploy the archive
 
 Now you should see a new directory `mta_archives/` which contains an archive file named with the `ID` and `version` we defined in the `mta.yaml` descriptor. One command is all it takes to deploy your project to the cloud.
 
