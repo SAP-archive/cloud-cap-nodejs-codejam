@@ -38,66 +38,7 @@ If there isn't anything that can be sensibly served in the `app/` directory it w
 ![title in browser tab](title-in-browser-tab.png)
 
 
-### 2. Add a new module to the project descriptor
-
-This new `app/` directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform.
-
-For this to work and be included in what we eventually deploy and run, we must add information to the main deployment descriptor file `mta.yaml` that holds information relating to this.
-
-:point_right: Replace the content of your `mta.yaml` file with the following lines. (Basically only the `bookshop-ui` module was added, but the formatting of `yaml` files is very unforgiving, so just copy / paste the entire content from here and replace everything, to keep things simple!)
-```
-_schema-version: 2.0.0
-ID: bookshop
-version: 1.0.0
-modules:
-  - name: bookshop-db
-    type: hdb
-    path: db
-    parameters:
-      memory: 256M
-      disk-quota: 256M
-    requires:
-      - name: bookshop-db-hdi-container
-  - name: bookshop-srv
-    type: nodejs
-    path: srv
-    parameters:
-      memory: 512M
-      disk-quota: 256M
-    provides:
-      - name: srv_api
-        properties:
-          url: ${default-url}
-    requires:
-      - name: bookshop-db-hdi-container
-  - name: bookshop-ui
-    type: nodejs
-    path: app
-    parameters:
-      memory: 256M
-      disk-quota: 256M
-    requires:
-      - name: srv_api
-        group: destinations
-        properties:
-          forwardAuthToken: true
-          strictSSL: true
-          name: srv_api
-          url: ~{url}
-resources:
-  - name: bookshop-db-hdi-container
-    type: com.sap.xs.hdi-container
-    properties:
-      hdi-container-name: ${service-name}
-    parameters:
-      service: hana
-
-```
-
-This snippet not only describes the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
-
-
-### 3. Add a Fiori sandbox environment to the UI index page
+### 2. Add a Fiori sandbox environment to the UI index page
 
 Let's now get back to the HTML in the `index.html` file. To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
@@ -143,7 +84,7 @@ Reloading the browser tab should now show the beginnings of something recognizab
 
 ![an empty Fiori launchpad](empty-fiori-launchpad.png)
 
-### 4. Introduce a basic UI app to the Fiori launchpad
+### 3. Introduce a basic UI app to the Fiori launchpad
 
 Now we have the launchpad as a container for our app, let's introduce it gradually.
 
@@ -173,7 +114,7 @@ Reloading the index page in the browser should show something like this:
 ![Fiori launchpad with tile](launchpad-with-tile.png)
 
 
-### 5. Create the app artefacts
+### 4. Create the app artefacts
 
 As we can see from the configuration we've just added, we're suggesting the app is a Component-based app (where the component name is "bookshop") and is to be found at (relative) URL `/webapp`. Let's flesh that out in terms of directories and files now.
 
@@ -292,7 +233,7 @@ Now you can open the "Browse Books" app and see the beginnings of a list report.
 
 ![empty table](empty-table.png)
 
-### 6. Create a CDS index file
+### 5. Create a CDS index file
 
 This is the point where you can introduce an `index.cds` file which controls which services are exposed.
 
@@ -305,7 +246,7 @@ using from './service';
 > At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
 
 
-### 7. Add annotations for the service
+### 6. Add annotations for the service
 
 Now let's look at important content that will help us join together in our minds the two complementary worlds of CAP and Fiori. This content is to be added to `index.cds` and controls what gets served to Fiori frontends, via annotations that form a rich layer of metadata over the top of the service.
 
@@ -348,7 +289,7 @@ annotate CatalogService.Authors with {
 > You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now.
 
 
-### 8. Test the app
+### 7. Test the app
 
 The app should be ready to invoke. Reload the Fiori launchpad and select the tile. It should open up into a nice List Report style Fiori Elements app - all driven from the service's annotations:
 
@@ -357,7 +298,7 @@ The app should be ready to invoke. Reload the Fiori launchpad and select the til
 Well done!
 
 
-### 9. Add base internationalization texts
+### 8. Add base internationalization texts
 
 Just to round things off, add some i18n texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
 
