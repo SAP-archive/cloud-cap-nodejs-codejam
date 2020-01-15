@@ -151,6 +151,8 @@ In a similar way to how we restricted access to the `Books` and `Authors` entity
 
 As you might have guessed, this is achieved via the `@insertonly` annotation shortcut.
 
+:point_right: Before making this edit, switch back (if you haven't already) to using `cds watch` so that restarts will be automatic after changes.
+
 :point_right: In the `CatalogService` service definition in `srv/service.cds`, annotate the `Orders` entity with `@insertonly` so it looks like this:
 
 ```cds
