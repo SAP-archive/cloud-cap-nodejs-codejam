@@ -246,7 +246,7 @@ using from './service';
 
 Now let's look at important content that will help us join together in our minds the two complementary worlds of CAP and Fiori. This content is to be added next to `index.cds` and controls what gets served to Fiori frontends, via annotations that form a rich layer of metadata over the top of the service.
 
-:point_right: Below the initial line (`using from ...`) that you added to `index.cds` in the previous step, add the following content:
+:point_right: Below the initial `using from ...` line, add the following content:
 
 ```cds
 annotate CatalogService.Books with @(
