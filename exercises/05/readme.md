@@ -36,7 +36,7 @@ service CatalogService {
 
 Observe that the CDS Language Service extension picks up the new `Orders` entity straight away (as long as you've saved the `db/schema.cds` file) and offers it as a suggestion in the code completion feature.
 
-:point_right: Noting that your service has been automatically restarted (by `cds watch`) already, take a look at the new `Orders` entity: <http://localhost:4000/catalog/Orders>.
+:point_right: Noting that your service has been automatically restarted (by `cds watch`) already, take a look at the new `Orders` entity: <http://localhost:4004/catalog/Orders>.
 
 You should see an error both in the response returned, and in the service log output, that looks something like this:
 
