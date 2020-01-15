@@ -279,11 +279,8 @@ At this point you have a meaningful OData service with data and against which yo
 
 ## Questions
 
-1. Did you notice an extra line in the output of `cds serve all` after the addition of the reference to `@sap/cds/common`?
-<!--- node_modules/@sap/cds/common.cds --->
-
-2. We added a field `country` described by the type `Country`. What exactly is this type, and what does it bring about in the resulting service's metadata?
+1. We added a field `country` described by the type `Country`. What exactly is this type, and what does it bring about in the resulting service's metadata?
 <!--- string(3), code list --->
 
-3. Are there any issues with the way we have set up the service definition right now?
+2. Are there any issues with the way we have set up the service definition right now?
 <!--- all public --->
