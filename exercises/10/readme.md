@@ -154,7 +154,39 @@ This file not only defines the welcome page, but also defines which requests are
 
 We're about to deploy to HANA in the form of an HDI container on the trial landscape of SAP Cloud Platform Cloud Foundry. This means we need to ensure we have the right configuration for the database, so that things get built correctly. This can be done in the `package.json` file. 
 
-:point_right: In the root level `package.json` file, find the `cds -> requires -> db -> kind` node and change the value from `sqlite` to `hana`. 
+:point_right: In the root level `package.json` file, find the `cds -> requires -> db` node and add another section for `[production]`, like this:
+
+```cds
+"[production]": {
+  "kind": "hana"
+},
+```
+
+'
+so it then looks like this:
+
+```cds
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "model": [
+          "db/",
+          "srv/",
+          "app/"
+        ],
+        "[production]": {
+          "kind": "hana"
+        },
+        "credentials": {
+          "database": "db.db"
+        }
+      }
+    }
+  },
+```
+
+The "hana" value of "kind" will now be used in place of "sqlite" when the "production" profile is used. See the [Runtime Configuration for Node.js](https://cap.cloud.sap/docs/advanced/config) section of the CAP documentation for more details.
 
 
 ### 7. Add npm scripts to trigger the deployment
@@ -180,11 +212,11 @@ user@host:~/bookshop
 ### 8. Build the project
 We're almost there. To make our project ready for deployment, we need to package it into a single archive which can be used a delivery unit.
 
-:point_right: Trigger the build process with the following command.
+:point_right: Trigger the build process with the following command, specifying "production" for the `NODE_ENV` environment variable:
 
 ```
 user@host:~/bookshop
-=> npm run build:mta
+=> NODE_ENV=production npm run build:mta
 ```
 
 > If you want to run the two commands (`cds build/all` and `mbt build -p=cf`) manually, one after the other, to see what they do, note that you'll have to use `npx` to run the `mbt` command, like this: `npx mbt build -p=cf`. In fact, the latest version of `mbt` has the value `cf` as the default for the `-p` ('platform') flag, so you don't actually need to specify this explicitly.
