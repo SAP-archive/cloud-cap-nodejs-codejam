@@ -33,7 +33,7 @@ If there isn't anything that can be sensibly served in the `app/` directory it w
 </html>
 ```
 
-:point_right: If it's not still running, restart `cds watch` and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, while the the page itself looks empty, there is the page title "Bookshop" in the browser tab, that shows us that the HTML we entered has been loaded:
+:point_right: Restart `cds watch` and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, while the the page itself looks empty, there is the page title "Bookshop" in the browser tab, that shows us that the HTML we entered has been loaded:
 
 ![title in browser tab](title-in-browser-tab.png)
 
