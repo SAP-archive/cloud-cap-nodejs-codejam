@@ -80,7 +80,7 @@ service CatalogService {
 
 What does this do, precisely? Let's find out.
 
-:point_right: After saving the file and waiting for `cds watch` to restart the service, examine the OData service's [metadata](http://localhost:4004/catalog/$metadata). You should find annotations that look like this:
+:point_right: After saving the file, start up `cds watch` to get back into the auto restart mode. The, examine the OData service's [metadata](http://localhost:4004/catalog/$metadata). You should find annotations that look like this:
 
 ![readonly annotations](readonly-annotations.png)
 
