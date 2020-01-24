@@ -234,7 +234,7 @@ user@host:~/bookshop
 ```
 
 
-### 9. Check the apps and services in Cloud Foundry
+### 10. Check the apps and services in Cloud Foundry
 
 You can and should check the status of what you've deployed to your trial Cloud Foundry environment on the SAP Cloud Platform.
 
