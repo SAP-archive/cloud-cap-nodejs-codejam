@@ -215,8 +215,14 @@ We're almost there. To make our project ready for deployment, we need to package
 :point_right: Trigger the build process with the following command, specifying "production" for the `NODE_ENV` environment variable:
 
 ```
-user@host:~/bookshop
-=> NODE_ENV=production npm run build:mta
+NODE_ENV=production npm run build:mta
+```
+
+If you're running Windows then you'll need to set the environment variable first with `set` and then run the command, like this:
+
+```
+set NODE_ENV production
+npm run build:mta
 ```
 
 > If you want to run the two commands (`cds build/all` and `mbt build -p=cf`) manually, one after the other, to see what they do, note that you'll have to use `npx` to run the `mbt` command, like this: `npx mbt build -p=cf`. In fact, the latest version of `mbt` has the value `cf` as the default for the `-p` ('platform') flag, so you don't actually need to specify this explicitly.
