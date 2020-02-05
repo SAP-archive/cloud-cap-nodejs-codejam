@@ -236,7 +236,7 @@ With a single command, you've initialized a basic OData service project and with
 
 ## Questions
 
-1. Why is there an focus on "Contracts First" (As all you need to run a service is a service definition) - what advantages does that bring?
+1. Why is there a focus on "Contracts First" (As all you need to run a service is a service definition) - what advantages does that bring?
 <!--- UI teams can start to work right away --->
 
 2. What is the difference between the data model and the service definition? Why do we need both?
