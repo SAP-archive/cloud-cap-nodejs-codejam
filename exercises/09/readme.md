@@ -321,5 +321,3 @@ While this was a little intense as far as creation of artefacts was concerned, w
 1. Why do we put the internationalization file in the `srv/` directory (rather than the `app/` directory)?
 <!-- we annotate the service and not the UI -->
 
-2. Which variable have you accessed in the `mta.yaml` descriptor and where has it been defined?
-<!-- srv_api, comes from srv module -->
