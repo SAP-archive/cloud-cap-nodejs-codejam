@@ -60,7 +60,7 @@ Let's now add a bit more to the contents of the `index.html` file. To create a s
 
     <script id="sap-ui-bootstrap"
         src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
-    		data-sap-ui-libs="sap.m,sap.ushell,sap.collaboration,sap.ui.layout"
+    		data-sap-ui-libs="sap.m,sap.ushell,sap.fe.templates,sap.collaboration,sap.ui.layout"
     		data-sap-ui-compatVersion="edge"
     		data-sap-ui-theme="sap_fiori_3"
     		data-sap-ui-resourceroots='{"bookshop": "../"}'
@@ -124,7 +124,7 @@ As we can see from the configuration we've just added, we're suggesting the app 
 
 ```js
 sap.ui.define(
-    ['sap/fe/AppComponent'],
+    ['sap/fe/core/AppComponent'],
     ac => ac.extend('bookshop.Component', {
         metadata: {
             manifest: 'json'
@@ -158,9 +158,7 @@ This is a modern UI5 component definition that points to a JSON configuration fi
     },
     "sap.ui5": {
         "dependencies": {
-            "libs": {
-                "sap.fe": {}
-            }
+            "libs": {}
         },
         "models": {
             "i18n": {
