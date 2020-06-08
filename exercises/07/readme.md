@@ -14,7 +14,7 @@ At the end of these steps, you'll have two OData services both exposing differen
 
 Service definitions can live alongside each other in the same CDS file.
 
-:point_right: In `srv/cat-service.cds`, add a second service definition thus:
+:point_right: In `srv/service.cds`, add a second service definition thus:
 
 ```cds
 service Stats {
@@ -31,7 +31,15 @@ service Stats {
 
 Here the `Stats` service exposes the Orders entity in a read-only fashion as in the `CatalogService`, but uses the `excluding` clause to omit specific properties. These properties are not of interest to the analysis UI so are explicitly left out. Note that it also exposes the information as an entity called `OrderInfo`.
 
-:point_right: Now redeploy and start serving the services (`cds deploy && cds serve all`) and check the root document at [http://localhost:4004/](http://localhost:4004/). You should see something like this:
+:point_right: Effect a deployment to the persistence layer so that the relevant artefact will be created:
+
+```sh
+user@host:~/bookshop
+=> cds deploy
+```
+
+
+:point_right: Start the service up again via `cds watch` and check the root document at [http://localhost:4004/](http://localhost:4004/). You should see something like this:
 
 ![two services](two-services.png)
 
@@ -89,7 +97,7 @@ For Windows users:
 curl ^
   -d "{\"book_ID\": 252, \"quantity\": 7}" ^
   -H "Content-Type: application/json" ^
-  http://localhost:4004/catalog/Authors
+  http://localhost:4004/catalog/Orders
 ```
 
 Order 42 copies of The Hitch Hiker's Guide To The Galaxy (obviously!):
@@ -106,7 +114,7 @@ For Windows users:
 curl ^
   -d "{\"book_ID\": 421, \"quantity\": 42}" ^
   -H "Content-Type: application/json" ^
-  http://localhost:4004/catalog/Authors
+  http://localhost:4004/catalog/Orders
 ```
 
 Now it's time to take a look at what the service will show us for these orders. We know we can't look at the `Orders` entityset as it has a `@insertonly` annotation shortcut based restriction, so we turn to our new service `Stats`.
@@ -130,3 +138,6 @@ It's easy to explore building different views on the same underlying data model,
 
 2. What did the order creation HTTP requests look like - which service was used, and why?
 <!-- used the old one  -->
+
+3. What was the artefact created in the persistence layer in Step 1?
+<!-- Stats_OrderInfo -->

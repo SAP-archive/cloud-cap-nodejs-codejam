@@ -10,16 +10,13 @@ Following these steps, you'll build a simple Fiori app that sits in a local Fior
 
 ### 1. Introduce a basic HTML page to be served for the UI
 
-Following the "convention over configuation" theme, the Node.js flavored CAP model will also automatically serve static resources (such as UI artefacts) from a directory called `app/`. 
+Following the "convention over configuation" theme, the Node.js flavored CAP model will also automatically serve static resources (such as UI artefacts) from a directory called `app/`.
 
 If there isn't anything that can be sensibly served in the `app/` directory it will serve the "Welcome to cds.services" landing page we've seen already:
 
 ![the "Welcome to cds.services" landing page](../07/two-services.png)
 
-:point_right: Create an `app/` directory, at the same level as the `db/` and `srv/` directories. This directory that will contain the app files.
-
-
-:point_right: Create the `webapp/` directory as a child of the `app/` and create an `index.html` file within it, containing the following.
+:point_right: Create the `webapp/` directory as a child of the existing `app/` directory, and create an `index.html` file within it, containing the following:
 
 ```html
 <!DOCTYPE html>
@@ -36,73 +33,16 @@ If there isn't anything that can be sensibly served in the `app/` directory it w
 </html>
 ```
 
-:point_right: Restart the service (with `cds serve all`) and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, while the the page itself looks empty, there is the page title "Bookshop" in the browser tab, that shows us that the HTML we entered has been loaded:
+:point_right: Restart `cds watch` and go to the URL [http://localhost:4004/webapp](http://localhost:4004/webapp). Here, while the the page itself looks empty, there is the page title "Bookshop" in the browser tab, that shows us that the HTML we entered has been loaded:
 
 ![title in browser tab](title-in-browser-tab.png)
 
 
-### 2. Add a new module to the project descriptor
+### 2. Add a Fiori sandbox environment to the UI index page
 
-This new `app/` directory contains all UI files and represents a new module in the context of what we're eventually going to deploy to the SAP Cloud Platform. 
+Let's now add a bit more to the contents of the `index.html` file. To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
 
-For this to work and be included in what we eventually deploy and run, we must add information to the main deployment descriptor file `mta.yaml` that holds information relating to this.
-
-:point_right: Replace the content of your `mta.yaml` file with the following lines. (Basically only the `bookshop-ui` module was added, but the formatting of `yaml` files is very unforgiving, so just copy / paste the entire content from here and replace everything, to keep things simple!)
-```
-_schema-version: 2.0.0
-ID: bookshop
-version: 1.0.0
-modules:
-  - name: bookshop-db
-    type: hdb
-    path: db
-    parameters:
-      memory: 256M
-      disk-quota: 256M
-    requires:
-      - name: bookshop-db-hdi-container
-  - name: bookshop-srv
-    type: nodejs
-    path: srv
-    parameters:
-      memory: 512M
-      disk-quota: 256M
-    provides:
-      - name: srv_api
-        properties:
-          url: ${default-url}
-    requires:
-      - name: bookshop-db-hdi-container
-  - name: bookshop-ui
-    type: nodejs
-    path: app
-    parameters:
-      memory: 256M
-      disk-quota: 256M
-    requires:
-      - name: srv_api
-        group: destinations
-        properties: 
-          forwardAuthToken: true
-          strictSSL: true
-          name: srv_api
-          url: ~{url}
-resources:
-  - name: bookshop-db-hdi-container
-    type: com.sap.xs.hdi-container
-    properties:
-      hdi-container-name: ${service-name}
-    parameters:
-      service: hana
-
-```
-
-This snippet not only describes the runtime environment of the new module, it also injects the URL of the deployed `srv` module during deploy time.
-
-
-### 3. Add a Fiori sandbox environment to the UI index page
-
-Let's now get back to the HTML in the `index.html` file. To create a sandbox Fiori launchpad we'll need the UI5 runtime as well as artefacts from the `test-resources` area of the toolkit.
+> While you have `cds watch` running, you may notice that it's not looking out for changes to HTML files, but that doesn't actually matter, as with HTML changes, the server doesn't need to be restarted. So you can make these following changes and simply switch over to the browser to refresh.
 
 :point_right: Add these `script` elements between the `title` element and the end of the `head` element in `index.html`:
 
@@ -144,7 +84,7 @@ Reloading the browser tab should now show the beginnings of something recognizab
 
 ![an empty Fiori launchpad](empty-fiori-launchpad.png)
 
-### 4. Introduce a basic UI app to the Fiori launchpad
+### 3. Introduce a basic UI app to the Fiori launchpad
 
 Now we have the launchpad as a container for our app, let's introduce it gradually.
 
@@ -174,7 +114,7 @@ Reloading the index page in the browser should show something like this:
 ![Fiori launchpad with tile](launchpad-with-tile.png)
 
 
-### 5. Create the app artefacts
+### 4. Create the app artefacts
 
 As we can see from the configuration we've just added, we're suggesting the app is a Component-based app (where the component name is "bookshop") and is to be found at (relative) URL `/webapp`. Let's flesh that out in terms of directories and files now.
 
@@ -289,28 +229,24 @@ This is a modern UI5 component definition that points to a JSON configuration fi
 
 ```
 
-Now you can open the "Browse Books" app and see all data - or better: see all (empty) lines. The reason for this, is that the Fiori Elements app does not yet know which properties to display.
+Now you can open the "Browse Books" app and see the beginnings of a list report.
 
 ![empty table](empty-table.png)
 
-### 6. Create a CDS index file
 
-This is the point where you can introduce an `index.cds` file which controls which services are exposed.
+### 5. Create a CDS index file with annotations
 
-:point_right: Create a file `index.cds` in the `srv/` directory, and add the following single line as the initial content:
+This is the point where you can introduce an `index.cds` file which controls which services are exposed, and also which can contain annotations to drive the Fiori elements based app.
+
+:point_right: Create a file `index.cds` in the `srv/` directory, and initially add this single line, which brings in the service definitions defined in `service.cds`:
 
 ```cds
-using from './cat-service';
+using from './service';
 ```
 
-> At this point you can actually reload the UI; while you will see some semblance of an app when you select the tile in the launchpad, the app's display will be mostly empty.
+Now let's look at important content that will help us join together in our minds the two complementary worlds of CAP and Fiori. This content is to be added next to `index.cds` and controls what gets served to Fiori frontends, via annotations that form a rich layer of metadata over the top of the service.
 
-
-### 7. Add annotations for the service
-
-Now let's look at important content that will help us join together in our minds the two complementary worlds of CAP and Fiori. This content is to be added to `index.cds` and controls what gets served to Fiori frontends, via annotations that form a rich layer of metadata over the top of the service.
-
-:point_right: Below the initial line (`using from ...`) that you added to `index.cds` in the previous step, add the following content:
+:point_right: Below the initial `using from ...` line, add the following content:
 
 ```cds
 annotate CatalogService.Books with @(
@@ -348,12 +284,8 @@ annotate CatalogService.Authors with {
 
 > You may see some warnings that there are no texts for the internationalization (i18n) identifiers. We'll fix this shortly, you can ignore the warnings for now.
 
-The final thing to do in this step is to redeploy because we have added CDS artefacts.
 
-:point_right: Do this now, with `cds deploy`, before restarting the service with `cds serve all`.
-
-
-### 8. Test the app
+### 6. Test the app
 
 The app should be ready to invoke. Reload the Fiori launchpad and select the tile. It should open up into a nice List Report style Fiori Elements app - all driven from the service's annotations:
 
@@ -362,7 +294,7 @@ The app should be ready to invoke. Reload the Fiori launchpad and select the til
 Well done!
 
 
-### 9. Add base internationalization texts
+### 7. Add base internationalization texts
 
 Just to round things off, add some i18n texts - they're referred to in various annotation sections, and it will make the app look a little more polished.
 
@@ -377,7 +309,7 @@ Book=Book
 Books=Books
 ```
 
-:point_right: Redeploy and restart the service (`cds deploy && cds serve all`) and reload the app. You should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
+:point_right: After the `cds watch` mechanism has restarted the server, refresh the app, and you should see the static texts as specified in the `i18n.properties` file, such as "Author Name" rather than "AuthorName".
 
 
 ## Summary
@@ -389,5 +321,3 @@ While this was a little intense as far as creation of artefacts was concerned, w
 1. Why do we put the internationalization file in the `srv/` directory (rather than the `app/` directory)?
 <!-- we annotate the service and not the UI -->
 
-2. Which variable have you accessed in the `mta.yaml` descriptor and where has it been defined?
-<!-- srv_api, comes from srv module -->

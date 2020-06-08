@@ -80,14 +80,7 @@ service CatalogService {
 
 What does this do, precisely? Let's find out.
 
-:point_right: First save the file then redeploy & restart the service, like you did in [exercise 05](../05/):
-
-```sh
-user@host:~/bookshop
-=> cds deploy && cds serve all
-```
-
-:point_right: Now examine the OData service's [metadata](http://localhost:4004/catalog/$metadata), and you should find annotations that look like this:
+:point_right: After saving the file, start up `cds watch` to get back into the auto restart mode. The, examine the OData service's [metadata](http://localhost:4004/catalog/$metadata). You should find annotations that look like this:
 
 ![readonly annotations](readonly-annotations.png)
 
@@ -158,7 +151,9 @@ In a similar way to how we restricted access to the `Books` and `Authors` entity
 
 As you might have guessed, this is achieved via the `@insertonly` annotation shortcut.
 
-:point_right: In the `CatalogService` service definition in `srv/cat-service.cds`, annotate the `Orders` entity with `@insertonly` so it looks like this:
+:point_right: Before making this edit, switch back (if you haven't already) to using `cds watch` so that restarts will be automatic after changes.
+
+:point_right: In the `CatalogService` service definition in `srv/service.cds`, annotate the `Orders` entity with `@insertonly` so it looks like this:
 
 ```cds
 service CatalogService {
@@ -167,8 +162,6 @@ service CatalogService {
     @insertonly entity Orders as projection on my.Orders;
 }
 ```
-
-:point_right: Redeploy and restart the service (run `cds deploy && cds serve all` in the terminal).
 
 :point_right: Now create a couple of orders using the Postman collection from [exercise 05](../05/) - there should be a couple of POST requests against the `Orders` entityset (refer to the step in exercise 05 for the command line invocations if you wish).
 

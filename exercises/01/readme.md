@@ -6,7 +6,7 @@ Successfully completing this exercise relies on the hardware and software [prere
 
 ## Steps
 
-After completing these steps you'll have a working local environment for development of CAP based projects with Node.js.
+After completing these steps you'll have a working local environment for development of CAP based projects with Node.js, using the CAP "development kit" package `@sap/cds-dk`.
 
 ### 1. Install the CDS command line tool
 
@@ -43,7 +43,7 @@ user-agent = "npm/6.4.1 node/v10.15.3 linux x64"
 ; "npm config ls -l" to show all defaults.
 ```
 
-:point_right: Next, explore the information about the `@sap/cds-dk` (the dk stands for development kit)package, including its dependencies, with:
+:point_right: Next, explore the information about the `@sap/cds-dk` package, including its dependencies, with:
 
 ```sh
 user@host:~
@@ -59,15 +59,14 @@ user@host:~
 => npm install --global @sap/cds-dk
 ```
 
-This should eventually produce output similar to this:
+This produces a fair amount of output as it works, but should eventually end with a couple of lines similar to this:
 
 ```sh
-/Users/d056949/.nvm/versions/node/v10.15.3/bin/cds -> /Users/d056949/.nvm/versions/node/v10.15.3/lib/node_modules/@sap/cds-dk/bin/cds.js
-+ @sap/cds-dk@1.1.4
-updated 1 package in 27.076s
++ @sap/cds-dk@1.4.2
+added 471 packages from 381 contributors in 33.398s
 ```
 
-Here you can see that the version of the `@sap/cds-dk` package installed is 3.18.4. It may be that the version of `@sap/cds-dk` that is installed when you do this exercise will be different (newer).
+Here you can see that the version of the `@sap/cds-dk` package just installed is 1.4.2. It may be that the version of `@sap/cds-dk` that is installed when you do this exercise will be different (newer).
 
 ### 2. Install the CDS extension for VS Code
 
@@ -77,7 +76,7 @@ Extensions can be installed directly in VS Code from the extension marketplace, 
 
 :point_right: Go to the [Cloud section of the SAP Development Tools website](https://tools.hana.ondemand.com/#cloud) and find the "CDS Language Support for Visual Studio Code" section. Follow the instructions there to download and subsequently install the extension.
 
-To install the downloaded extension in VS Code have a look at the screenshot below: 
+To install the downloaded extension in VS Code have a look at the screenshot below:
 
 ![CDS Extension installation in VS Code](vscode-extension-import.png)
 
@@ -85,17 +84,17 @@ When successfully installed, you should see the extension thus (again, the versi
 
 ![CDS Language Support extension installed in VS Code](vscode-extension.png)
 
-> **For macOS users only:** To be able to open VS Code from the command line (which you will be doing in a subsequent exercise) you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS Code. 
+> **For macOS users only:** To be able to open VS Code from the command line (which you will be doing in a subsequent exercise) you need to add the installation path of VS Code to the environment variable PATH. There's an option to do this via the `Command Palette` in VS Code.
 
 > Open the `Command Palette` with ⇧⌘P. You can also open it via the menu bar: View -> Command Palette.
 
 > ![Command Palette navigation in the menu bar](command-palette.png)
 
-> Search for `code` and press Enter. 
+> Search for `code` and press Enter.
 
 > ![search for code in the command palette](install-code-path.png)
 
-> A success message for the process should then appear at the bottom right of the screen. 
+> A success message for the process should then appear at the bottom right of the screen.
 
 > ![message that the 'code' command was successfully installed](sucessfully-installed.png)
 
