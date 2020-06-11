@@ -137,7 +137,7 @@ It's easy to explore building different views on the same underlying data model,
 <!-- depending on the data model, how many "unused" properties you have -->
 
 2. What did the order creation HTTP requests look like - which service was used, and why?
-<!-- used the old one  -->
+<!-- used the old one, because the new one is read-only, i.e. no creation  -->
 
 3. What was the artefact created in the persistence layer in Step 1?
 <!-- Stats_OrderInfo -->
