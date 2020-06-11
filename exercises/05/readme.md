@@ -283,4 +283,4 @@ At this point you have a meaningful OData service with data and against which yo
 <!--- string(3), code list --->
 
 2. Are there any issues with the way we have set up the service definition right now?
-<!--- all public --->
+<!--- all public, still just effectively a "pass-through" from schema up through service, no separation or differences at the service end. No real point at this stage in having these two separate layers (that will change though) --->
