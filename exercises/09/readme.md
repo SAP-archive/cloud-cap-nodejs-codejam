@@ -317,5 +317,5 @@ While this was a little intense as far as creation of artefacts was concerned, w
 ## Questions
 
 1. Why do we put the internationalization file in the `srv/` directory (rather than the `app/` directory)?
-<!-- we annotate the service and not the UI -->
+<!-- while it's common to have i18n in UI5 apps, here we are annotating the service and not the UI, i.e. the translatable parts are related to the OData service and annotations, not the controls in the UI -->
 
