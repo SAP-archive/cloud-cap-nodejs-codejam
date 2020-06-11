@@ -246,7 +246,7 @@ With a single command, you've initialized a basic OData service project and with
 <!--- error --->
 
 4. What happened to the `cds` process when you accessed the entityset? Can you think of reasons why this happened?
-<!--- crash --->
+<!--- crash, no hana connection possible at this stage --->
 
 5. What actually happens when you run `npm start`, and why?
-<!-- runs npx cds run, standardized way -->
+<!-- runs 'npx cds run', standardized way -->
