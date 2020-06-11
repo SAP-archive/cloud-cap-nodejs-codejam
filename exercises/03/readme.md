@@ -277,7 +277,7 @@ You now have a fully functional, albeit simple, OData service backed by a persis
 <!--- yaml, edmx, when inspecting cdsc you can find hana,odata,cds,swager,sql,csn as well --->
 
 2. What is the thinking behind the use of views at the service definition layer and tables at the data model layer?
-<!--- different consumers on the same data (APIs, UIs), leverage features of a view, separation of concerns,  --->
+<!--- different consumers on the same data (APIs, UIs), leverage features of a view, separation of concerns, give each of the different consumers a limited, focused set of entities, properties and relationships --->
 
 3. Why might you use the `cds compile` command at all?
 <!--- to understand what happens under the hood when you run cds deploy --->
