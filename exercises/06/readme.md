@@ -212,7 +212,7 @@ In this exercise you used shortcut annotations to restrict access to the entitie
 ## Questions
 
 1. Did you notice anything special about your request to <http://localhost:4004/catalog/Authors?$expand=books> in step 2?
-<!--- expand call  --->
+<!--- expand call - examine what it is and how it works (following a navigation property) --->
 
 2. How might the annotations relating to the read-only restrictions be useful in a UI context?
 <!--- FE autorenders (or hides) component depending on metadata  --->
